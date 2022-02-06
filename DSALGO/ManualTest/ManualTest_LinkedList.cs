@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DSALGO.Interfaces;
-namespace DSALGO.Test {
-    public static class Test_LinkedList {
-
+namespace DSALGO.ManualTest {
+    public static class ManualTest_LinkedList {
 
         enum OP {
-            AddFirst, AddLast, RemoveFirst, RemoveLast, SetValue, GetValue,Clear ,Exit
+            AddFirst, AddLast, RemoveFirst, RemoveLast, InsertAt, RemoveAt ,IndexOf,SetValue, GetValue,Clear ,Exit
         }
 
-        public static void ShowInfo() {
+        private static void ShowInfo() {
             Console.WriteLine($"({(int)OP.AddFirst})" + OP.AddFirst);
             Console.WriteLine($"({(int)OP.AddLast})" + OP.AddLast);
             Console.WriteLine($"({(int)OP.RemoveFirst})" + OP.RemoveFirst);
             Console.WriteLine($"({(int)OP.RemoveLast})" + OP.RemoveLast);
+            Console.WriteLine($"({(int)OP.InsertAt})" + OP.InsertAt);
+            Console.WriteLine($"({(int)OP.RemoveAt})" + OP.RemoveAt);
+            Console.WriteLine($"({(int)OP.IndexOf})" + OP.IndexOf);
             Console.WriteLine($"({(int)OP.SetValue})" + OP.SetValue);
             Console.WriteLine($"({(int)OP.GetValue})" + OP.GetValue);
             Console.WriteLine($"({(int)OP.Clear})" + OP.Clear);
@@ -26,7 +28,7 @@ namespace DSALGO.Test {
         public static void Test(ILinkedList linkedList) {
             ShowInfo();
             OP code = OP.Clear;
-            int tmp;
+            int tmp, index;
             string[] tokens;
 
             do {
@@ -36,34 +38,55 @@ namespace DSALGO.Test {
                 code = (OP)int.Parse(s);
                 switch (code) {
                     case OP.AddFirst:
-                        Console.Write("Input a number to Addfirst: ");
+                        Console.Write("(Addfirst) Input a number: ");
                         tmp = int.Parse(Console.ReadLine());
                         linkedList.AddFirst(tmp);
                         break;
                     case OP.AddLast:
-                        Console.Write("Input a number to AddLast: ");
+                        Console.Write("(AddLast) Input a number: ");
                         tmp = int.Parse(Console.ReadLine());
                         linkedList.AddLast(tmp);
                         break;
                     case OP.RemoveFirst:
+                        Console.WriteLine("(RemoveFirst)");
                         linkedList.RemoveFirst();
                         break;
                     case OP.RemoveLast:
+                        Console.WriteLine("(RemoveLast)");
                         linkedList.RemoveLast();
                         break;
-                    case OP.SetValue:
-                        Console.Write("Input index and value :");
+                    case OP.InsertAt:
+                        Console.Write("(InaserAt) Input index and value: ");
                         tokens = Console.ReadLine().Split(' ');
-                        int index = int.Parse(tokens[0]);
-                        int data = int.Parse(tokens[1]);
-                        linkedList[index] = data;
+                        index = int.Parse(tokens[0]);
+                        tmp = int.Parse(tokens[1]);
+                        linkedList.InsertAt(index , tmp);
+                        break;
+                    case OP.RemoveAt:
+                        Console.Write("(RemoveAt) Input a index: ");
+                        index = int.Parse(Console.ReadLine());
+                        linkedList.RemoveAt(index);
+                        break;
+                    case OP.IndexOf:
+                        Console.Write("(IndexOf) Input a number to locate: ");
+                        tmp = int.Parse(Console.ReadLine());
+                        Console.WriteLine(linkedList.IndexOf(tmp));
+                        break;
+
+                    case OP.SetValue:
+                        Console.Write("(SetValue) Input index and value: ");
+                        tokens = Console.ReadLine().Split(' ');
+                        index = int.Parse(tokens[0]);
+                        tmp = int.Parse(tokens[1]);
+                        linkedList[index] = tmp;
                         break;
                     case OP.GetValue:
-                        Console.Write("Input index :");
+                        Console.Write("(GetValue) Input index :");
                         tmp = int.Parse(Console.ReadLine());
                         Console.WriteLine(">>" + linkedList[tmp]);
                         break;
                     case OP.Exit:
+                        Console.WriteLine("Exit ... ");
                         return;
                     case OP.Clear:
                         Console.Clear();

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DSALGO.Interfaces;
 namespace DSALGO.DataStructures {
-    public class SingleLinkedList : ILinkedList {
+    // Single Linked List
+    public class SLinkedList : ILinkedList {
         class Node {
             public int data;
             public Node next;
@@ -17,10 +18,9 @@ namespace DSALGO.DataStructures {
         Node head;
         Node tail;
         public int Count { get; private set; }
-        public SingleLinkedList() {
+        public SLinkedList() {
             Count = 0;
         }
-    
         public override string ToString() {
             string s = $"[{Count}]: ";
             Node current = head;
@@ -61,7 +61,7 @@ namespace DSALGO.DataStructures {
                 tail = null;
                 Count = 0;
             }
-            else if (Count > 0) {
+            else if (Count > 1) {
                 head = head.next;
                 Count--;
             }
@@ -71,12 +71,11 @@ namespace DSALGO.DataStructures {
         }
         public void RemoveLast() {
             if (Count == 1) {
-                Console.WriteLine("invoke");
                 head = null;
                 tail = null;
                 Count = 0;
             }
-            else if (Count > 0) {
+            else if (Count > 1) {
                 Node current = head;
                 Node previous = head;
                 while (current.next != null) {
@@ -92,14 +91,14 @@ namespace DSALGO.DataStructures {
             }
         }
         public int IndexOf(int data) {
-            int i = -1;
+            int index = 0;
             Node current = head;
             while (current != null) {
-                i++;
                 if (current.data == data) {
-                    return i;
+                    return index;
                 }
                 current = current.next;
+                index++;
             }
             return -1;
         }
@@ -108,7 +107,7 @@ namespace DSALGO.DataStructures {
             set => SetValue(index, value);
         }
         private void SetValue(int index, int data) {
-            if (index < Count) {
+            if (index < Count || index >=0) {
                 Node current = head;
                 for (int i = 0; i < index; i++) {
                     current = current.next;
@@ -116,18 +115,67 @@ namespace DSALGO.DataStructures {
                 current.data = data;
                 return;
             }
-            Console.WriteLine("Out of index");
+            Console.WriteLine("Out of Index");
         }
         private int GetValue(int index) {
-            if (index < Count) {
+            if (index < Count || index >=0) {
                 Node current = head;
                 for (int i = 0; i < index; i++) {
                     current = current.next;
                 }
                 return current.data;
             }
-            Console.WriteLine("Out of index");
+            Console.WriteLine("Out of Index");
             return 0;
+        }
+
+        public void InsertAt(int index, int data) {
+            if (index < Count || index >=0) {
+                if (index == Count - 1 || Count <=1) {
+                    AddLast(data);
+                    Count++;
+                    return;
+                }
+                else {
+                    Node current = head.next;
+                    Node previous = head;
+                    for (int i = 0; i < index; i++) {
+                        previous = current;
+                        current = current.next;
+                    }
+                    Node node = new Node(data, current);
+                    previous.next = node;
+                    Count++;
+                }
+            }
+            else {
+                Console.WriteLine("Out of Index");
+            }
+        }
+
+        public void RemoveAt(int index) {
+            if(index  < Count && index >= 0) {
+                if(index == 0) {
+                    RemoveFirst();
+                }
+                else if(index == Count - 1) {
+                    RemoveLast();
+                }
+                else {
+                    Node current = head.next;
+                    Node previous = head;
+                    for (int i = 0; i < index-1; i++) {
+                        previous = current;
+                        current = current.next;
+                    }
+                    previous.next = current.next;
+                    current = null;
+                    Count--;
+                }
+            }
+            else {
+                Console.WriteLine("Out of Index");
+            }
         }
     }
 }
