@@ -20,6 +20,12 @@ namespace DSALGO.DataStructures {
             Count = array.Length;
             capacity = array.Length;
         }
+        public DynamicArray(DynamicArray dArray) {
+            Count = dArray.Count;
+            capacity = dArray.capacity;
+            array = new int[capacity];
+            dArray.array.CopyTo(array, 0);
+        }
         public void Add(int data) {
             if (Count == capacity) {
                 Resize();

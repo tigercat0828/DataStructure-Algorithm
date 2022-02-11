@@ -6,23 +6,25 @@ using System.Threading.Tasks;
 using DSALGO.DataStructures;
 namespace DSALGO.DataStructures {
 
-    public class Term {
-        public double coefficient;
-        public int exponent;
-        public Term(double coefficient, int exponent) {
-            this.coefficient = coefficient;
-            this.exponent = exponent;
-        }
-        public Term(Term term) {
-            this.coefficient=term.coefficient;
-            this.exponent=term.exponent;
-        }
-        public override string ToString() {
-            return $"{coefficient}x^{exponent}";
-        }
-    }
+   
 
     public class Polynomial {
+        public class Term {
+            public double coefficient;
+            public int exponent;
+            public Term(double coefficient, int exponent) {
+                this.coefficient = coefficient;
+                this.exponent = exponent;
+            }
+            public Term(Term term) {
+                this.coefficient = term.coefficient;
+                this.exponent = term.exponent;
+            }
+            public override string ToString() {
+                return $"{coefficient}x^{exponent}";
+            }
+        }
+
         public List<Term> terms;
 
         public Polynomial(Polynomial poly) {

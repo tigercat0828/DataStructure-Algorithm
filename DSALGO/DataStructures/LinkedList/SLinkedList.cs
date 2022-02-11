@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DSALGO.Interfaces;
+
 namespace DSALGO.DataStructures {
     // Single Linked List
-    public class SLinkedList : ILinkedList {
+    public class SLinkedList : LinkedList {
         class Node {
             public int data;
             public Node next;
@@ -17,12 +17,23 @@ namespace DSALGO.DataStructures {
         }
         Node head;
         Node tail;
-        public int Count { get; private set; }
+
+        private int count ;
+
+        public override int Count => count;
+
         public SLinkedList() {
-            Count = 0;
+            count = 0;
+        }
+        public SLinkedList(SLinkedList s) { 
+            Node current = s.head;
+            while (current != null) { 
+                current = current.next;
+                AddLast(current.data);
+            }
         }
         public override string ToString() {
-            string s = $"[{Count}]: ";
+            string s = $"[{count}]: ";
             Node current = head;
             while (current != null) {
                 s += current.data.ToString() + " -> ";
@@ -30,8 +41,8 @@ namespace DSALGO.DataStructures {
             }
             return s;
         }
-        public void AddFirst(int data) {
-            if (Count==0) {
+        public override void AddFirst(int data) {
+            if (count==0) {
                 Node node = new Node(data, null);
                 head = node;
                 tail = node;
@@ -40,10 +51,10 @@ namespace DSALGO.DataStructures {
                 Node node = new Node(data, head);
                 head = node;
             }
-            Count++;
+            count++;
         }
-        public void AddLast(int data) {
-            if (Count == 0) {
+        public override void AddLast(int data) {
+            if (count == 0) {
                 Node node = new Node(data, null);
                 head = node;
                 tail = node;
@@ -52,30 +63,30 @@ namespace DSALGO.DataStructures {
                 tail.next = new Node(data, null);
                 tail = tail.next;
             }
-            Count++;
+            count++;
         }
-        public void RemoveFirst() {
-            if (Count == 1) {
+        public override void RemoveFirst() {
+            if (count == 1) {
                 Console.WriteLine("invoke");
                 head = null;
                 tail = null;
-                Count = 0;
+                count = 0;
             }
-            else if (Count > 1) {
+            else if (count > 1) {
                 head = head.next;
-                Count--;
+                count--;
             }
             else {
                 Console.WriteLine("Linked list is empty!");
             }
         }
-        public void RemoveLast() {
-            if (Count == 1) {
+        public override void RemoveLast() {
+            if (count == 1) {
                 head = null;
                 tail = null;
-                Count = 0;
+                count = 0;
             }
-            else if (Count > 1) {
+            else if (count > 1) {
                 Node current = head;
                 Node previous = head;
                 while (current.next != null) {
@@ -84,13 +95,13 @@ namespace DSALGO.DataStructures {
                 }
                 tail = previous;
                 tail.next = null;
-                Count--;
+                count--;
             }
             else {
                 Console.WriteLine("Linked list is empty!");
             }
         }
-        public int IndexOf(int data) {
+        public override int IndexOf(int data) {
             int index = 0;
             Node current = head;
             while (current != null) {
@@ -102,12 +113,12 @@ namespace DSALGO.DataStructures {
             }
             return -1;
         }
-        public int this[int index] {
+        public override int this[int index] {
             get => GetValue(index);
             set => SetValue(index, value);
         }
         private void SetValue(int index, int data) {
-            if (index < Count || index >=0) {
+            if (index < count || index >=0) {
                 Node current = head;
                 for (int i = 0; i < index; i++) {
                     current = current.next;
@@ -118,7 +129,7 @@ namespace DSALGO.DataStructures {
             Console.WriteLine("Out of Index");
         }
         private int GetValue(int index) {
-            if (index < Count || index >=0) {
+            if (index < count || index >=0) {
                 Node current = head;
                 for (int i = 0; i < index; i++) {
                     current = current.next;
@@ -129,11 +140,11 @@ namespace DSALGO.DataStructures {
             return 0;
         }
 
-        public void InsertAt(int index, int data) {
-            if (index < Count || index >=0) {
-                if (index == Count - 1 || Count <=1) {
+        public override void InsertAt(int index, int data) {
+            if (index < count || index >=0) {
+                if (index == count - 1 || count <=1) {
                     AddLast(data);
-                    Count++;
+                    count++;
                     return;
                 }
                 else {
@@ -145,7 +156,7 @@ namespace DSALGO.DataStructures {
                     }
                     Node node = new Node(data, current);
                     previous.next = node;
-                    Count++;
+                    count++;
                 }
             }
             else {
@@ -153,12 +164,12 @@ namespace DSALGO.DataStructures {
             }
         }
 
-        public void RemoveAt(int index) {
-            if(index  < Count && index >= 0) {
+        public override void RemoveAt(int index) {
+            if(index  < count && index >= 0) {
                 if(index == 0) {
                     RemoveFirst();
                 }
-                else if(index == Count - 1) {
+                else if(index == count - 1) {
                     RemoveLast();
                 }
                 else {
@@ -170,12 +181,13 @@ namespace DSALGO.DataStructures {
                     }
                     previous.next = current.next;
                     current = null;
-                    Count--;
+                    count--;
                 }
             }
             else {
                 Console.WriteLine("Out of Index");
             }
         }
+
     }
 }

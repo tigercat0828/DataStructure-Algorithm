@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DSALGO.Interfaces;
+﻿
+using DSALGO.DataStructures;
 namespace DSALGO.ManualTest {
     public static class ManualTest_Stack {
         enum OP {
@@ -17,7 +13,7 @@ namespace DSALGO.ManualTest {
             Console.WriteLine($"({(int)OP.Exit}) " + OP.Exit);
             Console.WriteLine("=====================================");
         }
-        public static void Test(IStack stack) {
+        public static void Test(Stack stack) {
             OP code = OP.Clear;
             int tmp;
             ShowInfo();

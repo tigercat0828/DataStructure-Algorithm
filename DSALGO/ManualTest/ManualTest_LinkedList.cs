@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DSALGO.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DSALGO.Interfaces;
+
 namespace DSALGO.ManualTest {
     public static class ManualTest_LinkedList {
 
@@ -25,7 +26,7 @@ namespace DSALGO.ManualTest {
             Console.WriteLine($"({(int)OP.Exit})" + OP.Exit);
             Console.WriteLine("===============================================");
         }
-        public static void Test(ILinkedList linkedList) {
+        public static void Test(LinkedList linkedList) {
             ShowInfo();
             OP code = OP.Clear;
             int tmp, index;

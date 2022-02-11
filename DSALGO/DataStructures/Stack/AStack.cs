@@ -1,54 +1,54 @@
-﻿using DSALGO.Interfaces;
-
+﻿
 namespace DSALGO.DataStructures {
 
     // Implement a stack using array : Astack lmao
-    public class AStack : IStack {
+    public class AStack : Stack {
 
         const int INITIAL_CAPCITY = 3;
         int[] stack;
         int capacity;
-        public int Count{get;private set;}
-
+        private int count;
+        
+        public override int Count => count;
         public AStack() {
             stack = new int[INITIAL_CAPCITY];
             capacity = INITIAL_CAPCITY;
-            Count = 0;  
+            count = 0;  
         }
-        public void Push(int data) {
-            if (Count == capacity) {
-                Resize();
+        public override void Push(int data) {
+            if (count == capacity) {
+                resize();
             }
-            stack[Count] = data;
-            Count++;
+            stack[count] = data;
+            count++;
         }
 
-        private void Resize() {
+        private void resize() {
             capacity *= 2;
             int[] newStack = new int[capacity];
             Array.Copy(stack, newStack, stack.Length);
             stack = newStack;
         }
 
-        public int Pop() {
-            if (Count >= 1) {
-                Count--;
-                return stack[Count];
+        public override int Pop() {
+            if (count >= 1) {
+                count--;
+                return stack[count];
             }
             Console.WriteLine("Stack is empty");
             return -1;
         }
         public override string ToString() {
-            string s = $"[{Count}] ";
-            for (int i = Count - 1; i >= 0; i--) {
+            string s = $"[{count}] ";
+            for (int i = count - 1; i >= 0; i--) {
                 s += stack[i] + " <- ";
             }
             return s;
         }
 
-        public int Peek() {
-            if (Count >= 1) { 
-                return stack[Count-1];
+        public override int Peek() {
+            if (count >= 1) { 
+                return stack[count-1];
             }
             Console.WriteLine("Stack is empty");
             return -1;
