@@ -1,15 +1,10 @@
 ﻿using DSALGO.DataStructures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.ManualTest {
     public static class ManualTest_LinkedList {
 
         enum OP {
-            AddFirst, AddLast, RemoveFirst, RemoveLast, InsertAt, RemoveAt ,IndexOf,SetValue, GetValue,Clear ,Exit
+            AddFirst, AddLast, RemoveFirst, RemoveLast, InsertAt, RemoveAt, IndexOf, SetValue, GetValue, Clear, Exit
         }
 
         private static void ShowInfo() {
@@ -61,7 +56,7 @@ namespace DSALGO.ManualTest {
                         tokens = Console.ReadLine().Split(' ');
                         index = int.Parse(tokens[0]);
                         tmp = int.Parse(tokens[1]);
-                        linkedList.InsertAt(index , tmp);
+                        linkedList.InsertAt(index, tmp);
                         break;
                     case OP.RemoveAt:
                         Console.Write("(RemoveAt) Input a index: ");

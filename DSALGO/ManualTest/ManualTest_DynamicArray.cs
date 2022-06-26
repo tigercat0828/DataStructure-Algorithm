@@ -1,5 +1,4 @@
-﻿using System;
-using DSALGO.DataStructures;
+﻿using DSALGO.DataStructures.DynamicArray;
 
 namespace DSALGO.ManualTest {
     public static class ManualTest_DynamicArray {

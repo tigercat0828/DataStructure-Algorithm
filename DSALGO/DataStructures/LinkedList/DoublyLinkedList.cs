@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
+﻿namespace DSALGO.DataStructures {
 
     // Double Linked List
-    public class DLinkedList : LinkedList {
+    public class DoublyLinkedList : LinkedList {
 
         class Node {
             public int data;
@@ -23,14 +17,8 @@ namespace DSALGO.DataStructures {
         Node tail;
         public int count;
         public override int Count => count;
-        public DLinkedList() {
+        public DoublyLinkedList() {
             count = 0;
-        }
-        public DLinkedList(DLinkedList dlinklist) { 
-            Node current = dlinklist.head;
-            while (current != null) { 
-                
-            }
         }
         public override int this[int index] {
             get => GetValue(index);
@@ -53,7 +41,7 @@ namespace DSALGO.DataStructures {
 
         public override void AddLast(int data) {
             if (count == 0) {
-                Node node = new Node( data, null, null );
+                Node node = new Node(data, null, null);
                 head = node;
                 tail = node;
             }
@@ -84,10 +72,10 @@ namespace DSALGO.DataStructures {
                 tail = null;
                 count = 0;
             }
-            else if (count > 1) { 
+            else if (count > 1) {
                 head = head.right;
                 head.left = null;
-                count --;
+                count--;
             }
             else {
                 Console.WriteLine("Linked list is empty!");
@@ -98,9 +86,9 @@ namespace DSALGO.DataStructures {
             if (count == 1) {
                 head = null;
                 tail = null;
-                count =0;
+                count = 0;
             }
-            else if (count > 1) { 
+            else if (count > 1) {
                 tail = tail.left;
                 tail.right = null;
                 count--;
@@ -110,7 +98,7 @@ namespace DSALGO.DataStructures {
             }
         }
 
-        private  void SetValue(int index, int data) {
+        private void SetValue(int index, int data) {
             if (index >= 0 && index < count) {
                 Node node;
                 if (index < count / 2) {
@@ -150,7 +138,7 @@ namespace DSALGO.DataStructures {
         }
         public override void InsertAt(int index, int data) {
             if (index >= 0 && index < count) {
-                if(index == count -1 || count <= 1) {
+                if (index == count - 1 || count <= 1) {
                     AddLast(data);
                     count++;
                     return;
@@ -181,7 +169,7 @@ namespace DSALGO.DataStructures {
 
         public override void RemoveAt(int index) {
             if (index >= 0 && index < count) {
-                if(index == 0) {
+                if (index == 0) {
                     RemoveFirst();
                 }
                 else if (index == count - 1) {
@@ -203,7 +191,7 @@ namespace DSALGO.DataStructures {
                     }
                     Node A = current.left;
                     Node B = current.right;
-                    A.right =B;
+                    A.right = B;
                     B.left = A;
                     current = null;
                     count--;

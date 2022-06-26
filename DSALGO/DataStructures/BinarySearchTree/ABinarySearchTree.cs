@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
+﻿namespace DSALGO.DataStructures {
 
     // Binary Search Tree (Array)
-    public class ABinarySearchTree : BinarySearchTree {
+    public class ABinarySearchTree : IBinarySearchTree {
 
         const int NULL = int.MinValue;
         const int ROOT = 0;
@@ -16,24 +10,24 @@ namespace DSALGO.DataStructures {
         int _count;
         public ABinarySearchTree() {
             _level = 1;
-            int capacity = (int)Math.Pow(2, _level) -1;
+            int capacity = (int)Math.Pow(2, _level) - 1;
             BST = new int[capacity];
             Array.Fill(BST, NULL); // set all node value to default NULL
             _count = 0;
         }
 
-        public override int Count => _count;
+        public int Count => _count;
 
-        public override void Delete(int data) {
+        public void Delete(int data) {
             throw new NotImplementedException();
         }
 
-        public override List<int> InOrder() {
+        public List<int> InOrder() {
             List<int> list = new List<int>();
             inOrder(ROOT, list);
             return list;
         }
-        private void inOrder(int root,List<int> list) {
+        private void inOrder(int root, List<int> list) {
             if (root < BST.Length && BST[root] != NULL) {
                 inOrder(root * 2 + 1, list);
                 list.Add(BST[root]);
@@ -41,14 +35,14 @@ namespace DSALGO.DataStructures {
             }
         }
 
-        public override void Insert(int data) {
+        public void Insert(int data) {
             int root = 0;
             int capacity = BST.Length;
-            
-            while( root < capacity) {
+
+            while (root < capacity) {
                 // reach the NULL node
                 if (BST[root] == NULL) {
-                    break;    
+                    break;
                 }
                 // go to left
                 if (data < BST[root]) {
@@ -56,12 +50,12 @@ namespace DSALGO.DataStructures {
                     continue;
                 }
                 // go to right
-                else if(data > BST[root]) {
+                else if (data > BST[root]) {
                     root = root * 2 + 2;
                     continue;
                 }
             }
-            if(root >= capacity) {
+            if (root >= capacity) {
                 updateCapacity();
             }
             // to the empty tree node
@@ -76,49 +70,49 @@ namespace DSALGO.DataStructures {
             Array.Copy(BST, newbst, BST.Length);
             BST = newbst;
         }
-        public override List<int> LevelOrder() {
+        public List<int> LevelOrder() {
             Queue<int> queue = new Queue<int>();
             List<int> list = new List<int>();
             queue.Enqueue(ROOT);
-            while( queue.Count > 0 ) {
+            while (queue.Count > 0) {
                 int root = queue.Dequeue();
                 if (root < BST.Length && BST[root] != NULL) {
                     list.Add(BST[root]);
-                    queue.Enqueue(root * 2 +1);
+                    queue.Enqueue(root * 2 + 1);
                     queue.Enqueue(root * 2 + 2);
                 }
             }
             return list;
         }
-        public override int MaxHeight() {
+        public int MaxHeight() {
             return maxHeight(ROOT);
         }
-        private int maxHeight(int root) { 
-            
+        private int maxHeight(int root) {
+
             // case 0 : empty tree
-            if(BST[ROOT] == NULL)return 0;
-            
+            if (BST[ROOT] == NULL) return 0;
+
             int capacity = BST.Length;
             int left = root * 2 + 1;
             int right = root * 2 + 2;
-            
+
             // case 1 : leaf node
             if (left >= capacity && right >= capacity) return 1;
             if (BST[left] == NULL && BST[right] == NULL) return 1;
-            
+
             // case 2 : only have one child
-            if(BST[left] == NULL || left > capacity) {
+            if (BST[left] == NULL || left > capacity) {
                 return maxHeight(right) + 1;
             }
             if (BST[right] == NULL || right > capacity) {
-                return maxHeight(left) +1 ;
+                return maxHeight(left) + 1;
             }
             // case 3 : have two child
             int L = maxHeight(left);
             int R = maxHeight(right);
-            return Math.Max(L, R) +1;
+            return Math.Max(L, R) + 1;
         }
-        public override int MinHeight() {
+        public int MinHeight() {
             return minHeight(ROOT);
         }
         public int minHeight(int root) {
@@ -131,12 +125,12 @@ namespace DSALGO.DataStructures {
 
             // case 1 : leaf node 
             if ((left >= capacity && right >= capacity)) return 1;
-            if(BST[left] == NULL && BST[right] == NULL) return 1;
+            if (BST[left] == NULL && BST[right] == NULL) return 1;
             // case 2 : only one child is null
             if (left > capacity || BST[left] == NULL) {
                 return minHeight(right);
             }
-            if( right > capacity || BST[right] == NULL) {
+            if (right > capacity || BST[right] == NULL) {
                 return minHeight(left);
             }
             // case 3 : have two child
@@ -145,8 +139,8 @@ namespace DSALGO.DataStructures {
             return Math.Min(Lheight, Rheight) + 1;
 
         }
-        public override List<int> PostOrder() {
-            List<int> list = new List<int>();   
+        public List<int> PostOrder() {
+            List<int> list = new List<int>();
             postOrder(ROOT, list);
             return list;
         }
@@ -157,8 +151,8 @@ namespace DSALGO.DataStructures {
                 list.Add(BST[root]);
             }
         }
-        public override List<int> PreOrder() {
-            List<int> list = new List<int>();   
+        public List<int> PreOrder() {
+            List<int> list = new List<int>();
             preOrder(ROOT, list);
             return list;
         }
@@ -169,7 +163,7 @@ namespace DSALGO.DataStructures {
                 preOrder(root * 2 + 2, list);
             }
         }
-        public override bool Search(int data) {
+        public bool Search(int data) {
             int root = ROOT;
             int capacity = BST.Length;
             while (root < capacity) {
@@ -187,6 +181,6 @@ namespace DSALGO.DataStructures {
             }
             return false;
         }
-        
+
     }
 }

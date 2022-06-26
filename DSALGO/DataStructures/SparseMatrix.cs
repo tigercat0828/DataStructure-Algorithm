@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
+﻿namespace DSALGO.DataStructures {
     public class SparseMatrix {
         class Entry {
             public int row;
@@ -18,7 +12,7 @@ namespace DSALGO.DataStructures {
         }
         List<Entry> entries;
 
-        public SparseMatrix() { 
+        public SparseMatrix() {
             entries = new List<Entry>();
         }
         public void Transpose() {

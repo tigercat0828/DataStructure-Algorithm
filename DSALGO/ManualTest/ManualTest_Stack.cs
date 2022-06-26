@@ -13,7 +13,7 @@ namespace DSALGO.ManualTest {
             Console.WriteLine($"({(int)OP.Exit}) " + OP.Exit);
             Console.WriteLine("=====================================");
         }
-        public static void Test(Stack stack) {
+        public static void Test(IStack stack) {
             OP code = OP.Clear;
             int tmp;
             ShowInfo();

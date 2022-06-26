@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
-    public class LQueue : Queue {
+﻿namespace DSALGO.DataStructures {
+    public class LQueue : QueueBase {
         class Node {
             public int data;
             public Node next;
-            public Node(int data, Node next) { 
+            public Node(int data, Node next) {
                 this.data = data;
                 this.next = next;
             }
@@ -21,7 +15,7 @@ namespace DSALGO.DataStructures {
         public LQueue() {
             count = 0;
         }
-        
+
         public override int Count => count;
 
         public override void Enqueue(int data) {
@@ -40,7 +34,7 @@ namespace DSALGO.DataStructures {
         }
 
         public override int Dequeue() {
-            if(count > 0) {
+            if (count > 0) {
                 int pop = front.data;
                 front = front.next;
                 count--;

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DSALGO.DataStructures;
-namespace DSALGO.DataStructures {
-
-   
+﻿namespace DSALGO.DataStructures {
 
     public class Polynomial {
         public class Term {
@@ -49,7 +41,7 @@ namespace DSALGO.DataStructures {
         }
         public void AddTerm(double coefficient, int exponent) {
             for (int i = 0; i < terms.Count; i++) {
-                if(exponent == terms[i].exponent) {
+                if (exponent == terms[i].exponent) {
                     terms[i].coefficient += coefficient;
                     return;
                 }

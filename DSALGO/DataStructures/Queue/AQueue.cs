@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
-    public class AQueue : Queue {
+﻿namespace DSALGO.DataStructures {
+    public class AQueue : QueueBase {
 
         const int QUEUE_SIZE = 5;
         int[] queue;
         int front;
         int rear;
         private int count;
-        
+
 
         public AQueue() {
             queue = new int[QUEUE_SIZE];
@@ -24,7 +18,7 @@ namespace DSALGO.DataStructures {
         public override int Count => count;
 
         public override int Dequeue() {
-            if(front == rear) {
+            if (front == rear) {
                 Console.WriteLine("Queue is empty");
                 return -1;
             }
@@ -46,7 +40,7 @@ namespace DSALGO.DataStructures {
         }
 
         public override string ToString() {
-            string s= $"[{count}] | ";
+            string s = $"[{count}] | ";
             for (int i = 0; i < queue.Length; i++) {
                 s += queue[i] + " | ";
             }

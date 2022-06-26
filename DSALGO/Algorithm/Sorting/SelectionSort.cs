@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm {
     public static class SelectionSort {
 
         /*
@@ -14,10 +8,10 @@ namespace DSALGO.Algorithm {
          */
         public static void Run(int[] arr) {
             int min = 0;
-            
+
             for (int i = 0; i < arr.Length; i++) {
                 for (int j = i; j < arr.Length; j++) {
-                    if(arr[j] < arr[min]) {
+                    if (arr[j] < arr[min]) {
                         min = j;
                     }
                 }

@@ -2,20 +2,20 @@
 namespace DSALGO.DataStructures {
 
     // Implement a stack using array : Astack lmao
-    public class AStack : Stack {
+    public class AStack : IStack {
 
         const int INITIAL_CAPCITY = 3;
         int[] stack;
         int capacity;
         private int count;
-        
-        public override int Count => count;
+
+        public int Count => count;
         public AStack() {
             stack = new int[INITIAL_CAPCITY];
             capacity = INITIAL_CAPCITY;
-            count = 0;  
+            count = 0;
         }
-        public override void Push(int data) {
+        public void Push(int data) {
             if (count == capacity) {
                 resize();
             }
@@ -30,7 +30,7 @@ namespace DSALGO.DataStructures {
             stack = newStack;
         }
 
-        public override int Pop() {
+        public int Pop() {
             if (count >= 1) {
                 count--;
                 return stack[count];
@@ -46,9 +46,9 @@ namespace DSALGO.DataStructures {
             return s;
         }
 
-        public override int Peek() {
-            if (count >= 1) { 
-                return stack[count-1];
+        public int Peek() {
+            if (count >= 1) {
+                return stack[count - 1];
             }
             Console.WriteLine("Stack is empty");
             return -1;

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
+﻿namespace DSALGO.DataStructures {
     // implement BinarySearchTree by using linked list
-    public class LBinarySearchTree : BinarySearchTree {
+    public class LBinarySearchTree : IBinarySearchTree {
 
         class TreeNode {
             public int data;
@@ -16,15 +10,15 @@ namespace DSALGO.DataStructures {
                 this.data = data;
             }
         }
-        public override int Count => _count;
+        public  int Count => _count;
 
         TreeNode _root;
         int _count;
 
-        public override bool Search(int data) {
+        public  bool Search(int data) {
             TreeNode target = search(_root, data);
-            
-            if (target != null) { 
+
+            if (target != null) {
                 return true;
             }
             return false;
@@ -32,19 +26,19 @@ namespace DSALGO.DataStructures {
         // recursion version
         TreeNode search(TreeNode root, int data) {
 
-            if (data < root.data) { 
+            if (data < root.data) {
                 return search(root.left, data);
             }
             if (data > root.data) {
-                return search(root.right, data);   
+                return search(root.right, data);
             }
             return root;
         }
 
-        public override int MaxHeight() {
+        public  int MaxHeight() {
             return maxHeight(_root);
         }
-        public override int MinHeight() {
+        public  int MinHeight() {
             return minHeight(_root);
         }
 
@@ -57,29 +51,29 @@ namespace DSALGO.DataStructures {
         }
 
         private int minHeight(TreeNode root) {
-            
+
             // case 0: empty binary tree
             if (_root == null) return 0;
-            
+
             // case 1: leaf node
-            if(root.right == null && root.left == null) return 1;
-            
+            if (root.right == null && root.left == null) return 1;
+
             // only one child is null
-            if(root.right == null) {
+            if (root.right == null) {
                 return minHeight(root.left) + 1;
             }
             if (root.left == null) {
                 return minHeight(root.right) + 1;
             }
             // case 3: have two child
-            else { 
+            else {
                 int L = minHeight(root.left);
                 int R = minHeight(root.right);
                 return Math.Min(L, R) + 1;
             }
-        } 
+        }
 
-        public override void Insert(int data) {
+        public void Insert(int data) {
             _root = insert(_root, data);
             _count++;
         }
@@ -98,11 +92,11 @@ namespace DSALGO.DataStructures {
             return root;
         }
 
-        public override List<int> LevelOrder() {
+        public List<int> LevelOrder() {
             Queue<TreeNode> queue = new Queue<TreeNode>();
             List<int> levels = new List<int>();
             queue.Enqueue(_root);
-            while (queue.Count > 0) { 
+            while (queue.Count > 0) {
                 TreeNode t = queue.Dequeue();
                 if (t != null) {
                     levels.Add(t.data);
@@ -112,47 +106,47 @@ namespace DSALGO.DataStructures {
             }
             return levels;
         }
-        public override List<int> InOrder() {
+        public List<int> InOrder() {
             List<int> list = new List<int>();
             inOrder(_root, list);
-            return list;    
+            return list;
         }
-        private void inOrder(TreeNode root, List<int> list) { 
-            if(root != null) {
-                inOrder(root.left, list); 
+        private void inOrder(TreeNode root, List<int> list) {
+            if (root != null) {
+                inOrder(root.left, list);
                 list.Add(root.data);
                 inOrder(root.right, list);
             }
         }
-        public override List<int> PostOrder() {
+        public List<int> PostOrder() {
             List<int> list = new List<int>();
             postOrder(_root, list);
             return list;
         }
 
         private void postOrder(TreeNode root, List<int> list) {
-            if(root != null) {
+            if (root != null) {
                 list.Add(root.data);
                 postOrder(root.left, list);
                 postOrder(root.right, list);
             }
         }
 
-        public override List<int> PreOrder() {
+        public List<int> PreOrder() {
             List<int> list = new List<int>();
             preOrder(_root, list);
             return list;
         }
-        private void preOrder(TreeNode root, List<int> list) { 
-            if(root != null) {
+        private void preOrder(TreeNode root, List<int> list) {
+            if (root != null) {
                 preOrder(root.left, list);
                 preOrder(root.right, list);
                 list.Add(root.data);
             }
         }
 
-        public override void Delete(int data) {
-            _root = delete(_root, data); 
+        public void Delete(int data) {
+            _root = delete(_root, data);
             _count--;
         }
         private TreeNode delete(TreeNode root, int data) {
@@ -198,7 +192,7 @@ namespace DSALGO.DataStructures {
             }
             return min;
         }
-        private int maxValue(TreeNode root) { 
+        private int maxValue(TreeNode root) {
             int max = root.data;
             while (root.right != null) {
                 root = root.right;

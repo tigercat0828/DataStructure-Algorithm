@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructures {
-    public class LStack : Stack {
-
+﻿namespace DSALGO.DataStructures {
+    public class LStack : IStack {
         class Node {
             public int data;
             public Node next;
@@ -17,11 +10,11 @@ namespace DSALGO.DataStructures {
         }
         Node top;
         private int count;
-        public override int Count => count;
+        public int Count => count;
         public LStack() {
             count = 0;
         }
-        public override int Pop() {
+        public int Pop() {
             if (count == 0) {
                 Console.WriteLine("Stack is empty");
                 return -1;
@@ -32,7 +25,7 @@ namespace DSALGO.DataStructures {
             return pop;
         }
 
-        public override void Push(int data) {
+        public void Push(int data) {
             if (top == null) {
                 top = new Node(data, null);
                 count = 1;
@@ -43,8 +36,8 @@ namespace DSALGO.DataStructures {
             count++;
         }
 
-        public override int Peek() {
-            if(top != null) {
+        public int Peek() {
+            if (top != null) {
                 return top.data;
             }
             return -1;

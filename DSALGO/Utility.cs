@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO {
+﻿namespace DSALGO {
     public static class Utility {
         public static void Print(List<int> list) {
             string s = "";

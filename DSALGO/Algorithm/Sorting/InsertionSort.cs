@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm {
     public static class InsertionSort {
 
         /*
@@ -16,11 +10,11 @@ namespace DSALGO.Algorithm {
             for (int i = 1; i < arr.Length; i++) {
                 int key = arr[i];
                 int j = i - 1;
-                while (j >= 0 && key < arr[j]  ) {
-                    arr[j+1] = arr[j];
+                while (j >= 0 && key < arr[j]) {
+                    arr[j + 1] = arr[j];
                     j--;
                 }
-                arr[j+1] = key;
+                arr[j + 1] = key;
             }
         }
     }

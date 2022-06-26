@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DSALGO.DataStructures;
+﻿using DSALGO.DataStructures;
 
 namespace DSALGO.ManualTest {
     public static class ManualTest_Queue {
@@ -18,7 +13,7 @@ namespace DSALGO.ManualTest {
             Console.WriteLine($"({(int)OP.Exit})" + OP.Exit);
             Console.WriteLine("=====================================");
         }
-        public static void Test(Queue queue) {
+        public static void Test(QueueBase queue) {
             ShowInfo();
             OP code = OP.Clear;
             int tmp;
@@ -47,7 +42,7 @@ namespace DSALGO.ManualTest {
                     default:
                         break;
                 }
-            }while(code != OP.Exit);
+            } while (code != OP.Exit);
         }
     }
 }
