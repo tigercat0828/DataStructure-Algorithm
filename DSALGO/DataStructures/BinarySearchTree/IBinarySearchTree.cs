@@ -1,14 +1,13 @@
 ﻿namespace DSALGO.DataStructures {
-    public interface IBinarySearchTree {
-        List<int> PreOrder();
-        List<int> InOrder();
-        List<int> PostOrder();
-        List<int> LevelOrder();
-        void Insert(int data);
-        void Delete(int data);
-        bool Search(int data);
-        int MinHeight();
-        int MaxHeight();
-        int Count { get; }
+    public interface IBinarySearchTree<T> where T : IComparable {
+        public int Count { get; }
+        bool Insert(T value);
+        void Remove(T value);
+        T Peek();
+        bool Contains(T value);
+        List<T> PreOrder();
+        List<T> PostOrder();
+        List<T> InOrder();
+        List<T> LevelOrder();
     }
 }

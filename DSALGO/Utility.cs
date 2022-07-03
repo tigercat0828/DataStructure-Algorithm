@@ -1,18 +1,18 @@
 ﻿namespace DSALGO {
     public static class Utility {
-        public static void Print(List<int> list) {
-            string s = "";
-            foreach (var item in list) {
-                s += item + ", ";
-            }
-            Console.WriteLine(s);
+        public static void Print<T>(this List<T> list) {
+            Console.WriteLine(string.Join(',', list));
         }
-        public static void Print(int[] arr) {
-            string s = "";
-            foreach (var item in arr) {
-                s += item + ", ";
+        public static void Print<T>(this IEnumerable<T> list) {
+            Console.WriteLine(string.Join(',', list));
+        }
+        public static int[] RandomIntArray(int length, int min, int max) {
+            Random random = new Random();
+            int[] array = new int[length];
+            for (int i = 0; i < length; i++) {
+                array[i] = random.Next(min, max + 1);
             }
-            Console.WriteLine(s);
+            return array;
         }
     }
 }
