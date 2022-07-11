@@ -1,7 +1,7 @@
 ﻿namespace DSALGO.DataStructures {
 
     // Binary Search Tree (Array)
-    public class ArrayBasedBinarySearchTree<T> : IBinarySearchTree<T> where T:IComparable {
+    public class ArrayBasedBinarySearchTree<T> : IBinaryTree<T> where T:IComparable {
         
         const int ROOT = 0;
         T[] tree;

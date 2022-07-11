@@ -1,5 +1,5 @@
 ﻿namespace DSALGO.DataStructures {
-    public interface IBinarySearchTree<T> where T : IComparable {
+    public interface IBinaryTree<T>  {
         public int Count { get; }
         bool Insert(T value);
         void Remove(T value);

@@ -2,7 +2,7 @@
 
 namespace DSALGO.DataStructures {
     // implement BinarySearchTree by using linked list
-    public class ListBasedBinarySearchTree<T> : IBinarySearchTree<T> where T : IComparable {
+    public class ListBasedBinarySearchTree<T> : IBinaryTree<T> where T : IComparable {
 
         TreeNode<T> _root;
         public int Count { get; private set; }
