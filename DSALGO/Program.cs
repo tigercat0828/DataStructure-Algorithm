@@ -5,14 +5,18 @@ using DSALGO;
 using DSALGO.Algorithm;
 
 using static DSALGO.Utility;
+using DSALGO.DataStructure.HashTable;
+
+HashTableSeperateChaining<string, int> table = new();
+table.Add("Alice", 1);
+table.Add("NIck", 2);
 
 
-string person1 = "Alice";
-string person2 = "Nick";
+table.Print();
 
-Console.WriteLine(0x7ffffff & person1.GetHashCode());
-Console.WriteLine(0x7ffffff & person2.GetHashCode());
-Dictionary<int, int> map = new();
+table["Alice"] = 3;
 
+Utility.DrawBoldLine();
 
+table.Print();
 

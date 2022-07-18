@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSALGO.DataStructure.BinarySearchTree {
-    public class AvlNode<T> {
-        public AvlNode(T key, AvlNode<T> left = null, AvlNode<T> right = null) {
+namespace DSALGO.DataStructure.BinarySearchTree.BalancedTree
+{
+    public class AvlNode<T>
+    {
+        public AvlNode(T key, AvlNode<T> left = null, AvlNode<T> right = null)
+        {
             this.key = key;
             this.left = left;
             this.right = right;

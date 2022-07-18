@@ -207,7 +207,7 @@
         {
             throw new NotImplementedException();
         }
-        public bool Delete(T key)
+        public bool Remove(T key)
         {
             RBnode<T> target = search(key);
             if (target == null) return false;

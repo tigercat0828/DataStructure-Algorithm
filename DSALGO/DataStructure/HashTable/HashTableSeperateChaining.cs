@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSALGO.DataStructure.HashTable {
     public class HashTableSeperateChaining<TKey, TValue> : IHashTable<TKey,TValue>{
-        const int DEFAULT_SIZE = 32;
+        const int DEFAULT_SIZE = 10;
         const float LOAD_FACTOR = 0.75f;
         public int Count { get; private set; }
         private int capacity;
@@ -34,14 +34,47 @@ namespace DSALGO.DataStructure.HashTable {
             if (threshold > LOAD_FACTOR) ResizeTable();
         }
         public TValue this[TKey key] {
-            get => 
+            get => Get(key);
+            set => Set(key, value);
+        }
+        public void Set(TKey key, TValue value) {
+            if (!HasKey(key, out int index)) throw new ArgumentException($"There is no {key} in the HashTable");
+            var row = bucket[index];
+            HashEntry<TKey, TValue> target;
+            foreach (var item in row) {
+                if (item.IsKeyIdentical(key)) {
+                    item.value = value;
+                    break;
+                }
+            }
+        }
+        public TValue Get(TKey key) {
+
+            if (!HasKey(key, out int index)) throw new ArgumentException($"There is no {key} in the HashTable");
+
+            var row = bucket[index];
+            foreach (var item in row) {
+                if (item.IsKeyIdentical(key)) {
+                    return item.value;
+                }
+            }
+            return default(TValue);
         }
         public void Remove(TKey key) {
             throw new NotImplementedException();
         }
-
+        
         public bool ContainsKey(TKey key) {
-            throw new NotImplementedException();
+            return HasKey(key, out int index);
+        }
+        private bool HasKey(TKey key, out int index) {
+            // calculate hashcode of key and output normalized index
+            index = NormalizeIndex(key.GetHashCode());
+            if (bucket[index] == null) {
+                index = -1;
+                return false;
+            }
+            return true;
         }
 
         public bool ContainsValue(TValue value) {
@@ -57,11 +90,26 @@ namespace DSALGO.DataStructure.HashTable {
         }
 
         public void Clear() {
+            Count = 0;
             throw new NotImplementedException();
+
         }
 
         public void ResizeTable() {
             throw new NotImplementedException();
+        }
+        public void Print() { 
+            for (int i = 0; i < capacity; i++) {
+                Console.Write($"{i} : ");
+                if (bucket[i] == null) {
+                    Console.WriteLine();
+                    continue;
+                }
+                foreach (var pair in bucket[i]) {
+                    Console.Write(pair + ", ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
