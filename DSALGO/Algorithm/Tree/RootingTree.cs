@@ -1,5 +1,5 @@
-﻿using DSALGO.DataStructures.Graph;
-using DSALGO.DataStructures.Tree;
+﻿using DSALGO.DataStructure.Graph;
+using DSALGO.DataStructure.Tree;
 
 namespace DSALGO.Algorithm.Tree {
     public static class RootingTree {
@@ -12,7 +12,7 @@ namespace DSALGO.Algorithm.Tree {
             return root;
         }
         private static TreeNode build(AdjacencyList graph, TreeNode node) {
-            foreach (var vertex in graph[node.key]) {
+            foreach (var vertex in graph.GetLinkedNodes(node.key)) {
                 // avoid adding parent as its child
                 if (node.parent != null && node.parent.key == vertex) continue;
                 TreeNode newNode = new TreeNode(vertex);

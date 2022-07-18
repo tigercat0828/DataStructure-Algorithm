@@ -1,7 +1,7 @@
 ﻿
 using DSALGO.Algorithm.Tree;
-using DSALGO.DataStructures.Graph;
-using DSALGO.DataStructures.Tree;
+using DSALGO.DataStructure.Graph;
+using DSALGO.DataStructure.Tree;
 using System.Text;
 
 namespace Leeco.Algorithms.Tree {

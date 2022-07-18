@@ -1,4 +1,4 @@
-﻿using DSALGO.DataStructures.Tree;
+﻿using DSALGO.DataStructure.Tree;
 
 namespace DSALGO.Algorithm.Tree {
     public static class LowestCommonAncestor {

@@ -1,35 +1,44 @@
 ﻿
 
-using DSALGO.DataStructures.Graph;
+using DSALGO.DataStructure.Graph;
 
 namespace DSALGO.Algorithm.Graph {
     /// <summary>
     /// For DAG, Directed Acyclic Graph
     /// </summary>
     public class TopologicalSort {
-        List<int> result = new List<int>();
-        HashSet<int> visited = new HashSet<int>();
-
-        public List<int> FindDagShortestPath() {
-            throw new NotImplementedException();
+        bool[] isVisited;
+        int[] result;
+        int nodeCount;
+        int current;
+        readonly AdjacencyList graph;
+        public TopologicalSort(AdjacencyList graph) {
+            this.graph = graph;
+            nodeCount = graph.nodeCount;
+            isVisited = new bool[nodeCount];
+            result = new int[nodeCount];
+            current = nodeCount - 1;
         }
-        public List<int> Topsort(AdjacencyList graph) {
-
+        public int[] Topsort() {
             List<int> nodes = graph.GetAllNodes();
+            
             foreach (var node in nodes) {
-                if (visited.Contains(node)) continue;
-                DFS(node, graph);
+                if (isVisited[node]) continue;
+                DFS(node);
             }
             return result;
         }
-        private void DFS(int node, AdjacencyList graph) {
-            if (visited.Contains(node)) return;
-            result.Add(node);
-            visited.Add(node);
-            foreach (var next in graph[node]) {
-                if (visited.Contains(next)) continue;
-                DFS(next, graph);
+        private void DFS(int node) {
+            if (isVisited[node]) return;
+            isVisited[node] = true;
+            List<int> linked = graph.GetLinkedNodes(node);
+            foreach (var dest in linked) {
+                if (isVisited[dest]) continue;
+                DFS(dest);
             }
+            result[current--] = node;
         }
+
+        
     }
 }

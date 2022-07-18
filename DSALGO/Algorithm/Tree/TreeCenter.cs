@@ -1,6 +1,6 @@
 ﻿
 
-using DSALGO.DataStructures.Graph;
+using DSALGO.DataStructure.Graph;
 
 namespace DSALGO.Algorithm.Tree {
     public static class TreeCenter {
@@ -9,8 +9,8 @@ namespace DSALGO.Algorithm.Tree {
             List<int> leaves = new List<int>();
 
             foreach (var vertex in graph.GetAllNodes()) {
-                degreeMap[vertex] = graph[vertex].Count;
-                if (graph[vertex].Count <= 1) {
+                degreeMap[vertex] = graph.GetLinkedNodes(vertex).Count;
+                if (graph.GetLinkedNodes(vertex).Count <= 1) {
                     leaves.Add(vertex);
                 }
             }
@@ -22,7 +22,7 @@ namespace DSALGO.Algorithm.Tree {
 
                 foreach (var leaf in leaves) {
 
-                    foreach (var node in graph[leaf]) {
+                    foreach (var node in graph.GetLinkedNodes(leaf)) {
                         if (--degreeMap[node] == 1) {
                             newLeaves.Add(node);
                         }
