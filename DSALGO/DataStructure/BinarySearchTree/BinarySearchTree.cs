@@ -1,17 +1,31 @@
 ﻿using DSALGO.DataStructure.BinarySearchTree;
 
+<<<<<<<< HEAD:DSALGO/DataStructure/BinarySearchTree/ListBasedBST.cs
 namespace DSALGO.DataStructure {
     // implement BinarySearchTree by using linked list
     public class ListBasedBST<T> : IBinaryTree<T> where T : IComparable {
+========
+namespace DSALGO.DataStructure.BinarySearchTree {
+    // implement BinarySearchTree by using linked list
+    public class BinarySearchTree<T> : IBinaryTree<T> where T : IComparable {
+>>>>>>>> 142843245cb4b70f5e112ebda886ce73d60bd679:DSALGO/DataStructure/BinarySearchTree/BinarySearchTree.cs
 
         BSTnode<T> _root;
         public int Count { get; private set; }
 
+<<<<<<<< HEAD:DSALGO/DataStructure/BinarySearchTree/ListBasedBST.cs
         public ListBasedBST(T key) {
             _root = new BSTnode<T>(key);
             Count = 1;
         }
         public ListBasedBST() {
+========
+        public BinarySearchTree(T key) {
+            _root = new BSTnode<T>(key);
+            Count = 1;
+        }
+        public BinarySearchTree() {
+>>>>>>>> 142843245cb4b70f5e112ebda886ce73d60bd679:DSALGO/DataStructure/BinarySearchTree/BinarySearchTree.cs
             Count = 0;
         }
         public List<T> InOrder() {
@@ -56,7 +70,11 @@ namespace DSALGO.DataStructure {
             throw new NotImplementedException();
         }
 
+<<<<<<<< HEAD:DSALGO/DataStructure/BinarySearchTree/ListBasedBST.cs
         public bool Delete(T key) {
+========
+        public bool Remove(T key) {
+>>>>>>>> 142843245cb4b70f5e112ebda886ce73d60bd679:DSALGO/DataStructure/BinarySearchTree/BinarySearchTree.cs
             if (!Contains(key)) return false;
             _root = remove(_root, key);
             Count--;
