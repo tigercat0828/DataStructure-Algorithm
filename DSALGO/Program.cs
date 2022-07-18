@@ -1,13 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DSALGO.Algorithm;
-
-using DSALGO.DataStructures.FenwickTree;
 using static DSALGO.Utility;
 
 
-double[] nums = { 0, 1, 1, 1, 1, 1, 1, 1, 1 };
-FenwickTree tree = new(nums);
+string person1 = "Alice";
+string person2 = "Nick";
+
+Console.WriteLine(0x7ffffff & person1.GetHashCode());
+Console.WriteLine(0x7ffffff & person2.GetHashCode());
+Dictionary<int, int> map = new();
+
+
 
 
 

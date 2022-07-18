@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leeco.DataStructures.BinarySearchTree {
+namespace DSALGO.DataStructure.BinarySearchTree {
     public class AvlNode<T> {
         public AvlNode(T key, AvlNode<T> left = null, AvlNode<T> right = null) {
             this.key = key;

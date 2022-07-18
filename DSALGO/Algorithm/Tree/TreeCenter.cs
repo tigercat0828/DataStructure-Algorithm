@@ -5,8 +5,8 @@ using DSALGO.DataStructures.Graph;
 namespace DSALGO.Algorithm.Tree {
     public static class TreeCenter {
         public static List<int> Get(AdjacencyList graph) {
-            Dictionary<int, int> degreeMap = new Dictionary<int, int>();
-            List<int> leaves = new List<int>();
+            Dictionary<int, int> degreeMap = new();
+            List<int> leaves = new();
 
             foreach (var vertex in graph.GetAllNodes()) {
                 degreeMap[vertex] = graph[vertex].Count;
@@ -18,7 +18,7 @@ namespace DSALGO.Algorithm.Tree {
             int processLeaves = leaves.Count;
             int total = graph.nodeCount;
             while (processLeaves < total) {
-                List<int> newLeaves = new List<int>();
+                List<int> newLeaves = new();
 
                 foreach (var leaf in leaves) {
 

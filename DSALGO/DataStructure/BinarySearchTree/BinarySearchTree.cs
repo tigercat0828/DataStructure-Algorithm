@@ -1,17 +1,17 @@
-﻿using DSALGO.DataStructures.BinarySearchTree;
+﻿using DSALGO.DataStructure.BinarySearchTree;
 
-namespace DSALGO.DataStructures {
+namespace DSALGO.DataStructure.BinarySearchTree {
     // implement BinarySearchTree by using linked list
-    public class ListBasedBinarySearchTree<T> : IBinaryTree<T> where T : IComparable {
+    public class BinarySearchTree<T> : IBinaryTree<T> where T : IComparable {
 
-        TreeNode<T> _root;
+        BSTnode<T> _root;
         public int Count { get; private set; }
 
-        public ListBasedBinarySearchTree(T key) {
-            _root = new TreeNode<T>(key);
+        public BinarySearchTree(T key) {
+            _root = new BSTnode<T>(key);
             Count = 1;
         }
-        public ListBasedBinarySearchTree() {
+        public BinarySearchTree() {
             Count = 0;
         }
         public List<T> InOrder() {
@@ -19,7 +19,7 @@ namespace DSALGO.DataStructures {
             inorder(_root, result);
             return result;
         }
-        private void inorder(TreeNode<T> root, List<T> result) {
+        private void inorder(BSTnode<T> root, List<T> result) {
             if (root == null) return;
             inorder(root.left, result);
             result.Add(root.key);
@@ -31,9 +31,9 @@ namespace DSALGO.DataStructures {
             Count++;
             return true;
         }
-        private TreeNode<T> insert(TreeNode<T> root, T key) {
+        private BSTnode<T> insert(BSTnode<T> root, T key) {
             if (root == null) {
-                return new TreeNode<T>(key);
+                return new BSTnode<T>(key);
             }
             int compare = key.CompareTo(root.key);
             if (compare > 0) {
@@ -56,12 +56,13 @@ namespace DSALGO.DataStructures {
             throw new NotImplementedException();
         }
 
-        public void Remove(T key) {
-            if (!Contains(key)) return;
+        public bool Remove(T key) {
+            if (!Contains(key)) return false;
             _root = remove(_root, key);
             Count--;
+            return true;
         }
-        private TreeNode<T> remove(TreeNode<T> root, T key) {
+        private BSTnode<T> remove(BSTnode<T> root, T key) {
 
             if (root == null) return null;
 
@@ -92,20 +93,20 @@ namespace DSALGO.DataStructures {
             return root;
         }
 
-        private T MinValue(TreeNode<T> root) {
+        private T MinValue(BSTnode<T> root) {
             while (root.left != null) {
                 root = root.left;
             }
             return root.key;
         }
-        private T Max(TreeNode<T> right) {
+        private T Max(BSTnode<T> right) {
             throw new NotImplementedException();
         }
 
         public bool Contains(T key) {
             return contains(_root, key);
         }
-        private bool contains(TreeNode<T> root, T key) {
+        private bool contains(BSTnode<T> root, T key) {
             if (root == null) return false;
 
             int compare = root.key.CompareTo(key);
@@ -119,7 +120,7 @@ namespace DSALGO.DataStructures {
         /*
          */
         public bool Contains_Iter(T key) {
-            TreeNode<T> current = _root;
+            BSTnode<T> current = _root;
             while (current != null) {
                 if (current.key.CompareTo(key) < 0) {
                     current = current.left;

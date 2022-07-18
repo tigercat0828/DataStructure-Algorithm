@@ -1,9 +1,9 @@
 ﻿
-namespace Leeco.DataStructures.BinarySearchTree {
-    public class AvlTree<T>: IBinaryTree<T> where T:IComparable {
+namespace DSALGO.DataStructure.BinarySearchTree {
+    public class AvlTree<T> : IBinaryTree<T> where T : IComparable {
         AvlNode<T> root;
         public int Count { get; private set; }
-        public AvlTree() { 
+        public AvlTree() {
             Count = 0;
         }
 
@@ -28,13 +28,13 @@ namespace Leeco.DataStructures.BinarySearchTree {
         }
 
         private AvlNode<T> Balance(AvlNode<T> root) {
-            if(root.factor == -2) {             // left heavy subtree
+            if (root.factor == -2) {             // left heavy subtree
                 if (root.left.factor <= 0)
                     return LLcase(root);
                 else
                     return LRcase(root);
             }
-            else if(root.factor== 2) {    // right heavy subtree
+            else if (root.factor == 2) {    // right heavy subtree
                 if (root.right.factor >= 0)
                     return RRcase(root);
                 else
@@ -44,7 +44,7 @@ namespace Leeco.DataStructures.BinarySearchTree {
         }
         private AvlNode<T> RRcase(AvlNode<T> root) => LeftRotate(root);
         private AvlNode<T> LLcase(AvlNode<T> root) => RightRotate(root);
-        
+
         private AvlNode<T> LRcase(AvlNode<T> root) {
             root.left = LeftRotate(root.left);
             return LLcase(root);
@@ -59,12 +59,12 @@ namespace Leeco.DataStructures.BinarySearchTree {
             int heightR = -1;
             if (node.left != null) heightL = node.left.height;
             if (node.right != null) heightR = node.right.height;
-            node.height = Math.Max(heightL, heightR)+1;
+            node.height = Math.Max(heightL, heightR) + 1;
             node.factor = heightR - heightL;
         }
 
         public bool Remove(T key) {
-             if(!Contains(key)) return false;
+            if (!Contains(key)) return false;
             root = remove(root, key);
             Count--;
             return true;
@@ -72,15 +72,15 @@ namespace Leeco.DataStructures.BinarySearchTree {
 
         private AvlNode<T> remove(AvlNode<T> root, T key) {
             int compare = key.CompareTo(root.key);
-            if(compare < 0) {
+            if (compare < 0) {
                 root.left = remove(root.left, key);
             }
-            else if(compare > 0 ){
+            else if (compare > 0) {
                 root.right = remove(root.right, key);
             }
             else {
                 if (root.right == null) {  // only have left child or leaf node
-                    return root.left;    
+                    return root.left;
                 }
                 if (root.left == null) {    // only have right child or leaf node
                     return root.right;
@@ -95,7 +95,7 @@ namespace Leeco.DataStructures.BinarySearchTree {
         }
         private T FinMin(AvlNode<T> root) {
             AvlNode<T> node = root;
-            while(root.left != null) {
+            while (root.left != null) {
                 node = node.left;
             }
             return node.key;
@@ -121,7 +121,7 @@ namespace Leeco.DataStructures.BinarySearchTree {
         }
         public bool Contains(T key) {
             AvlNode<T> current = root;
-            while (current != null) { 
+            while (current != null) {
                 int compare = key.CompareTo(current.key);
                 if (compare > 0) {
                     current = current.right;
@@ -159,6 +159,6 @@ namespace Leeco.DataStructures.BinarySearchTree {
 
             throw new NotImplementedException();
         }
-        
+
     }
 }

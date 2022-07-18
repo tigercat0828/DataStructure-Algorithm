@@ -1,8 +1,8 @@
-﻿namespace DSALGO.DataStructures {
-    public interface IBinaryTree<T>  {
+﻿namespace DSALGO.DataStructure.BinarySearchTree {
+    public interface IBinaryTree<T> {
         public int Count { get; }
         bool Insert(T value);
-        void Remove(T value);
+        bool Remove(T value);
         T Peek();
         bool Contains(T value);
         List<T> PreOrder();
