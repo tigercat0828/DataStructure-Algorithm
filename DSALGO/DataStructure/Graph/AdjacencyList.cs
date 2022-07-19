@@ -1,15 +1,24 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using System.Text;
 
 namespace DSALGO.DataStructure.Graph {
-    public class AdjacencyList {
+    public class AdjacencyList  {
         public class Link{
             public int dest;
-            public int weight;
+            public int cost;
             public Link(int dest, int cost) {
                 this.dest = dest;
-                this.weight = cost;
+                this.cost = cost;
             }
+        }
+
+        public static AdjacencyList Parse(string filePath) {
+
+            List<Edge> edges = new List<Edge>();
+            List<int> vertexed = new List<int>();
+            throw new NotImplementedException();
+
         }
         private Dictionary<int, List<Link>> graph;  // adjacency list 
         public int nodeCount => graph.Count;
@@ -130,9 +139,11 @@ namespace DSALGO.DataStructure.Graph {
         public void DeleteEdge(int from, int to) {
             if (!graph.ContainsKey(from) )return;
             List<int> linkedNode = GetLinkedNodes(from);
+
             if (!graph.ContainsKey(from) && !linkedNode.Contains(to)) {
                 Console.WriteLine($"No edge ({from}, {to}) is not in graphs");
             }
+
             int toIdx = linkedNode.IndexOf(to);
             graph[from].RemoveAt(toIdx);
             
@@ -148,5 +159,7 @@ namespace DSALGO.DataStructure.Graph {
             graph.Clear();
         }
         public List<int> GetAllNodes() => graph.Keys.ToList();
+
+
     }
 }

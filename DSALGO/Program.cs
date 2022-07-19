@@ -5,18 +5,17 @@ using DSALGO;
 using DSALGO.Algorithm;
 
 using static DSALGO.Utility;
+using DSALGO.DataStructure.Graph;
+using DSALGO.Algorithm.Graph.FindShortestPath;
 using DSALGO.DataStructure.HashTable;
 
-HashTableSeperateChaining<string, int> table = new();
-table.Add("Alice", 1);
-table.Add("NIck", 2);
+HashTableSeperateChaining<string, int> map = new();
 
+map.Add("Alice", 1);
+map.Add("Nick", 3);
+map.Add("Alices", 1);
+map.Add("Nick", 5);
 
-table.Print();
-
-table["Alice"] = 3;
-
-Utility.DrawBoldLine();
-
-table.Print();
-
+foreach (var item in map) {
+    Console.WriteLine(item);
+}

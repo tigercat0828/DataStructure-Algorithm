@@ -12,11 +12,8 @@ namespace DSALGO.DataStructure.HashTable {
         void Remove(TKey key);
         bool ContainsKey(TKey key);
         bool ContainsValue(TValue value);
-
         List<TKey> Keys();
         List<TValue> Values();
         void Clear();
-        void ResizeTable();
-        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSALGO.DataStructure.HashTable {
     public class HashEntry<TKey, Tvalue> {
-        TKey key;
+        public TKey key { get; private set; }
         public Tvalue value { get; set; }
         public int hashCode { get; private set; }
         public HashEntry(TKey key, Tvalue value) {

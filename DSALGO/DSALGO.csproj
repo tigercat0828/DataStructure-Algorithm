@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Algorithm\Other\" />
+    <Compile Remove="Algorithm\Other\**" />
+    <EmbeddedResource Remove="Algorithm\Other\**" />
+    <None Remove="Algorithm\Other\**" />
   </ItemGroup>
 
 </Project>

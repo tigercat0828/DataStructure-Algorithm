@@ -4,8 +4,11 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
 {
     public class BreadthFirstSearch
     {
-
-        public List<int> FindPath(AdjacencyList graph, int start, int end)
+        readonly AdjacencyList graph;
+        public BreadthFirstSearch(AdjacencyList graph) {
+            this.graph = graph;
+        }
+        public List<int> FindPath(int start, int end)
         {
 
             if (start == end) return new List<int>() { start };
