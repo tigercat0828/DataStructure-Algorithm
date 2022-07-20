@@ -8,14 +8,11 @@ using static DSALGO.Utility;
 using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.Graph.FindShortestPath;
 using DSALGO.DataStructure.HashTable;
+using DSALGO.Algorithm.Sorting;
 
-HashTableSeperateChaining<string, int> map = new();
 
-map.Add("Alice", 1);
-map.Add("Nick", 3);
-map.Add("Alices", 1);
-map.Add("Nick", 5);
+int[] nums = Utility.RandomIntArray(10, 1,10);
 
-foreach (var item in map) {
-    Console.WriteLine(item);
-}
+CountingSort.Run(new int[] { 9,4,4,5,8});
+
+nums.Print();

@@ -9,16 +9,18 @@ namespace DSALGO.DataStructure.HashTable {
     public class HashTableSeperateChaining<TKey, TValue> : IHashTable<TKey,TValue> , IEnumerable{
         const int DEFAULT_SIZE = 10;
         const float LOAD_FACTOR = 0.75f;
+        private float threshold => (float)Count / (float)capacity;
+
+
         public int Count { get; private set; }
         private int capacity;
-        private float threshold => (float)Count / (float)capacity;
         private List<HashEntry<TKey, TValue>>[] _Bucket;
         public HashTableSeperateChaining() {
             Count = 0;
             capacity = DEFAULT_SIZE;
             _Bucket = new List<HashEntry<TKey, TValue>>[DEFAULT_SIZE];
         }
-        private int NormalizeIndex(int hashCode) {
+        private int GetHashIndex(int hashCode) {
             return (hashCode & 0x7FFFFFFF) % capacity;
         }
         public void Add(TKey key, TValue value) {
@@ -30,6 +32,7 @@ namespace DSALGO.DataStructure.HashTable {
             if(_Bucket[index] == null) {
                 _Bucket[index] = new List<HashEntry<TKey, TValue>>();
             }
+            // chaining
             _Bucket[index].Add(entry);
             Count++;
             if (threshold > LOAD_FACTOR) ResizeTable();
@@ -80,7 +83,7 @@ namespace DSALGO.DataStructure.HashTable {
         }
         private bool HasKey(TKey key, out int index) {
             // calculate hashcode of key and output normalized index
-            index = NormalizeIndex(key.GetHashCode());
+            index = GetHashIndex(key.GetHashCode());
             if (_Bucket[index] == null) {
                 return false;
             }
@@ -124,7 +127,7 @@ namespace DSALGO.DataStructure.HashTable {
                 var bucket = _Bucket[i];
                 if (bucket != null) {
                     foreach (var entry in bucket) {
-                        int index = NormalizeIndex(entry.hashCode);
+                        int index = GetHashIndex(entry.hashCode);
                         if (newBucket[index] == null) {
                             newBucket[index] = new List<HashEntry<TKey, TValue>>();
                         }

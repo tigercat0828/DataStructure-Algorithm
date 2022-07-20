@@ -2,7 +2,7 @@
 namespace DSALGO.DataStructure {
 
     // Implement a stack using array : Astack lmao
-    public class AStack : IStack {
+    public class ArrayBasedStack : IStack {
 
         const int INITIAL_CAPCITY = 3;
         int[] stack;
@@ -10,7 +10,7 @@ namespace DSALGO.DataStructure {
         private int count;
 
         public int Count => count;
-        public AStack() {
+        public ArrayBasedStack() {
             stack = new int[INITIAL_CAPCITY];
             capacity = INITIAL_CAPCITY;
             count = 0;

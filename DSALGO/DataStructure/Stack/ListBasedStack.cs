@@ -1,5 +1,5 @@
 ﻿namespace DSALGO.DataStructure {
-    public class LStack : IStack {
+    public class ListBasedStack : IStack {
         class Node {
             public int data;
             public Node next;
@@ -11,7 +11,7 @@
         Node top;
         private int count;
         public int Count => count;
-        public LStack() {
+        public ListBasedStack() {
             count = 0;
         }
         public int Pop() {

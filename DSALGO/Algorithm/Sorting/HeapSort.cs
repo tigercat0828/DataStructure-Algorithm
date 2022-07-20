@@ -1,6 +1,6 @@
 ﻿namespace DSALGO.Algorithm.Sorting {
     public static class HeapSort<T> where T : IComparable {
-        public static void Sort(T[] array) {
+        public static void Run(T[] array) {
             int half = (array.Length - 1) / 2;
             int end = array.Length - 1;
 
