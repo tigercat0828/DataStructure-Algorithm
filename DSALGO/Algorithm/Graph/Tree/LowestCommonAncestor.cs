@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Tree;
 
-namespace DSALGO.Algorithm.Tree {
+namespace DSALGO.Algorithm.Graph.Tree {
     public static class LowestCommonAncestor {
         // Euler Path Method (pre-processing)
         public static TreeNode GetLCA(TreeNode tree1, TreeNode tree2) {

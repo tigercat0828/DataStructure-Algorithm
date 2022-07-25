@@ -37,8 +37,10 @@
                 values.Add(value);
                 heap.Add(value);
                 // update table
+
                 KeyCodeToHeapIdx.Add(0);
                 HeapIdxToKeyCode.Add(0);
+
                 KeyCodeToHeapIdx[NameMapCode[key]] = tail;
                 HeapIdxToKeyCode[tail] = NameMapCode[key];
                 SwimUp(tail);

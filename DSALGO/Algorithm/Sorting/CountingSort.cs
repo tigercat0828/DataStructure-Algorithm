@@ -8,29 +8,30 @@ namespace DSALGO.Algorithm.Sorting {
     public static class CountingSort {
         // O(n) non-comparison
         public static void Run(int[] nums) {
-            int min = nums.Min();
+                
             int max = nums.Max();
-            int range = max - min +1;
-            int[] count = new int[range];
-            int[] ans = new int[nums.Length+1];
+            int len = nums.Length;
+            int[] count = new int[max + 1];
+            int[] prefix = new int[max + 1];
             
-            // counting
-            for (int i = 0; i < nums.Length; i++) {
-                int index = nums[i] - min;  // align to zero
-                count[index]++;
+            for (int i = 0; i < len; i++) {
+                count[nums[i]]++;
             }
-            count.Print();
-            // calc prefix
+            // shift right
+            for (int i = 1; i < count.Length; i++) { 
+                prefix[i] = count[i-1];
+            }
+            // calc prefix sum
             for (int i = 1; i < count.Length; i++) {
-                count[i] += count[i - 1];
+                prefix[i] += prefix[i - 1];
             }
-            count.Print();
-            for (int i = 0; i < nums.Length; i++) {
-                int newIndex = count[nums[i]-min]++;
-                Console.WriteLine($"{newIndex}, {nums[i]}");
-                ans[newIndex] = nums[i];
+            int[] result = new int[len];
+            for (int i = 0; i < len; i++) {
+                int index = prefix[nums[i]]++;
+                result[index] = nums[i];
+               
             }
-            nums = ans;
+            Array.Copy(result, nums, len);
         }
     }
 }

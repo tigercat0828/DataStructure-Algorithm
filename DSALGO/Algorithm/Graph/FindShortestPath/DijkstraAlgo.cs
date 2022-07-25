@@ -5,20 +5,20 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
 {
     public class DijkstraAlgo
     {
-        readonly AdjacencyList graph;
-        public DijkstraAlgo(AdjacencyList graph) {
+        readonly Graphz graph;
+        public DijkstraAlgo(Graphz graph) {
             this.graph = graph;
         }
-        public List<int> FindPath(int start, int end, out int cost) {
+        public List<int> FindPath(int start, int end, out double cost) {
 
             if (!graph.Contains(start) || !graph.Contains(end)) {
                 cost = -1;
                 return null;
             }
 
-            IndexedPriorityQueue<int, int> queue = new(); // nodeID, currentCost
+            IndexedPriorityQueue<int, double> queue = new(); // nodeID, currentCost
             bool[] isVisited = new bool[graph.nodeCount];
-            int[] nodeCosts = new int[graph.nodeCount]; Array.Fill(nodeCosts, int.MaxValue);
+            double[] nodeCosts = new double[graph.nodeCount]; Array.Fill(nodeCosts, int.MaxValue);
             int[] previous = new int[graph.nodeCount];  Array.Fill(previous, -1);
             queue.Enqueue(start, 0);
             nodeCosts[start] = 0;

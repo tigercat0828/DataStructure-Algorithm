@@ -4,8 +4,8 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
 {
     public class BreadthFirstSearch
     {
-        readonly AdjacencyList graph;
-        public BreadthFirstSearch(AdjacencyList graph) {
+        readonly Graphz graph;
+        public BreadthFirstSearch(Graphz graph) {
             this.graph = graph;
         }
         public List<int> FindPath(int start, int end)
@@ -50,18 +50,6 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
             }
             return path;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="matrix">2d array represent the maze</param>
-        /// <param name="sr">start row</param>
-        /// <param name="sc">start column</param>
-        /// <param name="er">end row</param>
-        /// <param name="ec">end column</param>
-        /// <returns></returns>
-        public List<(int, int)> FindPath(int[][] matrix, int sr, int sc, int er, int ec)
-        {
-            return new List<(int, int)>();
-        }
+
     }
 }

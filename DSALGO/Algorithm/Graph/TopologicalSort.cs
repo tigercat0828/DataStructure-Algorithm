@@ -1,5 +1,4 @@
 ﻿
-
 using DSALGO.DataStructure.Graph;
 
 namespace DSALGO.Algorithm.Graph {
@@ -11,8 +10,8 @@ namespace DSALGO.Algorithm.Graph {
         int[] result;
         int nodeCount;
         int current;
-        readonly AdjacencyList graph;
-        public TopologicalSort(AdjacencyList graph) {
+        readonly Graphz graph;
+        public TopologicalSort(Graphz graph) {
             this.graph = graph;
             nodeCount = graph.nodeCount;
             isVisited = new bool[nodeCount];

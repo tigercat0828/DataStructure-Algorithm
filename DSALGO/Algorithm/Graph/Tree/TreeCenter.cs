@@ -1,10 +1,8 @@
-﻿
+﻿using DSALGO.DataStructure.Graph;
 
-using DSALGO.DataStructure.Graph;
-
-namespace DSALGO.Algorithm.Tree {
+namespace DSALGO.Algorithm.Graph.Tree {
     public static class TreeCenter {
-        public static List<int> Get(AdjacencyList graph) {
+        public static List<int> Get(DataStructure.Graph.Graphz graph) {
             Dictionary<int, int> degreeMap = new();
             List<int> leaves = new();
 

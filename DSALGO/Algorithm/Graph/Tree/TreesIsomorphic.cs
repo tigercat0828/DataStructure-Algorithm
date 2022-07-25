@@ -1,12 +1,11 @@
 ﻿
-using DSALGO.Algorithm.Tree;
 using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.Tree;
 using System.Text;
 
-namespace Leeco.Algorithms.Tree {
+namespace DSALGO.Algorithm.Graph.Tree {
     public static class TreesIsomorphic {
-        public static bool AreIsomorphic(AdjacencyList treeGraph1, AdjacencyList treeGraph2) {
+        public static bool AreIsomorphic(Graphz treeGraph1, Graphz treeGraph2) {
             List<int> center1 = TreeCenter.Get(treeGraph1);
             List<int> center2 = TreeCenter.Get(treeGraph2);
 

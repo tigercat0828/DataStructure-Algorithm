@@ -3,22 +3,28 @@ using System.Linq;
 using System.Text;
 
 namespace DSALGO.DataStructure.Graph {
-    public class AdjacencyList  {
-        public class Link{
-            public int dest;
-            public int cost;
-            public Link(int dest, int cost) {
-                this.dest = dest;
-                this.cost = cost;
-            }
-        }
+    public class Graphz {
 
-        public static AdjacencyList Parse(string filePath) {
+        public static Graphz Parse(string filePath) {
 
             List<Edge> edges = new List<Edge>();
-            List<int> vertexed = new List<int>();
-            throw new NotImplementedException();
+            List<int> vertexs = new List<int>();
+            string[] lines = File.ReadAllLines(filePath);
+            bool isUndireted = bool.Parse(lines[0]);
+            string[] vStr = lines[1].Split(" ");
+            foreach (var v in vStr) {
+                vertexs.Add(int.Parse(v));
+            }
+            for (int i = 2; i < lines.Length; i++) {
+                string[] eStr = lines[i].Split(" ");
+                int from = int.Parse(eStr[0]);
+                int to = int.Parse(eStr[1]);
+                double wei = double.Parse(eStr[2]);
+                Edge e = new Edge(from, to, wei);
+                edges.Add(e);
+            }
 
+            return new Graphz(vertexs, edges, isUndireted);
         }
         private Dictionary<int, List<Link>> graph;  // adjacency list 
         public int nodeCount => graph.Count;
@@ -36,15 +42,15 @@ namespace DSALGO.DataStructure.Graph {
             return linkedNodes;
         }
         public List<Link> GetLinkedEdges(int node) => graph[node];
-        public AdjacencyList( List<int> vertexes , List<Edge> edgeList, bool isUndirected = false) {
+        public Graphz(List<int> vertexes, List<Edge> edgeList, bool isUndirected = false) {
 
             this.isUndirected = isUndirected;
+
             graph = new Dictionary<int, List<Link>>();
             visited = new HashSet<int>();
 
-            foreach (var v in vertexes) {
-                graph.Add(v, new List<Link>());
-            }
+            foreach (var v in vertexes) graph.Add(v, new List<Link>());
+
             if (isUndirected) {
                 int n = edgeList.Count;
                 for (int i = 0; i < n; i++) {
@@ -52,7 +58,6 @@ namespace DSALGO.DataStructure.Graph {
                     edgeList.Add(new Edge(e.to, e.from, e.weight));
                 }
             }
-        
             for (int i = 0; i < edgeList.Count; i++) {
                 AddEdge(edgeList[i]);
             }
@@ -108,7 +113,17 @@ namespace DSALGO.DataStructure.Graph {
             }
             return sb.ToString();
         }
+        public void Print() {
+
+            List<int> nodes = GetAllNodes();
+            foreach (var node in nodes) {
+                Console.Write(node + " : ");
+                List<Link> links = GetLinkedEdges(node);
+                Console.WriteLine(String.Join(", ", links));
+            }
+        }
         public void AddEdge(Edge edge) {
+
             if (!graph.ContainsKey(edge.from)) AddNode(edge.from);
             if (!graph.ContainsKey(edge.to)) AddNode(edge.to);
             graph[edge.from].Add(new Link(edge.to, edge.weight));
@@ -127,17 +142,17 @@ namespace DSALGO.DataStructure.Graph {
             }
             graph[target].Clear();
             graph.Remove(target);
-            
+
             foreach (var n in GetAllNodes()) {
                 List<int> linkedNode = GetLinkedNodes(n);
                 int targetIdx = linkedNode.IndexOf(target);
-                if (targetIdx != -1) { 
-                    graph[n].RemoveAt(targetIdx);    
+                if (targetIdx != -1) {
+                    graph[n].RemoveAt(targetIdx);
                 }
             }
         }
         public void DeleteEdge(int from, int to) {
-            if (!graph.ContainsKey(from) )return;
+            if (!graph.ContainsKey(from)) return;
             List<int> linkedNode = GetLinkedNodes(from);
 
             if (!graph.ContainsKey(from) && !linkedNode.Contains(to)) {
@@ -146,11 +161,10 @@ namespace DSALGO.DataStructure.Graph {
 
             int toIdx = linkedNode.IndexOf(to);
             graph[from].RemoveAt(toIdx);
-            
+
             if (isUndirected) {
                 DeleteEdge(to, from);
             }
-
         }
         public void Clear() {
             foreach (var key in graph.Keys) {

@@ -1,19 +1,13 @@
 ﻿using DSALGO.DataStructure.Graph;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DSALGO.DataStructure.Graph.AdjacencyList;
 
 namespace DSALGO.Algorithm.Graph.FindShortestPath {
     public class SSSPonDAG {
 
-        readonly AdjacencyList graph;
-        public SSSPonDAG(AdjacencyList graph) {
+        readonly Graphz graph;
+        public SSSPonDAG(Graphz graph) {
             this.graph = graph;
         }
-        public List<int> FindPath(int start, int end, out int cost) {
+        public List<int> FindPath(int start, int end, out double cost) {
             if (start == end) {
                 cost  = 0;
                 return new List<int> { start };
@@ -25,7 +19,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath {
                 return null;
             }
             
-            int[] costs = new int[graph.nodeCount];
+            double[] costs = new double[graph.nodeCount];
             int[] previous = new int[graph.nodeCount];
 
             Array.Fill(previous, -1);
@@ -42,7 +36,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath {
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
                         int dest = edge.dest;
-                        int cst = edge.cost;
+                        double cst = edge.cost;
                         if (costs[next] + cst < costs[dest]) {
                             costs[dest] = costs[next] + cst;
                             previous[dest] = next;
