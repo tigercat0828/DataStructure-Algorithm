@@ -1,10 +1,9 @@
-﻿
-using DSALGO.DataStructure.Graph;
+﻿using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.Tree;
 using System.Text;
 
-namespace DSALGO.Algorithm.Graph.Tree {
-    public static class TreesIsomorphic {
+namespace DSALGO.Algorithm.GraphTheory.Tree {
+    public static class TreeIsomorphic {
         public static bool AreIsomorphic(Graphz treeGraph1, Graphz treeGraph2) {
             List<int> center1 = TreeCenter.Get(treeGraph1);
             List<int> center2 = TreeCenter.Get(treeGraph2);
@@ -17,7 +16,6 @@ namespace DSALGO.Algorithm.Graph.Tree {
                 TreeNode tree2 = RootingTree.Build(treeGraph2, center2[i]);
 
                 string treeCode2 = encode(tree2);
-
 
                 if (treeCode1 == treeCode2) return true;
             }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSALGO.Algorithm.Graph.FindShortestPath {
-    public class FloydWarshall {
+namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
+    public static class KruskalMst {
     }
 }

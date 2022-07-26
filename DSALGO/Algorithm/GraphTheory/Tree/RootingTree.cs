@@ -1,7 +1,7 @@
 ﻿using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.Tree;
 
-namespace DSALGO.Algorithm.Graph.Tree {
+namespace DSALGO.Algorithm.GraphTheory.Tree {
     public static class RootingTree {
         public static TreeNode Build(Graphz graph, int node) {
 
@@ -12,7 +12,7 @@ namespace DSALGO.Algorithm.Graph.Tree {
             return root;
         }
         private static TreeNode build(DataStructure.Graph.Graphz graph, TreeNode node) {
-            foreach (var vertex in graph.GetLinkedNodes(node.key)) {
+            foreach (var vertex in graph.GetAdjacentNode(node.key)) {
                 // avoid adding parent as its child
                 if (node.parent != null && node.parent.key == vertex) continue;
                 TreeNode newNode = new TreeNode(vertex);

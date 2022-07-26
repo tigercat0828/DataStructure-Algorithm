@@ -1,24 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using DSALGO;
-using DSALGO.Algorithm;
-
 using static DSALGO.Utility;
 using DSALGO.DataStructure.Graph;
-using DSALGO.Algorithm.Graph.FindShortestPath;
-using DSALGO.DataStructure.HashTable;
-using DSALGO.Algorithm.Sorting;
-
-
-int[] nums = Utility.RandomIntArray(100, 1,1000);
-
-CountingSort.Run(nums);
+using DSALGO.Algorithm.GraphTheory;
+using DSALGO.Algorithm.GraphTheory.FindShortestPath;
 
 var file = GetResourceFile("GraphInput.txt");
 
 Graphz graph = Graphz.Parse(file);
+
 graph.Print();
+DijkstraAlgo.FindPath(graph, 0, 7,out double cost);
+
 
 
 // D:\Users\u443933\Desktop\jianyi\DSALGO\DSALGO\Resource

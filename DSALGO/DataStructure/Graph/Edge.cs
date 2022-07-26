@@ -15,5 +15,8 @@
         public (int, int) ToTuple() {
             return (from, to);
         }
+        public override string ToString() {
+            return $"[{from}, {to}, {weight}]";
+        }
     }
 }

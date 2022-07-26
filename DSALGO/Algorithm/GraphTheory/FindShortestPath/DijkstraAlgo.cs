@@ -1,16 +1,12 @@
 ﻿using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.PriorityQueue;
 
-namespace DSALGO.Algorithm.Graph.FindShortestPath
+namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
 {
-    public class DijkstraAlgo
+    public static class DijkstraAlgo
     {
-        readonly Graphz graph;
-        public DijkstraAlgo(Graphz graph) {
-            this.graph = graph;
-        }
-        public List<int> FindPath(int start, int end, out double cost) {
-
+        public static List<int> FindPath(Graphz graph, int start, int end, out double cost) {
+           
             if (!graph.Contains(start) || !graph.Contains(end)) {
                 cost = -1;
                 return null;
@@ -31,7 +27,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
                     cost = nodeCosts[end];
                     return BuildPath(previous, start, end);
                 }
-                foreach (var linked in graph.GetLinkedEdges(popNode)) {
+                foreach (var linked in graph.GetAdjacentEdges(popNode)) {
                     if (isVisited[linked.dest]) continue;
     
                     if (nodeCosts[popNode] + linked.cost < nodeCosts[linked.dest]) {
@@ -47,8 +43,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
             Console.WriteLine($"There is no path from [{start}] to [{end}].");
             return new List<int>();
         }
-
-        private List<int> BuildPath(int[] previous, int start, int end) {
+        private static List<int> BuildPath(int[] previous, int start, int end) {
             List<int> path = new();
 
             path.Add(end);

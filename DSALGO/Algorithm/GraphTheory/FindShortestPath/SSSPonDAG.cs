@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.Graph.FindShortestPath {
+namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
     public class SSSPonDAG {
 
         readonly Graphz graph;
@@ -32,7 +32,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath {
             costs[start] = 0;
 
             foreach (var next in sortingResult) {
-                List<Link> linkEdges = graph.GetLinkedEdges(next);
+                List<Link> linkEdges = graph.GetAdjacentEdges(next);
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
                         int dest = edge.dest;

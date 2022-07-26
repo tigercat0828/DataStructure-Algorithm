@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.Graph.FindShortestPath
+namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
 {
     public class BreadthFirstSearch
     {
@@ -31,7 +31,7 @@ namespace DSALGO.Algorithm.Graph.FindShortestPath
                     break;
                 }
 
-                foreach (var node in graph.GetLinkedNodes(pop))
+                foreach (var node in graph.GetAdjacentNode(pop))
                 {
                     if (visited.Contains(node)) continue;
                     queue.Enqueue(node);

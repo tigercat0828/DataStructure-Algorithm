@@ -1,14 +1,14 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.Graph.Tree {
+namespace DSALGO.Algorithm.GraphTheory.Tree {
     public static class TreeCenter {
         public static List<int> Get(DataStructure.Graph.Graphz graph) {
             Dictionary<int, int> degreeMap = new();
             List<int> leaves = new();
 
             foreach (var vertex in graph.GetAllNodes()) {
-                degreeMap[vertex] = graph.GetLinkedNodes(vertex).Count;
-                if (graph.GetLinkedNodes(vertex).Count <= 1) {
+                degreeMap[vertex] = graph.GetAdjacentNode(vertex).Count;
+                if (graph.GetAdjacentNode(vertex).Count <= 1) {
                     leaves.Add(vertex);
                 }
             }
@@ -20,7 +20,7 @@ namespace DSALGO.Algorithm.Graph.Tree {
 
                 foreach (var leaf in leaves) {
 
-                    foreach (var node in graph.GetLinkedNodes(leaf)) {
+                    foreach (var node in graph.GetAdjacentNode(leaf)) {
                         if (--degreeMap[node] == 1) {
                             newLeaves.Add(node);
                         }

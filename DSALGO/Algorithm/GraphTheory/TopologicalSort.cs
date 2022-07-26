@@ -1,7 +1,7 @@
 ﻿
 using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.Graph {
+namespace DSALGO.Algorithm.GraphTheory {
     /// <summary>
     /// For DAG, Directed Acyclic Graph
     /// </summary>
@@ -30,7 +30,7 @@ namespace DSALGO.Algorithm.Graph {
         private void DFS(int node) {
             if (isVisited[node]) return;
             isVisited[node] = true;
-            List<int> linked = graph.GetLinkedNodes(node);
+            List<int> linked = graph.GetAdjacentNode(node);
             foreach (var dest in linked) {
                 if (isVisited[dest]) continue;
                 DFS(dest);
