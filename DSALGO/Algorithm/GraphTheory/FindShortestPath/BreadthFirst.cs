@@ -4,8 +4,8 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
 {
     public class BreadthFirstSearch
     {
-        readonly Graphz graph;
-        public BreadthFirstSearch(Graphz graph) {
+        readonly GraphList graph;
+        public BreadthFirstSearch(GraphList graph) {
             this.graph = graph;
         }
         public List<int> FindPath(int start, int end)
@@ -31,7 +31,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                     break;
                 }
 
-                foreach (var node in graph.GetAdjacentNode(pop))
+                foreach (var node in graph.GetAdjNodes(pop))
                 {
                     if (visited.Contains(node)) continue;
                     queue.Enqueue(node);

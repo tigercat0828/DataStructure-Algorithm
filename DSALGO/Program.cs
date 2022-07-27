@@ -4,16 +4,13 @@
 using static DSALGO.Utility;
 using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.GraphTheory;
-using DSALGO.Algorithm.GraphTheory.FindShortestPath;
+using DSALGO.Algorithm.GraphTheory.MinimumSpanningTree;
 
 var file = GetResourceFile("GraphInput.txt");
 
-Graphz graph = Graphz.Parse(file);
+var graph = GraphList.Parse(file);
+List<Edge> mst = new();
+double cost = KruskalMst.Build(graph, 0, mst);
+Console.WriteLine(cost);
+mst.Print();
 
-graph.Print();
-DijkstraAlgo.FindPath(graph, 0, 7,out double cost);
-
-
-
-// D:\Users\u443933\Desktop\jianyi\DSALGO\DSALGO\Resource
-// D:\Users\u443933\Desktop\jianyi\DSALGO\DSALGO\bin\Debug\net6.0\

@@ -3,8 +3,8 @@
 namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
     public class SSSPonDAG {
 
-        readonly Graphz graph;
-        public SSSPonDAG(Graphz graph) {
+        readonly GraphList graph;
+        public SSSPonDAG(GraphList graph) {
             this.graph = graph;
         }
         public List<int> FindPath(int start, int end, out double cost) {
@@ -13,7 +13,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                 return new List<int> { start };
             }
             
-            if (!graph.Contains(start) || !graph.Contains(end)) {
+            if (!graph.ContainsNode(start) || !graph.ContainsNode(end)) {
                 Console.WriteLine($"Node [{start}] or [{end} is not in graph]");
                 cost = 1;
                 return null;
@@ -32,11 +32,11 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             costs[start] = 0;
 
             foreach (var next in sortingResult) {
-                List<Link> linkEdges = graph.GetAdjacentEdges(next);
+                List<Link> linkEdges = graph.GetAdjEdges(next);
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
                         int dest = edge.dest;
-                        double cst = edge.cost;
+                        double cst = edge.weight;
                         if (costs[next] + cst < costs[dest]) {
                             costs[dest] = costs[next] + cst;
                             previous[dest] = next;

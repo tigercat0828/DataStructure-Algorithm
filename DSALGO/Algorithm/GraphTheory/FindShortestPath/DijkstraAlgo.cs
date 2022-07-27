@@ -5,9 +5,9 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
 {
     public static class DijkstraAlgo
     {
-        public static List<int> FindPath(Graphz graph, int start, int end, out double cost) {
+        public static List<int> FindPath(GraphList graph, int start, int end, out double cost) {
            
-            if (!graph.Contains(start) || !graph.Contains(end)) {
+            if (!graph.ContainsNode(start) || !graph.ContainsNode(end)) {
                 cost = -1;
                 return null;
             }
@@ -27,11 +27,11 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                     cost = nodeCosts[end];
                     return BuildPath(previous, start, end);
                 }
-                foreach (var linked in graph.GetAdjacentEdges(popNode)) {
+                foreach (var linked in graph.GetAdjEdges(popNode)) {
                     if (isVisited[linked.dest]) continue;
     
-                    if (nodeCosts[popNode] + linked.cost < nodeCosts[linked.dest]) {
-                        nodeCosts[linked.dest] = nodeCosts[popNode] + linked.cost;
+                    if (nodeCosts[popNode] + linked.weight < nodeCosts[linked.dest]) {
+                        nodeCosts[linked.dest] = nodeCosts[popNode] + linked.weight;
                        // Console.WriteLine($"Enqueue from [{popNode}] to [{linked.dest}], current cost :{nodeCosts[linked.dest]}");
                         queue.Enqueue(linked.dest, nodeCosts[linked.dest]);
                         previous[linked.dest] = popNode;

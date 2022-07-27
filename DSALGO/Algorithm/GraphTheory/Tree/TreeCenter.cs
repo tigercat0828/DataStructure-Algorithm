@@ -2,13 +2,13 @@
 
 namespace DSALGO.Algorithm.GraphTheory.Tree {
     public static class TreeCenter {
-        public static List<int> Get(DataStructure.Graph.Graphz graph) {
+        public static List<int> Get(DataStructure.Graph.GraphList graph) {
             Dictionary<int, int> degreeMap = new();
             List<int> leaves = new();
 
             foreach (var vertex in graph.GetAllNodes()) {
-                degreeMap[vertex] = graph.GetAdjacentNode(vertex).Count;
-                if (graph.GetAdjacentNode(vertex).Count <= 1) {
+                degreeMap[vertex] = graph.GetAdjNodes(vertex).Count;
+                if (graph.GetAdjNodes(vertex).Count <= 1) {
                     leaves.Add(vertex);
                 }
             }
@@ -20,7 +20,7 @@ namespace DSALGO.Algorithm.GraphTheory.Tree {
 
                 foreach (var leaf in leaves) {
 
-                    foreach (var node in graph.GetAdjacentNode(leaf)) {
+                    foreach (var node in graph.GetAdjNodes(leaf)) {
                         if (--degreeMap[node] == 1) {
                             newLeaves.Add(node);
                         }

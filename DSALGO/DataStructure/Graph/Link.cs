@@ -2,13 +2,17 @@
 
     public class Link {
         public int dest;
-        public double cost;
+        public double weight;
         public Link(int dest, double cost) {
             this.dest = dest;
-            this.cost = cost;
+            this.weight = cost;
+        }
+        public Link(Link previous) { 
+            dest = previous.dest;
+            weight = previous.weight;
         }
         public override string ToString() {
-            return $"{dest}({cost})";
+            return $"({dest},{weight})";
         }
     }
 }

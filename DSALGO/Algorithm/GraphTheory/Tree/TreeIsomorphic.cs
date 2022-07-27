@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DSALGO.Algorithm.GraphTheory.Tree {
     public static class TreeIsomorphic {
-        public static bool AreIsomorphic(Graphz treeGraph1, Graphz treeGraph2) {
+        public static bool AreIsomorphic(GraphList treeGraph1, GraphList treeGraph2) {
             List<int> center1 = TreeCenter.Get(treeGraph1);
             List<int> center2 = TreeCenter.Get(treeGraph2);
 

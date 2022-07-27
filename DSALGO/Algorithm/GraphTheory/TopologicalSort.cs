@@ -10,8 +10,8 @@ namespace DSALGO.Algorithm.GraphTheory {
         int[] result;
         int nodeCount;
         int current;
-        readonly Graphz graph;
-        public TopologicalSort(Graphz graph) {
+        readonly GraphList graph;
+        public TopologicalSort(GraphList graph) {
             this.graph = graph;
             nodeCount = graph.nodeCount;
             isVisited = new bool[nodeCount];
@@ -30,7 +30,7 @@ namespace DSALGO.Algorithm.GraphTheory {
         private void DFS(int node) {
             if (isVisited[node]) return;
             isVisited[node] = true;
-            List<int> linked = graph.GetAdjacentNode(node);
+            List<int> linked = graph.GetAdjNodes(node);
             foreach (var dest in linked) {
                 if (isVisited[dest]) continue;
                 DFS(dest);
