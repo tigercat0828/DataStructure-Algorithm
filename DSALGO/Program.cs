@@ -6,11 +6,10 @@ using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.GraphTheory;
 using DSALGO.Algorithm.GraphTheory.MinimumSpanningTree;
 
-var file = GetResourceFile("GraphInput.txt");
+var file = GetResourceFile("NetworkInput.txt");
 
-var graph = GraphList.Parse(file);
-List<Edge> mst = new();
-double cost = KruskalMst.Build(graph, 0, mst);
-Console.WriteLine(cost);
-mst.Print();
-
+// var graph = GraphList.Parse(file);
+NetworkList network = NetworkList.Parse(file);
+network.EditPipeCapacity(1, 3, 30);
+network.EditPipeFlow(1, 3, 14);
+network.Print();

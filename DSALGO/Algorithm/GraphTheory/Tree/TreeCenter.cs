@@ -14,7 +14,7 @@ namespace DSALGO.Algorithm.GraphTheory.Tree {
             }
 
             int processLeaves = leaves.Count;
-            int total = graph.nodeCount;
+            int total = graph.NodeCount;
             while (processLeaves < total) {
                 List<int> newLeaves = new();
 

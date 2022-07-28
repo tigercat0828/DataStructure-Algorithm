@@ -13,9 +13,9 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
             }
 
             IndexedPriorityQueue<int, double> queue = new(); // nodeID, currentCost
-            bool[] isVisited = new bool[graph.nodeCount];
-            double[] nodeCosts = new double[graph.nodeCount]; Array.Fill(nodeCosts, int.MaxValue);
-            int[] previous = new int[graph.nodeCount];  Array.Fill(previous, -1);
+            bool[] isVisited = new bool[graph.NodeCount];
+            double[] nodeCosts = new double[graph.NodeCount]; Array.Fill(nodeCosts, int.MaxValue);
+            int[] previous = new int[graph.NodeCount];  Array.Fill(previous, -1);
             queue.Enqueue(start, 0);
             nodeCosts[start] = 0;
             
@@ -27,7 +27,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                     cost = nodeCosts[end];
                     return BuildPath(previous, start, end);
                 }
-                foreach (var linked in graph.GetAdjEdges(popNode)) {
+                foreach (var linked in graph.GetAdjLinks(popNode)) {
                     if (isVisited[linked.dest]) continue;
     
                     if (nodeCosts[popNode] + linked.weight < nodeCosts[linked.dest]) {

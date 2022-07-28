@@ -13,7 +13,7 @@ namespace DSALGO.Algorithm.GraphTheory {
         readonly GraphList graph;
         public TopologicalSort(GraphList graph) {
             this.graph = graph;
-            nodeCount = graph.nodeCount;
+            nodeCount = graph.NodeCount;
             isVisited = new bool[nodeCount];
             result = new int[nodeCount];
             current = nodeCount - 1;

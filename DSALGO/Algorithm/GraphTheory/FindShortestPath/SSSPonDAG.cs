@@ -19,8 +19,8 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                 return null;
             }
             
-            double[] costs = new double[graph.nodeCount];
-            int[] previous = new int[graph.nodeCount];
+            double[] costs = new double[graph.NodeCount];
+            int[] previous = new int[graph.NodeCount];
 
             Array.Fill(previous, -1);
             Array.Fill(costs, int.MaxValue);
@@ -32,7 +32,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             costs[start] = 0;
 
             foreach (var next in sortingResult) {
-                List<Link> linkEdges = graph.GetAdjEdges(next);
+                List<Link> linkEdges = graph.GetAdjLinks(next);
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
                         int dest = edge.dest;

@@ -18,7 +18,7 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
             }
             Graph = graph;
             PQ = new();
-            Visited = new bool[graph.nodeCount];
+            Visited = new bool[graph.NodeCount];
 
             EnqueueEdges(root);
 
@@ -31,9 +31,9 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
                 mstCost += edge.weight;
             }
 
-            int expectedEdgeCount = graph.nodeCount - 1;
+            int expectedEdgeCount = graph.NodeCount - 1;
             if (treeEdges.Count != expectedEdgeCount) {
-                throw new Exception("Not all node are connected");
+                Console.WriteLine("Can't Build MST. Not all node are connected");
             }
             return mstCost;
         }
@@ -41,7 +41,7 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
 
             Visited[node] = true;
             
-            foreach (var link in Graph.GetAdjEdges(node)) {
+            foreach (var link in Graph.GetAdjLinks(node)) {
                 if (Visited[link.dest]) continue;
 
                 Edge edge = new Edge(node, link.dest, link.weight);
