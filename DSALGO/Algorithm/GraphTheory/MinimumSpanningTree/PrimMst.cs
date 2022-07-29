@@ -42,9 +42,9 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
             Visited[node] = true;
             
             foreach (var link in Graph.GetAdjLinks(node)) {
-                if (Visited[link.dest]) continue;
+                if (Visited[link.to]) continue;
 
-                Edge edge = new Edge(node, link.dest, link.weight);
+                Edge edge = new Edge(node, link.to, link.weight);
                 PQ.Enqueue(edge, link.weight);
             }
         }

@@ -11,6 +11,7 @@
             while (j != pivot) { 
                 int cmp = nums[j].CompareTo(nums[pivot]);
                 if(cmp < 0) {
+                    // swap (i,j)
                     (nums[i], nums[j]) = (nums[j], nums[i]);
                     i++;
                 }
@@ -26,5 +27,6 @@
                 quickSort(nums, pivot +1, right);
             }
         }
+
     }
 }

@@ -25,8 +25,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             Array.Fill(previous, -1);
             Array.Fill(costs, int.MaxValue);
 
-            TopologicalSort sorter = new TopologicalSort(graph);
-            List<int> sortingResult = sorter.Topsort().ToList();
+            List<int> sortingResult = TopologicalSort.Topsort(graph).ToList();
             // sortingResult.Print();
 
             costs[start] = 0;
@@ -35,7 +34,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                 List<Link> linkEdges = graph.GetAdjLinks(next);
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
-                        int dest = edge.dest;
+                        int dest = edge.to;
                         double cst = edge.weight;
                         if (costs[next] + cst < costs[dest]) {
                             costs[dest] = costs[next] + cst;
@@ -58,6 +57,9 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
 
             cost = costs[end];
             return path;
+        }
+        private List<int> BuildPath(int start, int end) {
+            throw new NotImplementedException();
         }
     }
 }

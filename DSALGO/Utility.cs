@@ -1,4 +1,5 @@
-﻿namespace DSALGO {
+﻿using System.IO;
+namespace DSALGO {
     public static class Utility {
 
         public static void Print<T>(this IEnumerable<T> list) {

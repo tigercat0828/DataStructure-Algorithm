@@ -5,39 +5,39 @@ namespace DSALGO.Algorithm.GraphTheory {
     /// <summary>
     /// For DAG, Directed Acyclic Graph
     /// </summary>
-    public class TopologicalSort {
-        bool[] isVisited;
-        int[] result;
-        int nodeCount;
-        int current;
-        readonly GraphList graph;
-        public TopologicalSort(GraphList graph) {
-            this.graph = graph;
+    public static class TopologicalSort {
+        static bool[] isVisited;
+        static int[] result;
+        static int nodeCount;
+        static int currIdx;
+        static GraphList Graph;
+
+        private static void Init(GraphList graph) {
+            Graph = graph;
             nodeCount = graph.NodeCount;
             isVisited = new bool[nodeCount];
             result = new int[nodeCount];
-            current = nodeCount - 1;
+            currIdx = nodeCount - 1;
         }
-        public int[] Topsort() {
-            List<int> nodes = graph.GetAllNodes();
-            
+        public static int[] Topsort(GraphList graph) {
+            Init(graph);
+
+            List<int> nodes = Graph.GetAllNodes();
             foreach (var node in nodes) {
                 if (isVisited[node]) continue;
                 DFS(node);
             }
             return result;
         }
-        private void DFS(int node) {
+        private static void DFS(int node) {
             if (isVisited[node]) return;
             isVisited[node] = true;
-            List<int> linked = graph.GetAdjNodes(node);
+            List<int> linked = Graph.GetAdjNodes(node);
             foreach (var dest in linked) {
                 if (isVisited[dest]) continue;
                 DFS(dest);
             }
-            result[current--] = node;
+            result[currIdx--] = node;
         }
-
-        
     }
 }

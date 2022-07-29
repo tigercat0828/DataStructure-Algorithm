@@ -1,4 +1,7 @@
-﻿using static DSALGO.Utility;
+![[Annotation 2022-07-29 132235.png]]
+
+``` cs
+using static DSALGO.Utility;
 using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.GraphTheory.FindShortestPath;
 
@@ -24,3 +27,4 @@ List<int> path = new();
 Console.WriteLine("cost = " + BellmanFordAlgo.FindPath(graph, 0, 8, ref path));
 Console.Write("Path : ");
 path.Print();
+```
