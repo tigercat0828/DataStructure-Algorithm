@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 
 namespace DSALGO.DataStructure.Graph {
-    public class GraphList  {
+    public class GraphList : IGraph {
         // store vertice & edges with adjacency list
         #region member property
         private Dictionary<int, List<Edge>> Graph;  // adjacency list 

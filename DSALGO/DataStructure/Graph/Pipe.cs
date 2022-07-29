@@ -7,26 +7,31 @@ using System.Threading.Tasks;
 namespace DSALGO.DataStructure.Graph {
     // for network problem
     public class Pipe {
-        public int dest;
+        public int from;
+        public int to;
         public double flow;
         public double capacity;
 
-        public Pipe(int dest, double flow, double capacity) {
-            this.dest = dest;
-            this.flow = flow;
-            this.capacity = capacity;
-        }
+
         public Pipe(int dest, double capacity) {
-            this.dest = dest;
+            this.to = dest;
             this.capacity = capacity;
         }
         public Pipe(Pipe previous) {
-            dest = previous.dest;
+            from = previous.from;
+            to = previous.to;
             flow = previous.flow;
             capacity = previous.capacity;
         }
+        public Pipe(int from, int to, double flow, double capacity) {
+            this.from = from;
+            this.to = to;
+            this.flow = flow;
+            this.capacity = capacity;
+        }
+
         public override string ToString() {
-            return $"({dest}, {flow}/{capacity})";
+            return $"({to}, {flow}/{capacity})";
         }
     }
 }

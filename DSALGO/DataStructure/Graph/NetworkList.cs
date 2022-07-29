@@ -35,7 +35,7 @@ namespace DSALGO.DataStructure.Graph {
         public int Sink;
         
         public List<int> GetAllNodes() => Network.Keys.ToList();
-        public List<int> GetAdjNodes(int node) => Network[node].Select(x => x.dest).ToList();
+        public List<int> GetAdjNodes(int node) => Network[node].Select(x => x.to).ToList();
         public List<Pipe> GetAdjPipes(int node) => Network[node];
         public NetworkList(List<Edge> edgeList, int Source, int Sink) {
             
@@ -76,12 +76,12 @@ namespace DSALGO.DataStructure.Graph {
         }
         public void EditPipeFlow(int from, int to, double newflow) {
             if (!ContainsPipe(from, to)) throw new Exception($"Pipe ({from}, {to}) is not in graphs");
-            Pipe pipe = Network[from].Find(x => x.dest == to);
+            Pipe pipe = Network[from].Find(x => x.to == to);
             pipe.flow = newflow;
         }
         public void EditPipeCapacity(int from, int to, double capacity) {
             if (!ContainsPipe(from, to)) throw new Exception($"Pipe ({from}, {to}) is not in graphs");
-            Pipe pipe = Network[from].Find(x => x.dest == to);
+            Pipe pipe = Network[from].Find(x => x.to == to);
             pipe.capacity = capacity;
         }
         public void AddPipe(int from, int to, double capacity) {
@@ -90,7 +90,7 @@ namespace DSALGO.DataStructure.Graph {
 
             if (!ContainsNode(from)) AddNode(from);
             if (!ContainsNode(to)) AddNode(to);
-            Network[from].Add(new Pipe(to, 0, capacity));
+            Network[from].Add(new Pipe(from ,to, 0, capacity));
         }
         public void AddNode(int node) {
             if (Network.ContainsKey(node)) throw new Exception($"Node {node} already exist");
@@ -104,7 +104,7 @@ namespace DSALGO.DataStructure.Graph {
 
             foreach (var n in GetAllNodes()) {
                 List<int> adjNodes = GetAdjNodes(n);
-                Network[n].RemoveAll(x => x.dest == node);
+                Network[n].RemoveAll(x => x.to == node);
             }
         }
         public void DeleteEdge(int from, int to) {
@@ -116,7 +116,7 @@ namespace DSALGO.DataStructure.Graph {
             if (!Network.ContainsKey(from) && !linkedNode.Contains(to)) {
                 throw new Exception($"Edge ({from}, {to}) is not in graphs");
             }
-            Network[from].RemoveAll(x => x.dest == to);
+            Network[from].RemoveAll(x => x.to == to);
         }
         public void Clear() {
             foreach (var key in Network.Keys) Network[key].Clear();
@@ -126,7 +126,7 @@ namespace DSALGO.DataStructure.Graph {
             GraphList residual = new(isUndirected:false);
             foreach (var node in GetAllNodes()) {
                 foreach (var pipe in GetAdjPipes(node)) {
-                    residual.AddEdge(node, pipe.dest, pipe.capacity - pipe.flow);
+                    residual.AddEdge(node, pipe.to, pipe.capacity - pipe.flow);
                 }
             }
             return residual;
