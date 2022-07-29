@@ -6,7 +6,7 @@ namespace DSALGO.DataStructure.Graph {
     public class GraphList  {
         // store vertice & edges with adjacency list
         #region member property
-        private Dictionary<int, List<Link>> Graph;  // adjacency list 
+        private Dictionary<int, List<Edge>> Graph;  // adjacency list 
         public int NodeCount => Graph.Count;
         public bool isUndirected { get; }
         #endregion 
@@ -15,9 +15,9 @@ namespace DSALGO.DataStructure.Graph {
 
             this.isUndirected = isUndirected;
 
-            Graph = new Dictionary<int, List<Link>>();
+            Graph = new();
 
-            foreach (var v in vertexes) Graph.Add(v, new List<Link>());
+            foreach (var v in vertexes) Graph.Add(v, new List<Edge>());
 
             if (isUndirected) {
                 int n = edgeList.Count;
@@ -31,20 +31,20 @@ namespace DSALGO.DataStructure.Graph {
             }
         }
         public GraphList(bool isUndirected) {
-            Graph = new Dictionary<int, List<Link>>();
+            Graph = new();
             this.isUndirected = isUndirected;
         }
         public GraphList(GraphList previous) {
             isUndirected = previous.isUndirected;
-            Graph = new Dictionary<int, List<Link>>();
+            Graph = new Dictionary<int, List<Edge>>();
 
             List<int> oldNodes = previous.GetAllNodes();
             foreach (var node in oldNodes) {
-                List<Link> newLink = new();
-                foreach (var link in previous.GetAdjLinks(node)) {
-                    newLink.Add(new Link(link));
+                List<Edge> newEdge = new();
+                foreach (var edge in previous.GetAdjEdges(node)) {
+                    newEdge.Add(new Edge(edge));
                 }
-                Graph.Add(node, newLink);
+                Graph.Add(node, newEdge);
             }
         }
         public bool ContainsNode(int node) => Graph.ContainsKey(node);
@@ -57,20 +57,20 @@ namespace DSALGO.DataStructure.Graph {
             List<int> nodes = GetAllNodes();
             foreach (var node in nodes) {
                 Console.Write(node + " : ");
-                List<Link> links = GetAdjLinks(node);
+                List<Edge> links = GetAdjEdges(node);
                 Console.WriteLine(String.Join(", ", links));
             }
         }
         public List<int> GetAllNodes() => Graph.Keys.ToList();
         public List<int> GetAdjNodes(int node) => Graph[node].Select(x => x.to).ToList();
-        public List<Link> GetAdjLinks(int node) => Graph[node];
+        public List<Edge> GetAdjEdges(int node) => Graph[node];
         public void EditEdge(int from, int to, double newWeight) {
             if (!ContainsEdge(from, to)) throw new Exception($"Edge ({from}, {to}) is not in graphs");
-            Link link = Graph[from].Find(x => x.to == to);
-            link.weight = newWeight;
+            Edge edge = Graph[from].Find(x => x.to == to);
+            edge.weight = newWeight;
             if (isUndirected) {
-                link = Graph[to].Find(x => x.to == from);
-                link.weight = newWeight;
+                edge = Graph[to].Find(x => x.to == from);
+                edge.weight = newWeight;
             }
         }
         public void AddEdge(Edge edge) {
@@ -82,12 +82,12 @@ namespace DSALGO.DataStructure.Graph {
 
             if (!ContainsNode(from)) AddNode(from);
             if (!ContainsNode(to)) AddNode(to);
-            Graph[from].Add(new Link(to, weight));
+            Graph[from].Add(new Edge(from, to, weight));
         }
         public void AddNode(int node) {
 
             if (Graph.ContainsKey(node)) throw new Exception($"Node {node} already exist");
-            Graph.Add(node, new List<Link>());
+            Graph.Add(node, new List<Edge>());
         }
         public void DeleteNode(int node) {
             if (!Graph.ContainsKey(node)) throw new Exception($"Node {node} is not in the graph");
@@ -127,7 +127,7 @@ namespace DSALGO.DataStructure.Graph {
             List<Edge> edges = new();
             bool[] visited = new bool[NodeCount];
             foreach (var node in GetAllNodes()) {
-                foreach (var link in GetAdjLinks(node)) {
+                foreach (var link in GetAdjEdges(node)) {
                     if (node < link.to) {
                         edges.Add(new Edge(node, link.to, link.weight));
                         visited[node] = true;
@@ -140,7 +140,7 @@ namespace DSALGO.DataStructure.Graph {
         private List<Edge> GetDirectedEdges() {
             List<Edge> edges = new();
             foreach (var node in GetAllNodes()) {
-                foreach (var link in GetAdjLinks(node)) {
+                foreach (var link in GetAdjEdges(node)) {
                     edges.Add(new Edge(node, link.to, link.weight));
                 }
             }

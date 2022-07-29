@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSALGO", "DSALGO\DSALGO.csproj", "{46CA6959-0280-464D-A57C-B6DEA1590A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSALGO", "DSALGO\DSALGO.csproj", "{46CA6959-0280-464D-A57C-B6DEA1590A39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSALGO.Test", "DSALGO.Test\DSALGO.Test.csproj", "{93D1F97A-2319-44E7-8B5D-5EC44BE88410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSALGO.Test", "DSALGO.Test\DSALGO.Test.csproj", "{93D1F97A-2319-44E7-8B5D-5EC44BE88410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

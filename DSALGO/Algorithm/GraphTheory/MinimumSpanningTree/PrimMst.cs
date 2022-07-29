@@ -41,7 +41,7 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
 
             Visited[node] = true;
             
-            foreach (var link in Graph.GetAdjLinks(node)) {
+            foreach (var link in Graph.GetAdjEdges(node)) {
                 if (Visited[link.to]) continue;
 
                 Edge edge = new Edge(node, link.to, link.weight);

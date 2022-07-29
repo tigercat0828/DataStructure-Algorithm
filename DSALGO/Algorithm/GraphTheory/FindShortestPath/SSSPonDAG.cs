@@ -31,7 +31,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             costs[start] = 0;
 
             foreach (var next in sortingResult) {
-                List<Link> linkEdges = graph.GetAdjLinks(next);
+                List<Edge> linkEdges = graph.GetAdjEdges(next);
                 if (linkEdges != null) {
                     foreach (var edge in linkEdges) {
                         int dest = edge.to;

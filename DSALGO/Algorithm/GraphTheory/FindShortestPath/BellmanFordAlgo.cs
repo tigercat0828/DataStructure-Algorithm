@@ -28,11 +28,11 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             for (int i = 0; i < loopTime; i++) {
                 foreach (var node in graph.GetAllNodes()) {
                     if (dest[node] == UNVISITED) continue;
-                    foreach (var link in graph.GetAdjLinks(node)) {
+                    foreach (var edge in graph.GetAdjEdges(node)) {
                         // relaxing
-                        if(dest[node] + link.weight < dest[link.to]) {
-                            dest[link.to] = dest[node] + link.weight;
-                            previous[link.to] = node;
+                        if(dest[node] + edge.weight < dest[edge.to]) {
+                            dest[edge.to] = dest[node] + edge.weight;
+                            previous[edge.to] = node;
                         }
                     }
                 }
@@ -41,7 +41,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             for (int i = 0; i < loopTime; i++) {
                 foreach (var node in graph.GetAllNodes()) {
                     if (dest[node] == UNVISITED) continue;
-                    foreach (var link in graph.GetAdjLinks(node)) {
+                    foreach (var link in graph.GetAdjEdges(node)) {
                         // relaxing
                         if (dest[node] + link.weight < dest[link.to]) {
                             dest[link.to] = IN_NEGATIVE_CYCLE;

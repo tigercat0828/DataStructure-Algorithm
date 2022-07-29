@@ -39,7 +39,7 @@ namespace DSALGO.Algorithm.GraphTheory.NetworkFlow {
                 }
                 
                 visited[pop] = true;
-                foreach (var link in Residual.GetAdjLinks(pop)) {
+                foreach (var link in Residual.GetAdjEdges(pop)) {
                     if (!visited[link.to]) { 
                         stack.Push(link.to);
                         previous[link.to] = pop;

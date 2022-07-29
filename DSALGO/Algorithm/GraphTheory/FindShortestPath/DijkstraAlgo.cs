@@ -25,7 +25,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                     path = BuildPath(previous, start, end);
                     return nodeCosts[end];
                 }
-                foreach (var linked in graph.GetAdjLinks(popNode)) {
+                foreach (var linked in graph.GetAdjEdges(popNode)) {
                     if (isVisited[linked.to]) continue;
     
                     if (nodeCosts[popNode] + linked.weight < nodeCosts[linked.to]) {
