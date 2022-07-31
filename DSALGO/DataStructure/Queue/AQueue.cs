@@ -1,6 +1,6 @@
 ﻿namespace DSALGO.DataStructure {
     public class AQueue<T> : IQueue<T> {
-
+        // Circular Queue
         T[] queue;
         int front;
         int rear;

@@ -1,26 +1,7 @@
 ﻿using static DSALGO.Utility;
 using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.GraphTheory.FindShortestPath;
+using DSALGO.Algorithm.String;
 
-List<int> vertices = new List<int> { 0,1,2,3,4,5,6,7,8,9 };
-List<Edge> edges = new List<Edge>() {
-    new Edge(0, 1, 5 ),
-    new Edge(1, 6, 60  ),
-    new Edge(1, 2, 20  ),
-    new Edge(1, 5, 30  ),
-    new Edge(2, 3, 10  ),
-    new Edge(2, 4, 75  ),
-    new Edge(3, 2, -15 ),
-    new Edge(4, 9, 100 ),
-    new Edge(5, 8, 50  ),
-    new Edge(5, 6, 5   ),
-    new Edge(5, 4, 25  ),
-    new Edge(6, 7, -50 ),
-    new Edge(7, 8, -10 ),
-};
-GraphList graph = new(vertices, edges, isUndirected: false);
+Console.WriteLine(ExpressionConverter.Infix2Postfix("a+b*(c^d-e)^(f+g*h)-i"));
 
-List<int> path = new();
-Console.WriteLine("cost = " + BellmanFordAlgo.FindPath(graph, 0, 8, ref path));
-Console.Write("Path : ");
-path.Print();
