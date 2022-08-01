@@ -33,7 +33,6 @@ namespace DSALGO.Test.PriorityQueue {
         public void Enqueue_And_Dequeue2() {
             IndexedPriorityQueue<char, int> IPQ = new();
 
-
             for (int i = 0; i < 26; i++) {
                 IPQ.Enqueue((char)('Z' - i), 30 - i);
             }

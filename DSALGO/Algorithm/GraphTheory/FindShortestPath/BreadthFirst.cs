@@ -1,19 +1,13 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
-{
-    public class BreadthFirstSearch
-    {
-        readonly GraphList graph;
-        public BreadthFirstSearch(GraphList graph) {
-            this.graph = graph;
-        }
-        public List<int> FindPath(int start, int end)
-        {
+namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
+    public static class BreadthFirstSearch {
+        public static int FindPath(GraphList graph, int start, int end, ref List<int> path) {
 
-            if (start == end) return new List<int>() { start };
-
-            List<int> path = new();
+            if (start == end) {
+                path = new List<int>() { start };
+                return 0;
+            }
 
             Dictionary<int, int> previous = new();
             HashSet<int> visited = new();
@@ -22,33 +16,28 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
 
             queue.Enqueue(start);
             visited.Add(start);
-            while (queue.Count > 0)
-            {
+            while (queue.Count > 0) {
                 int pop = queue.Dequeue();
-                if (pop == end)
-                {
+                if (pop == end) {
                     isTargetFound = true;
                     break;
                 }
 
-                foreach (var node in graph.GetAdjNodes(pop))
-                {
+                foreach (var node in graph.GetAdjNodes(pop)) {
                     if (visited.Contains(node)) continue;
                     queue.Enqueue(node);
                     visited.Add(node);
                     previous[node] = pop;
                 }
             }
-            if (isTargetFound)
-            {
-                for (int i = end; i != start; i = previous[i])
-                {
+            if (isTargetFound) {
+                for (int i = end; i != start; i = previous[i]) {
                     path.Add(i);
                 }
                 path.Add(start);
                 path.Reverse();
             }
-            return path;
+            return path.Count;
         }
 
     }

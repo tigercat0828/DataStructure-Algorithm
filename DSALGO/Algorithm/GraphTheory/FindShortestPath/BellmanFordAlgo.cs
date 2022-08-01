@@ -19,7 +19,6 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             Array.Fill(previous, -1);
 
         }
-        
         public static double FindPath(GraphList graph, int start, int end, ref List<int> path) {
             Init(graph.NodeCount);
            

@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Text;
+
 namespace DSALGO {
     public static class Utility {
 
@@ -25,6 +27,17 @@ namespace DSALGO {
                 array[i] = random.Next(min, max + 1);
             }
             return array;
+        }
+        public static void PrintMatix<T>(this T[][] Mat) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Mat.Length; i++) {
+                sb.Append("[");
+                for (int j = 0; j < Mat[i].Length; j++) {
+                    sb.Append(String.Format("{0, 4}", Mat[i][j]));
+                }
+                sb.AppendLine("  ]");
+            }
+            Console.WriteLine(sb.ToString());
         }
         public static void DrawThinLine() {
             Console.WriteLine("----------------------------------------------");
