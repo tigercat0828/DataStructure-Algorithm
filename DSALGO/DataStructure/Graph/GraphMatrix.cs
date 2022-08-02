@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DSALGO.DataStructure.Graph {
     public class GraphMatrix : IGraph {
-        const double X = 10000000;
+        public const double X = 10000000;
         public bool isUndirected { get; }
         public int NodeCount => Mat.Count;
         public List<List<double>> Mat;

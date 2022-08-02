@@ -17,4 +17,4 @@ double[][] matrix =  graph.GetMatrix();
 
 
 List<int> vs = new List<int>();
-FloydWarshall.FindPath(graph, 1, 3, ref vs);
+FloydWarshallAlgo.FindPath(graph, 1, 3, ref vs);
