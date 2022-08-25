@@ -1,4 +1,4 @@
-﻿namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm.Sorting {
     public static class InsertionSort {
 
         /*
@@ -15,6 +15,7 @@
                     j--;
                 }
                 arr[j + 1] = key;
+                arr.Print();
             }
         }
     }

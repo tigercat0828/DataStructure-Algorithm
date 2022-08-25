@@ -18,6 +18,9 @@
                 j++;
             }
             (nums[i], nums[pivot]) = (nums[j], nums[i]);
+            Console.Write($"Partition {left}, {right}  pivot = {i}      ");
+            nums.Print();
+
             return i;
         }
         public static void quickSort(T[] nums, int left, int right) {
