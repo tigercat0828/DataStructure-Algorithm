@@ -25,14 +25,14 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                     path = BuildPath(previous, start, end);
                     return nodeCosts[end];
                 }
-                foreach (var linked in graph.GetAdjEdges(popNode)) {
-                    if (isVisited[linked.to]) continue;
+                foreach (var edge in graph.GetAdjEdges(popNode)) {
+                    if (isVisited[edge.to]) continue;
     
-                    if (nodeCosts[popNode] + linked.weight < nodeCosts[linked.to]) {
-                        nodeCosts[linked.to] = nodeCosts[popNode] + linked.weight;
-                        Console.WriteLine($"Enqueue from [{popNode}] to [{linked.to}], current cost :{nodeCosts[linked.to]}");
-                        queue.Enqueue(linked.to, nodeCosts[linked.to]);
-                        previous[linked.to] = popNode;
+                    if (nodeCosts[popNode] + edge.weight < nodeCosts[edge.to]) {
+                        nodeCosts[edge.to] = nodeCosts[popNode] + edge.weight;
+                        Console.WriteLine($"Enqueue from [{popNode}] to [{edge.to}], current cost :{nodeCosts[edge.to]}");
+                        queue.Enqueue(edge.to, nodeCosts[edge.to]);
+                        previous[edge.to] = popNode;
                     }
                 }
             }
