@@ -1,4 +1,4 @@
-﻿namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm.Sorting {
     public static class BubbleSort {
         /*
          * https://afteracademy.com/blog/comparison-of-sorting-algorithms   
@@ -15,6 +15,7 @@
                         array[j + 1] = tmp;
                     }
                 }
+                array.Print();
             }
         }
 

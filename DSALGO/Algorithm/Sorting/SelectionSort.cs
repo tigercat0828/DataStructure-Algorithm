@@ -1,9 +1,9 @@
-﻿namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm.Sorting {
     public static class SelectionSort {
 
         /*
         Time Complexity : O(n^2)
-        stable : yes
+        stable : no
         in-pace : yes
          */
         public static void Run(int[] arr) {
@@ -19,6 +19,7 @@
                 int tmp = arr[i];
                 arr[i] = arr[min];
                 arr[min] = tmp;
+                arr.Print();
             }
         }
     }

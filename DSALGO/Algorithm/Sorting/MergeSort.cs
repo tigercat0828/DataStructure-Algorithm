@@ -1,4 +1,4 @@
-﻿namespace DSALGO.Algorithm {
+﻿namespace DSALGO.Algorithm.Sorting {
     public static class MergeSort {
         /* 
          * Time Complexity : O(nlogn)
@@ -10,11 +10,14 @@
         }
         private static void Sort(int[] arr, int left, int right) {
             if (left < right) {
+                Console.WriteLine($"Group {left}, {right}");
                 //int mid = (left + right)/2;
                 int mid = left + (right - left) / 2;
                 Sort(arr, left, mid);
                 Sort(arr, mid + 1, right);
                 merge(arr, left, mid, right);
+                Console.Write($"    Merge {left}, {right}   ");
+                arr.Print();
             }
 
         }
@@ -59,6 +62,7 @@
                 j++;
                 k++;
             }
+
         }
 
 
