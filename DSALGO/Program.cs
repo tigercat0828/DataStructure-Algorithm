@@ -5,6 +5,6 @@ using DSALGO.Algorithm.Sorting;
 int[] array = { 9, 1, 8, 2, 7, 3, 6, 4, 5 };
 
 array.Print();
-QuickSort<int>.Run(array);
+BubbleSort.Run2(array);
 
 array.Print();
