@@ -28,8 +28,8 @@ namespace DSALGO.Algorithm.GraphTheory {
         bool isCyclic = false;
         public bool IsCyclic(UndiGraph graph) {
             this.graph = graph;
-            isVisited = new bool[graph.NodeCount];
-            parent = Enumerable.Repeat(-1, graph.NodeCount).ToArray();
+            isVisited = new bool[graph.Capacity];
+            parent = Enumerable.Repeat(-1, graph.Capacity).ToArray();
 
             List<int> nodes = graph.GetAllNodes();
 
