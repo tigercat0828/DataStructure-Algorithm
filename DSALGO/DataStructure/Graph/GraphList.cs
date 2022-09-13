@@ -76,6 +76,9 @@ namespace DSALGO.DataStructure.Graph {
         public void AddEdge(Edge edge) {
             AddEdge(edge.from, edge.to, edge.weight);
         }
+        public void AddEdge(int from, int to) {
+            AddEdge(from, to, 0);
+        }
         public void AddEdge(int from, int to, double weight) {
             if (ContainsEdge(from, to))
                 throw new Exception($"Edge ({from},{to},) already exist");

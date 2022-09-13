@@ -1,10 +1,10 @@
 ﻿using DSALGO.DataStructure.Graph;
 
 namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
-    public class SSSPonDAG {
+    public class ShortestPathOnDAG {
 
         readonly GraphList graph;
-        public SSSPonDAG(GraphList graph) {
+        public ShortestPathOnDAG(GraphList graph) {
             this.graph = graph;
         }
         public List<int> FindPath(int start, int end, out double cost) {
@@ -45,6 +45,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
             }
             
             costs.Print();
+           
             // construct path
             List<int> path = new();
             path.Add(end);

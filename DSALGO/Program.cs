@@ -2,9 +2,14 @@
 using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.Sorting;
 
-int[] array = { 9, 1, 8, 2, 7, 3, 6, 4, 5 };
+GraphList graph = new GraphList(false);
+graph.AddEdge(0, 2);
+graph.AddEdge(0, 1);
+graph.AddEdge(2, 1);
+graph.AddEdge(1, 3);
+graph.AddEdge(3, 2);
+graph.AddEdge(4, 3);
+graph.AddEdge(4, 5);
+graph.AddEdge(5, 5);
 
-array.Print();
-BubbleSort.Run2(array);
-
-array.Print();
+graph.Print();
