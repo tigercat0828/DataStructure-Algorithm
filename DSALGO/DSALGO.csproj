@@ -13,4 +13,8 @@
     <None Remove="Algorithm\Other\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Algorithm\GraphTheory\CycleDetection\" />
+  </ItemGroup>
+
 </Project>

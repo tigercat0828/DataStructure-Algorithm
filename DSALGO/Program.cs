@@ -1,18 +1,18 @@
 using static DSALGO.Utility;
-using DSALGO.DataStructure.Graph;
 using DSALGO.Algorithm.Sorting;
-using DSALGO.Algorithm.GraphTheory;
+using DSALGO.DataStructure.GraphStructure;
+using DSALGO.Algorithm.GraphTheory.Traversal;
 
-UndiGraph graph = new UndiGraph(9);
+UndirectedGraph graph = new UndirectedGraph(7);
 graph.AddEdge(0, 1);
 graph.AddEdge(0, 2);
 graph.AddEdge(1, 3);
-graph.AddEdge(2, 4);
-graph.AddEdge(3, 5);
-graph.AddEdge(3, 6);
-graph.AddEdge(4, 7);
-graph.AddEdge(4, 8);
-graph.AddEdge(4, 3);
+graph.AddEdge(1, 4);
+graph.AddEdge(2, 5);
+graph.AddEdge(2, 6);
 graph.Print();
-CycleDetectDFS algo = new();
-Console.WriteLine(algo.IsCyclic(graph));
+DrawBoldLine();
+
+BreadthFirstSearch algo = new(graph.ToDiGraph());
+algo.Traverse(0);
+

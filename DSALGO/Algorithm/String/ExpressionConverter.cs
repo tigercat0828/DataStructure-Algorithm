@@ -17,7 +17,6 @@ namespace DSALGO.Algorithm.String {
         private static bool IsOperator(char c) { 
             return "+-*/^".Contains(c);
         }
-        
         public static bool IsLetterOrDigit(char c) {
             return char.IsLetterOrDigit(c);
         }

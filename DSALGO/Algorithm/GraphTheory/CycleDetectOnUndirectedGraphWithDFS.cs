@@ -1,4 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
+﻿using DSALGO.DataStructure.GraphStructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory {
-    public  class CycleDetectDFS {
+    public  class CycleDetectOnUndirectedGraphWithDFS {
         /*
         # Find a cycle in undirected graphs
         An undirected graph has a cycle if and only if a depth-first search (DFS) 
@@ -16,7 +16,6 @@ namespace DSALGO.Algorithm.GraphTheory {
         In addition to visited vertices we need to keep track of vertices currently 
         in recursion stack of function for DFS traversal. If we reach a vertex that 
         is already in the recursion stack, then there is a cycle in the tree.
-         
          */
         enum Color {
             White, Grey, Black
@@ -24,9 +23,9 @@ namespace DSALGO.Algorithm.GraphTheory {
         Color[] color;
         bool[] isVisited;
         int[] parent;  
-        UndiGraph graph;
+        UndirectedGraph graph;
         bool isCyclic = false;
-        public bool IsCyclic(UndiGraph graph) {
+        public bool IsCyclic(UndirectedGraph graph) {
             this.graph = graph;
             isVisited = new bool[graph.Capacity];
             parent = Enumerable.Repeat(-1, graph.Capacity).ToArray();

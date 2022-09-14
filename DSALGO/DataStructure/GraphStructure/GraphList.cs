@@ -91,6 +91,7 @@ namespace DSALGO.DataStructure.Graph {
 
             if (Graph.ContainsKey(node)) throw new Exception($"Node {node} already exist");
             Graph.Add(node, new List<Edge>());
+            
         }
         public void DeleteNode(int node) {
             if (!Graph.ContainsKey(node)) throw new Exception($"Node {node} is not in the graph");
