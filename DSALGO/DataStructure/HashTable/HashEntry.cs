@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructure.HashTable {
+﻿namespace DSALGO.DataStructure.HashTable {
     public class HashEntry<TKey, Tvalue> {
         public TKey key { get; private set; }
         public Tvalue value { get; set; }

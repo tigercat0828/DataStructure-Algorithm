@@ -30,10 +30,11 @@ namespace DSALGO.Algorithm.GraphTheory {
             return result;
         }
         private static void DFS(int node) {
+            // postorder DFS
             if (isVisited[node]) return;
             isVisited[node] = true;
-            List<int> linked = Graph.GetAdjNodes(node);
-            foreach (var dest in linked) {
+            
+            foreach (var dest in Graph.GetAdjNodes(node)) {
                 if (isVisited[dest]) continue;
                 DFS(dest);
             }

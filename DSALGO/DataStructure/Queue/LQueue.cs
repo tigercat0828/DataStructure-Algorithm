@@ -61,8 +61,8 @@
 
         public bool Contains(T item) {
             Node<T> current = front;
-            while(current != null) {
-                if(current.data.Equals(item)) {
+            while (current != null) {
+                if (current.data.Equals(item)) {
                     return true;
                 }
                 current = current.next;

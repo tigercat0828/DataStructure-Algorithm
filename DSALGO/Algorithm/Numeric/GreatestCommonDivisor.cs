@@ -1,13 +1,7 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.Algorithm.Numeric {
-    public static class GreatestCommonDivisor { 
+﻿namespace DSALGO.Algorithm.Numeric {
+    public static class GreatestCommonDivisor {
         public static int GCD_iter(int a, int b) {
-            while(b!= 0) {
+            while (b != 0) {
                 int tmp = a % b;
                 a = b;
                 b = tmp;

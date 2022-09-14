@@ -1,12 +1,7 @@
 ﻿using DSALGO.DataStructure.Graph;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
-    public static  class BellmanFordAlgo  {
+    public static class BellmanFordAlgo {
         const double UNVISITED = double.MaxValue;
         const double IN_NEGATIVE_CYCLE = double.MinValue;
         static double[] dest;
@@ -21,7 +16,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
         }
         public static double FindPath(GraphList graph, int start, int end, ref List<int> path) {
             Init(graph.NodeCount);
-           
+
             int loopTime = graph.NodeCount - 1;
             dest[start] = 0;
             for (int i = 0; i < loopTime; i++) {
@@ -29,7 +24,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                     if (dest[node] == UNVISITED) continue;
                     foreach (var edge in graph.GetAdjEdges(node)) {
                         // relaxing
-                        if(dest[node] + edge.weight < dest[edge.to]) {
+                        if (dest[node] + edge.weight < dest[edge.to]) {
                             dest[edge.to] = dest[node] + edge.weight;
                             previous[edge.to] = node;
                         }
@@ -51,20 +46,20 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
 
             if (dest[end] != UNVISITED) {
                 path = BuildPath(start, end);
-                return dest[end];   
+                return dest[end];
             }
             Console.WriteLine($"There is no path from [{start}] to [{end}].");
             return 0;
         }
         public static List<int> BuildPath(int start, int end) {
             List<int> path = new List<int>();
-            for (int i = end; i != start ; i= previous[i]) {
+            for (int i = end; i != start; i = previous[i]) {
                 path.Add(i);
             }
             path.Add(start);
             path.Reverse();
-            return path; 
+            return path;
         }
-        
+
     }
 }

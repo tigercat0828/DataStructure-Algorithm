@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructure.GraphStructure {
+﻿namespace DSALGO.DataStructure.GraphStructure {
     public class UndirectedGraph {
         public struct Node {
             public int dest;
@@ -63,7 +57,7 @@ namespace DSALGO.DataStructure.GraphStructure {
             for (int i = 0; i < Capacity; i++) {
                 graph[i].RemoveAll(x => x.dest == node);
             }
-    
+
         }
         public void DeleteEdge(int from, int to) {
             if (ContainsEdge(from, to)) {

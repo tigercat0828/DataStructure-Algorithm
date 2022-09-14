@@ -1,7 +1,7 @@
 ﻿namespace DSALGO.DataStructure {
     public interface IDynamicArray {
         int Count { get; }
-        
+
         void Add(int data);
         void InsertAt(int index, int value);
         void InsertFirst(int value);

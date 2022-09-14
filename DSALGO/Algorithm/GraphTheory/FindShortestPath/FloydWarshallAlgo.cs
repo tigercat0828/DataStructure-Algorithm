@@ -1,9 +1,4 @@
 ﻿using DSALGO.DataStructure.Graph;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
     public class FloydWarshallAlgo {
@@ -41,15 +36,15 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                 }
             }
         }
-        public double GetPathCost(int start, int end) => dp[start][end]; 
+        public double GetPathCost(int start, int end) => dp[start][end];
         public List<int> FindPath(int start, int end) {
-            
-            if(dp[start][end] == GraphMatrix.X) {
+
+            if (dp[start][end] == GraphMatrix.X) {
                 return new List<int>();
             }
             List<int> path = new();
             int at;
-            for (at = start; at !=end; at=next[at][end]) {
+            for (at = start; at != end; at = next[at][end]) {
                 if (at == -1) return path;     // there is no path from start to end
                 path.Add(at);
             }

@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace DSALGO.DataStructure.DisjointSet {
+﻿namespace DSALGO.DataStructure.DisjointSet {
     public class DisjointSet {
         int[] Parent;
         int[] Rank;
@@ -10,10 +8,10 @@ namespace DSALGO.DataStructure.DisjointSet {
             Rank = Enumerable.Repeat(0, nodeCount).ToArray();
             NodeCount = nodeCount;
         }
-        public bool IsSameSet(int A, int B) { 
+        public bool IsSameSet(int A, int B) {
             if (A >= NodeCount || B >= NodeCount) throw new Exception($"node {A} or {B} not in the union set");
             return GetParent(A) == GetParent(B);
-            
+
         }
         public int GetParent(int node) {
             if (node == Parent[node]) return node;
@@ -29,7 +27,7 @@ namespace DSALGO.DataStructure.DisjointSet {
                 Swap(ref A, ref B);
             }
             SetParent(B, A);
-            if(Rank[A] == Rank[B]) {
+            if (Rank[A] == Rank[B]) {
                 Rank[A]++;
             }
         }

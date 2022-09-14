@@ -21,7 +21,7 @@
                 return default(T);
             }
             T pop = queue[front];
-            
+
             front = (front + 1) % Capacity;
             Count--;
             return pop;

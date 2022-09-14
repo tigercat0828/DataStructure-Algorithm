@@ -1,8 +1,4 @@
-﻿using DSALGO.DataStructure.BinarySearchTree;
-
-
-
-    // implement BinarySearchTree by using linked list
+﻿// implement BinarySearchTree by using linked list
 namespace DSALGO.DataStructure.BinarySearchTree {
     // implement BinarySearchTree by using linked list
     public class BinarySearchTree<T> : IBinaryTree<T> where T : IComparable {

@@ -1,17 +1,14 @@
-﻿namespace DSALGO.DataStructure.Graph {
-    public class Edge {
+﻿namespace DSALGO.DataStructure.GraphStructure {
+    public struct Edge {
         public int from;
         public int to;
-        public double weight;
-        public Edge(int from, int to, double weight) {
+        public int weight;
+        public Edge(int from, int to, int weight = 0) {
             this.from = from;
             this.to = to;
             this.weight = weight;
         }
-        public Edge(int from, int to) {
-            this.from = from;
-            this.to = to;
-        }
+
         public Edge(Edge previous) {
             from = previous.from;
             to = previous.to;

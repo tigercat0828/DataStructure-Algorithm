@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Algorithm\GraphTheory\CycleDetection\**" />
     <Compile Remove="Algorithm\Other\**" />
+    <EmbeddedResource Remove="Algorithm\GraphTheory\CycleDetection\**" />
     <EmbeddedResource Remove="Algorithm\Other\**" />
+    <None Remove="Algorithm\GraphTheory\CycleDetection\**" />
     <None Remove="Algorithm\Other\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Algorithm\GraphTheory\CycleDetection\" />
   </ItemGroup>
 
 </Project>

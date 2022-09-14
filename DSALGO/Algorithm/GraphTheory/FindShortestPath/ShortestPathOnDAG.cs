@@ -1,4 +1,5 @@
 ﻿using DSALGO.DataStructure.Graph;
+using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
     public class ShortestPathOnDAG {
@@ -9,16 +10,16 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
         }
         public List<int> FindPath(int start, int end, out double cost) {
             if (start == end) {
-                cost  = 0;
+                cost = 0;
                 return new List<int> { start };
             }
-            
+
             if (!graph.ContainsNode(start) || !graph.ContainsNode(end)) {
                 Console.WriteLine($"Node [{start}] or [{end} is not in graph]");
                 cost = 1;
                 return null;
             }
-            
+
             double[] costs = new double[graph.NodeCount];
             int[] previous = new int[graph.NodeCount];
 
@@ -43,14 +44,14 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
                     }
                 }
             }
-            
+
             costs.Print();
-           
+
             // construct path
             List<int> path = new();
             path.Add(end);
             int current = end;
-            while(current != start) {
+            while (current != start) {
                 path.Add(previous[current]);
                 current = previous[current];
             }

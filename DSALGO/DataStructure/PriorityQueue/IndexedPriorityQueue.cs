@@ -19,9 +19,9 @@
         private int tail => heap.Count - 1;
 
         public IndexedPriorityQueue() {
-            NameMapCode = new ();
+            NameMapCode = new();
             CodeMapName = new();
-            values = new ();
+            values = new();
             heap = new();
             KeyCodeToHeapIdx = new();
             HeapIdxToKeyCode = new();
@@ -50,18 +50,18 @@
         public void EditPriority(TKey key, TValue value) {
             if (NameMapCode.ContainsKey(key)) {
                 int ID = NameMapCode[key];
-                
+
                 values[ID] = value;
                 int heapIdx = KeyCodeToHeapIdx[ID];
-                
+
                 int cmp = value.CompareTo(heap[heapIdx]);
                 heap[heapIdx] = value;
-                if(cmp > 0) {
+                if (cmp > 0) {
                     SinkDown(heapIdx);
                 }
                 else {
                     SwimUp(heapIdx);
-                }                
+                }
             }
             else {
                 Enqueue(key, value);
@@ -73,7 +73,7 @@
 
             Swap(0, tail);
 
-            
+
             HeapIdxToKeyCode[tail] = -1;
             KeyCodeToHeapIdx[popCode] = -1; // pop not in the heap;
             values[popCode] = default(TValue);
@@ -81,9 +81,9 @@
 
             SinkDown(0);
 
-            return popKey;            
+            return popKey;
         }
-      public TKey Peek() {
+        public TKey Peek() {
             int keyCode = HeapIdxToKeyCode[0];
             return CodeMapName[keyCode];
         }
@@ -97,13 +97,13 @@
             }
         }
         private void SinkDown(int index) {
-            
+
             while (true) {
                 int left = 2 * index + 1;
                 int right = 2 * index + 2;
                 int smallest = -1;
                 // current > left;
-                if(left < Count && heap[index].CompareTo(heap[left]) > 0) {
+                if (left < Count && heap[index].CompareTo(heap[left]) > 0) {
                     smallest = left;
                 }
                 if (right < Count && heap[index].CompareTo(heap[right]) > 0) {
@@ -123,7 +123,7 @@
             (HeapIdxToKeyCode[i], HeapIdxToKeyCode[j]) = (HeapIdxToKeyCode[j], HeapIdxToKeyCode[i]);
             (KeyCodeToHeapIdx[KeyI], KeyCodeToHeapIdx[KeyJ]) = (KeyCodeToHeapIdx[KeyJ], KeyCodeToHeapIdx[KeyI]);
         }
-        
+
         public void Show() {
             for (int i = 0; i < heap.Count; i++) {
                 int keyCode = HeapIdxToKeyCode[i];

@@ -1,12 +1,8 @@
 ﻿using DSALGO.DataStructure.GraphStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.Traversal {
     public class DepthFirstSearchRecursive {
+        // this is preorder DFS
         enum Color {
             White,  // start
             Grey,   // exist in callstack
@@ -63,8 +59,7 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             time++;
             discoverTime[node] = time;
 
-            List<int> adjNodes = graph.GetAdjacentNodes(node);
-            foreach (var adj in adjNodes) {
+            foreach (var adj in graph.GetAdjacentNodes(node)) {
                 if (color[adj] == Color.White) {
                     parent[adj] = node;
                     DFS(adj);

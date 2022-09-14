@@ -1,19 +1,17 @@
 ﻿using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.PriorityQueue;
 
-namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
-{
-    public static class DijkstraAlgo
-    {
+namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
+    public static class DijkstraAlgo {
         public static double FindPath(GraphList graph, int start, int end, ref List<int> path) {
-           
+
             if (!graph.ContainsNode(start) || !graph.ContainsNode(end)) {
                 return 0;
             }
             IndexedPriorityQueue<int, double> queue = new(); // nodeID, currentCost
             bool[] isVisited = new bool[graph.NodeCount];
             double[] nodeCosts = new double[graph.NodeCount]; Array.Fill(nodeCosts, int.MaxValue);
-            int[] previous = new int[graph.NodeCount];  Array.Fill(previous, -1);
+            int[] previous = new int[graph.NodeCount]; Array.Fill(previous, -1);
             queue.Enqueue(start, 0);
             nodeCosts[start] = 0;
 
@@ -27,7 +25,7 @@ namespace DSALGO.Algorithm.GraphTheory.FindShortestPath
                 }
                 foreach (var edge in graph.GetAdjEdges(popNode)) {
                     if (isVisited[edge.to]) continue;
-    
+
                     if (nodeCosts[popNode] + edge.weight < nodeCosts[edge.to]) {
                         nodeCosts[edge.to] = nodeCosts[popNode] + edge.weight;
                         Console.WriteLine($"Enqueue from [{popNode}] to [{edge.to}], current cost :{nodeCosts[edge.to]}");

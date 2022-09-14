@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.DataStructure.Graph {
     public class GraphList : IGraph {
@@ -64,7 +62,7 @@ namespace DSALGO.DataStructure.Graph {
         public List<int> GetAllNodes() => Graph.Keys.ToList();
         public List<int> GetAdjNodes(int node) => Graph[node].Select(x => x.to).ToList();
         public List<Edge> GetAdjEdges(int node) => Graph[node];
-        public void EditEdge(int from, int to, double newWeight) {
+        public void EditEdge(int from, int to, int newWeight) {
             if (!ContainsEdge(from, to)) throw new Exception($"Edge ({from}, {to}) is not in graphs");
             Edge edge = Graph[from].Find(x => x.to == to);
             edge.weight = newWeight;
@@ -79,7 +77,7 @@ namespace DSALGO.DataStructure.Graph {
         public void AddEdge(int from, int to) {
             AddEdge(from, to, 0);
         }
-        public void AddEdge(int from, int to, double weight) {
+        public void AddEdge(int from, int to, int weight) {
             if (ContainsEdge(from, to))
                 throw new Exception($"Edge ({from},{to},) already exist");
 
@@ -91,7 +89,7 @@ namespace DSALGO.DataStructure.Graph {
 
             if (Graph.ContainsKey(node)) throw new Exception($"Node {node} already exist");
             Graph.Add(node, new List<Edge>());
-            
+
         }
         public void DeleteNode(int node) {
             if (!Graph.ContainsKey(node)) throw new Exception($"Node {node} is not in the graph");
@@ -168,7 +166,7 @@ namespace DSALGO.DataStructure.Graph {
                 string[] eStr = lines[i].Split(" ");
                 int from = int.Parse(eStr[0]);
                 int to = int.Parse(eStr[1]);
-                double wei = double.Parse(eStr[2]);
+                int wei = int.Parse(eStr[2]);
                 Edge e = new Edge(from, to, wei);
                 edges.Add(e);
             }

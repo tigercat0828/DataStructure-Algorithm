@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructure.Graph {
+﻿namespace DSALGO.DataStructure.Graph {
     // for network problem
     public class Pipe {
         public int from;
         public int to;
-        public double flow;
-        public double capacity;
+        public int flow;
+        public int capacity;
 
 
-        public Pipe(int dest, double capacity) {
+        public Pipe(int dest, int capacity) {
             this.to = dest;
             this.capacity = capacity;
         }
@@ -23,7 +17,7 @@ namespace DSALGO.DataStructure.Graph {
             flow = previous.flow;
             capacity = previous.capacity;
         }
-        public Pipe(int from, int to, double flow, double capacity) {
+        public Pipe(int from, int to, int flow, int capacity) {
             this.from = from;
             this.to = to;
             this.flow = flow;

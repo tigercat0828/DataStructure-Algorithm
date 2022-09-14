@@ -1,9 +1,5 @@
 ﻿using DSALGO.DataStructure.Graph;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
     public static class PrimMst {
@@ -40,7 +36,7 @@ namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
         private static void EnqueueEdges(int node) {
 
             Visited[node] = true;
-            
+
             foreach (var link in Graph.GetAdjEdges(node)) {
                 if (Visited[link.to]) continue;
 

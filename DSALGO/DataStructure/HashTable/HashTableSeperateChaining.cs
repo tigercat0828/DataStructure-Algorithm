@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace DSALGO.DataStructure.HashTable {
-    public class HashTableSeperateChaining<TKey, TValue> : IHashTable<TKey,TValue> , IEnumerable{
+    public class HashTableSeperateChaining<TKey, TValue> : IHashTable<TKey, TValue>, IEnumerable {
         const int DEFAULT_SIZE = 10;
         const float LOAD_FACTOR = 0.75f;
         private float threshold => (float)Count / (float)capacity;
@@ -24,12 +19,12 @@ namespace DSALGO.DataStructure.HashTable {
             return (hashCode & 0x7FFFFFFF) % capacity;
         }
         public void Add(TKey key, TValue value) {
-            if (HasKey(key, out int index)) 
+            if (HasKey(key, out int index))
                 throw new ArgumentException($"Already has {key} key in hashtable.");
-            
+
             HashEntry<TKey, TValue> entry = new(key, value);
-            
-            if(_Bucket[index] == null) {
+
+            if (_Bucket[index] == null) {
                 _Bucket[index] = new List<HashEntry<TKey, TValue>>();
             }
             // chaining
@@ -66,10 +61,10 @@ namespace DSALGO.DataStructure.HashTable {
         }
         public void Remove(TKey key) {
             if (!HasKey(key, out int index)) throw new ArgumentException($"There is no Key: {key} in hashtable");
-           
+
             Console.WriteLine(index);
             if (_Bucket[index] != null) {
-                var bucket =  _Bucket[index];
+                var bucket = _Bucket[index];
                 foreach (var entry in bucket) {
                     if (entry.IsKeyIdentical(key)) {
                         bucket.Remove(entry);
@@ -136,7 +131,7 @@ namespace DSALGO.DataStructure.HashTable {
                 }
             }
         }
-        public void Print() { 
+        public void Print() {
             for (int i = 0; i < capacity; i++) {
                 Console.Write($"{i} : ");
                 if (_Bucket[i] == null) {
@@ -152,7 +147,7 @@ namespace DSALGO.DataStructure.HashTable {
         public IEnumerator GetEnumerator() {
             for (int i = 0; i < _Bucket.Length; i++) {
                 var bucket = _Bucket[i];
-                if(bucket != null) {
+                if (bucket != null) {
                     foreach (var entry in bucket) {
                         yield return entry;
                     }

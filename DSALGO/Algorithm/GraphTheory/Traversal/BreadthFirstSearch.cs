@@ -1,16 +1,11 @@
 ﻿using DSALGO.DataStructure.GraphStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.Traversal {
     public class BreadthFirstSearch {
-        enum Color { 
+        enum Color {
             White, Grey, Black
         }
-        
+
         private readonly Graph graph;
         List<int> Result;
         Color[] colors;
@@ -33,12 +28,12 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             }
             Queue<int> queue = new Queue<int>();
             queue.Enqueue(startNode);
-            while (queue.Count > 0) { 
+            while (queue.Count > 0) {
                 int pop = queue.Dequeue();
                 Result.Add(pop);
-                colors[pop]    = Color.Grey;
+                colors[pop] = Color.Grey;
                 foreach (var adj in graph.GetAdjacentNodes(pop)) {
-                    if(colors[adj] == Color.White) {
+                    if (colors[adj] == Color.White) {
                         parent[adj] = pop;
                         queue.Enqueue(adj);
                     }

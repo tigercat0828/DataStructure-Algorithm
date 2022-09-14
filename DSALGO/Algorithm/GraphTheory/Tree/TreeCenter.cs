@@ -1,6 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
-
-namespace DSALGO.Algorithm.GraphTheory.Tree {
+﻿namespace DSALGO.Algorithm.GraphTheory.Tree {
     public static class TreeCenter {
         public static List<int> Get(DataStructure.Graph.GraphList graph) {
             Dictionary<int, int> degreeMap = new();

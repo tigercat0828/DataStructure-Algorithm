@@ -20,10 +20,10 @@
         }
         public static void Run2(int[] array) {
             bool isSorted = false;
-            
+
             while (!isSorted) {
                 isSorted = true;
-                for (int i = 0; i < array.Length-1; i++) {
+                for (int i = 0; i < array.Length - 1; i++) {
                     if (array[i] > array[i + 1]) {
                         int tmp = array[i];
                         array[i] = array[i + 1];
@@ -34,6 +34,6 @@
                 array.Print();
             }
         }
-        
+
     }
 }

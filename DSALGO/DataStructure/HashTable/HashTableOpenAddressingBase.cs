@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.DataStructure.HashTable {
+﻿namespace DSALGO.DataStructure.HashTable {
     public abstract class HashTableOpenAddressingBase<TKey, TValue> : IHashTable<TKey, TValue> {
         public int Count => throw new NotImplementedException();
         public void Add(TKey key, TValue value) {

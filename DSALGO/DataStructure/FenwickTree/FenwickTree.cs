@@ -28,10 +28,10 @@
         private int LSB(int index) {
             return index & -index;
         }
-        public void Update(int index, double  value) {
+        public void Update(int index, double value) {
             double delta = value - source[index];
             int i = index;
-            while(i < tree.Length) {
+            while (i < tree.Length) {
                 tree[i] += value;
                 i += LSB(i);
             }

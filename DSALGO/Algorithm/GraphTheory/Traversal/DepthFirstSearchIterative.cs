@@ -1,19 +1,15 @@
 ﻿using DSALGO.DataStructure.GraphStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.Traversal {
     public class DepthFirstSearchIterative {
+      
         enum Color {
             White,
             Grey,
             Black
         }
         private readonly Graph graph;
-       
+
         int[] parent;
         Color[] colors;
         List<int> Result;
@@ -37,15 +33,15 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             Reset();
             Stack<int> stack = new();
             stack.Push(startNode);
-            
+
             while (stack.Count > 0) {
                 int pop = stack.Pop();
                 colors[pop] = Color.Grey;
-     
+
                 Result.Add(pop);
 
                 foreach (var adjNode in graph.GetAdjacentNodes(pop)) {
-                    if(colors[adjNode] == Color.White) {
+                    if (colors[adjNode] == Color.White) {
                         parent[adjNode] = pop;
                         stack.Push(adjNode);
                     }

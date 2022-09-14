@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.DataStructure.Graph {
     public class NetworkList {
@@ -22,7 +18,7 @@ namespace DSALGO.DataStructure.Graph {
                 string[] eStr = lines[i].Split(" ");
                 int from = int.Parse(eStr[0]);
                 int to = int.Parse(eStr[1]);
-                double weight = double.Parse(eStr[2]);
+                int weight = int.Parse(eStr[2]);
                 Edge e = new(from, to, weight);
                 edges.Add(e);
             }
@@ -33,12 +29,12 @@ namespace DSALGO.DataStructure.Graph {
         public int NodeCount => Network.Count;
         public int Source;
         public int Sink;
-        
+
         public List<int> GetAllNodes() => Network.Keys.ToList();
         public List<int> GetAdjNodes(int node) => Network[node].Select(x => x.to).ToList();
         public List<Pipe> GetAdjPipes(int node) => Network[node];
         public NetworkList(List<Edge> edgeList, int Source, int Sink) {
-            
+
             Network = new Dictionary<int, List<Pipe>>();
             this.Source = Source;
             this.Sink = Sink;
@@ -74,23 +70,23 @@ namespace DSALGO.DataStructure.Graph {
                 Console.WriteLine(string.Join(", ", pipes));
             }
         }
-        public void EditPipeFlow(int from, int to, double newflow) {
+        public void EditPipeFlow(int from, int to, int newflow) {
             if (!ContainsPipe(from, to)) throw new Exception($"Pipe ({from}, {to}) is not in graphs");
             Pipe pipe = Network[from].Find(x => x.to == to);
             pipe.flow = newflow;
         }
-        public void EditPipeCapacity(int from, int to, double capacity) {
+        public void EditPipeCapacity(int from, int to, int capacity) {
             if (!ContainsPipe(from, to)) throw new Exception($"Pipe ({from}, {to}) is not in graphs");
             Pipe pipe = Network[from].Find(x => x.to == to);
             pipe.capacity = capacity;
         }
-        public void AddPipe(int from, int to, double capacity) {
+        public void AddPipe(int from, int to, int capacity) {
             if (ContainsPipe(from, to))
                 throw new Exception($"Pipe ({from},{to},) already exist");
 
             if (!ContainsNode(from)) AddNode(from);
             if (!ContainsNode(to)) AddNode(to);
-            Network[from].Add(new Pipe(from ,to, 0, capacity));
+            Network[from].Add(new Pipe(from, to, 0, capacity));
         }
         public void AddNode(int node) {
             if (Network.ContainsKey(node)) throw new Exception($"Node {node} already exist");
@@ -123,7 +119,7 @@ namespace DSALGO.DataStructure.Graph {
             Network.Clear();
         }
         public GraphList ToResidualGraph() {
-            GraphList residual = new(isUndirected:false);
+            GraphList residual = new(isUndirected: false);
             foreach (var node in GetAllNodes()) {
                 foreach (var pipe in GetAdjPipes(node)) {
                     residual.AddEdge(node, pipe.to, pipe.capacity - pipe.flow);

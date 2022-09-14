@@ -1,9 +1,4 @@
 ﻿using DSALGO.DataStructure.Graph;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.NetworkFlow {
     public static class FordFulkersonAlgo {
@@ -30,26 +25,26 @@ namespace DSALGO.Algorithm.GraphTheory.NetworkFlow {
             int sink = Network.Sink;
 
             Stack<int> stack = new Stack<int>();
-            stack.Push(source); 
+            stack.Push(source);
             visited[source] = true;
-            while(stack.Count > 0) {
+            while (stack.Count > 0) {
                 int pop = stack.Pop();
-                if(pop == sink) {
-                    
+                if (pop == sink) {
+
                 }
-                
+
                 visited[pop] = true;
                 foreach (var link in Residual.GetAdjEdges(pop)) {
-                    if (!visited[link.to]) { 
+                    if (!visited[link.to]) {
                         stack.Push(link.to);
                         previous[link.to] = pop;
                     }
                 }
             }
         }
-        private static List<int> BuildPath(int start , int end) {
+        private static List<int> BuildPath(int start, int end) {
             List<int> path = new();
-            for (int i = end; i  != start ; i = previous[i]) {
+            for (int i = end; i != start; i = previous[i]) {
                 path.Add(i);
             }
             return path;
