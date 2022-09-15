@@ -19,20 +19,20 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
         2. reverse the graph
         3. DFS the vertex on stack
          */
-        int[] groups;
-        int groupID;
+        int[] SCCs;
+        int SCCid;
         Graph originGraph;
         Graph reverseGraph;
         bool[] isVisited;
         Stack<int> orderStack;
-        public int[] GetSCC(Graph graph) {
-            groupID = 0;
+        public int[] FindSCCs(Graph graph) {
+            SCCid = 0;
             originGraph = graph;
             GetReverseGraph();
-            reverseGraph.Print();
+            // reverseGraph.Print();
             orderStack = new();
             isVisited = new bool[graph.NodeCount];
-            groups = new int[graph.NodeCount];
+            SCCs = new int[graph.NodeCount];
             // 1st order : define second DFS visit order
             foreach (var node in originGraph.GetAllNodes()) {
                 if (!isVisited[node]) {
@@ -46,10 +46,10 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
                 if (!isVisited[pop]) {
                     DFS2nd(pop);
                     Console.WriteLine();
-                    groupID++;
+                    SCCid++;
                 }
             }
-            return groups;
+            return SCCs;
         }
         void DFS1st(int node) {
             isVisited[node] = true;
@@ -64,7 +64,7 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
         void DFS2nd(int node) {
             
             Console.Write(node + " ");
-            groups[node] = groupID;
+            SCCs[node] = SCCid;
 
             isVisited[node] = true;
             foreach (var adj in reverseGraph.GetAdjacentNodes(node)) {
