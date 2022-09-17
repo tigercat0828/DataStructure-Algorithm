@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
+namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     public class FloydWarshallAlgo {
 
         double[][] dp;

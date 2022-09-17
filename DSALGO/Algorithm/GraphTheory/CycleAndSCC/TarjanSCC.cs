@@ -1,12 +1,7 @@
 ﻿using DSALGO.DataStructure.GraphStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
-    public  class TarjanSCC {
+    public class TarjanSCC {
         const int UNVISITED = -1;
         int[] lows;     // imply SCC group
         int[] IDs;
@@ -15,7 +10,7 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
         Stack<int> stack;
         int id;
         public int[] FindSCCs(Graph graph) {
-            
+
             this.graph = graph;
             stack = new Stack<int>();
             int nodeCount = graph.NodeCount;
@@ -27,7 +22,7 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
 
             foreach (var node in graph.GetAllNodes()) {
                 if (IDs[node] == UNVISITED) {
-                    DFS(node);        
+                    DFS(node);
                 }
             }
             return lows;
@@ -40,11 +35,11 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
             stack.Push(node);
             foreach (var to in graph.GetAdjacentNodes(node)) {
                 if (IDs[to] == UNVISITED) DFS(to);
-                if(onStack[to]) lows[node] = Math.Min(lows[to], lows[node]);
+                if (onStack[to]) lows[node] = Math.Min(lows[to], lows[node]);
             }
             if (IDs[node] == lows[node]) {
-                for (int pop = stack.Pop();;pop=stack.Pop()) {
-                    onStack[pop] = false ;
+                for (int pop = stack.Pop(); ; pop = stack.Pop()) {
+                    onStack[pop] = false;
                     //lows[n] = IDs[node];
                     Console.Write(pop + " ");
                     if (pop == node) break;

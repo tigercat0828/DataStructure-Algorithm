@@ -2,7 +2,7 @@
 
 namespace DSALGO.Algorithm.GraphTheory.Traversal {
     public class DepthFirstSearchIterative {
-      
+
         enum Color {
             White,
             Grey,

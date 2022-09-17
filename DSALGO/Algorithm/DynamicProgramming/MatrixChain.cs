@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.Algorithm.DynamicProgramming {
+﻿namespace DSALGO.Algorithm.DynamicProgramming {
     public class MatrixChain {
 
         // M[i,j] = min i<=k<j{ M[i,k] + M[k+1,j] + e[i-1] * e[k] * e[j] };
@@ -22,7 +16,7 @@ namespace DSALGO.Algorithm.DynamicProgramming {
                     int J = j + i;
                     //Console.Write($"M[{R}, {C}]   ");
                     for (int k = I; k < J; k++) {
-                        
+
                         int next = M[I, k] + M[k + 1, J] + P[I - 1] * P[k] * P[J];
                         if (next < M[I, J]) {
                             M[I, J] = next;
@@ -65,7 +59,7 @@ namespace DSALGO.Algorithm.DynamicProgramming {
         }
         public void AllocateSpace(int n) {
             M = new int[n, n];
-            S= new int[n, n];
+            S = new int[n, n];
             for (int i = 0; i < M.GetLength(0); i++) {
                 for (int j = 0; j < M.GetLength(1); j++) {
                     M[i, j] = int.MaxValue;
@@ -74,7 +68,7 @@ namespace DSALGO.Algorithm.DynamicProgramming {
             for (int i = 0; i < M.GetLength(0); i++) {
                 M[i, i] = 0;
             }
-            
+
         }
     }
 }

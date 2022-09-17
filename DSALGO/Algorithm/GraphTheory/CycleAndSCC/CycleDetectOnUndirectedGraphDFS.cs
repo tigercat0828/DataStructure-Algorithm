@@ -7,7 +7,7 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
     finds an edge that points to an already-visited vertex (a back edge).
     */
     public class CycleDetectOnUndirectedGraphDFS {
-        
+
         enum Color {
             White, Grey, Black
         }

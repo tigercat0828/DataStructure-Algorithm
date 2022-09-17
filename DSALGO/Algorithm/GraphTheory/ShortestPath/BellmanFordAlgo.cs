@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
+namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     public static class BellmanFordAlgo {
         const double UNVISITED = double.MaxValue;
         const double IN_NEGATIVE_CYCLE = double.MinValue;

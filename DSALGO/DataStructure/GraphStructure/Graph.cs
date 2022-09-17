@@ -86,11 +86,11 @@
         }
         public List<int> GetAdjacentNodes(int node) {
             return graph[node].Select(x => x.dest).ToList();
-            
+
         }
         public List<Edge> GetAdjacentEdges(int node) {
             List<Edge> result = new();
-            
+
             foreach (var n in graph[node]) {
                 result.Add(new Edge(node, n.dest, n.weight));
             }

@@ -1,6 +1,6 @@
 ﻿using DSALGO.DataStructure.Graph;
 
-namespace DSALGO.Algorithm.GraphTheory.FindShortestPath {
+namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     public static class BreadthFirstSearch {
         public static int FindPath(GraphList graph, int start, int end, ref List<int> path) {
 
