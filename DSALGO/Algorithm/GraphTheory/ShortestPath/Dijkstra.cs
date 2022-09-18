@@ -11,13 +11,13 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         bool[] visited;
         int[] costs;
         int[] previous;
-        IndexedPriorityQueue<int, int> queue;
+        IndexedPriorityQueue<int, int> queue;   // HEAP
         public Dijkstra(Graph graph) {
             this.graph = graph;
             queue = new();
-            visited = new bool[graph.NodeCount];
-            costs = new int[graph.NodeCount];
-            previous = new int[graph.NodeCount];
+            visited = new bool[graph.MaxID];
+            costs = new int[graph.MaxID];
+            previous = new int[graph.MaxID];
             Array.Fill(costs, int.MaxValue);
             Array.Fill(previous, -1);
         }
@@ -25,7 +25,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         public (List<int> path, int cost) FindPath(int start, int end) {
 
             if (!graph.ContainsNode(start) || !graph.ContainsNode(end)) {
-                return (null, 0);
+                return (new(), 0);
             }
             if (start == end) {
                 return (new() { start }, 0);

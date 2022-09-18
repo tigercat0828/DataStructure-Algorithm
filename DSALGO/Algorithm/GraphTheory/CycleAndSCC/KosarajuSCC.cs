@@ -63,8 +63,8 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
             }
         }
         private void GetReverseGraph() {
-            List<Edge> edges = originGraph.GetEdgeList();
-            reverseGraph = new Graph(originGraph.Capacity);
+            List<Edge> edges = originGraph.ToEdgeList();
+            reverseGraph = new Graph(originGraph.MaxID);
             foreach (var e in edges) {
                 reverseGraph.AddEdge(e.to, e.from, e.weight);
             }

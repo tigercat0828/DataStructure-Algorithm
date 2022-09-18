@@ -28,6 +28,7 @@ namespace DSALGO {
             for (int i = 0; i < Mat.Length; i++) {
                 sb.Append("[");
                 for (int j = 0; j < Mat[i].Length; j++) {
+                    
                     sb.Append(String.Format("{0, 4}", Mat[i][j]));
                 }
                 sb.AppendLine("  ]");

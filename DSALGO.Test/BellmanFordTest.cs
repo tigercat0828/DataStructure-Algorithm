@@ -1,15 +1,16 @@
 ﻿using DSALGO.Algorithm.GraphTheory.ShortestPath;
 using DSALGO.DataStructure.GraphStructure;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace DSALGO.Test {
-
-    public class DijsktraTest {
-
+    public class BellmanFordTest {
         [Fact]
         public void FindPathTest() {
-
             Graph graph = new(5);
             graph.AddEdge(0, 1, 6);
             graph.AddEdge(0, 2, 7);
@@ -22,11 +23,8 @@ namespace DSALGO.Test {
             graph.AddEdge(3, 1, -2);
             graph.AddEdge(4, 3, 7);
 
-            Dijkstra pathFinder = new(graph);
-            (List<int> actualpath, int cost) = pathFinder.FindPath(0, 4);
-            List<int> expectPath = new() { 0, 3, 4, 5 };
-            Assert.Equal(expectPath, actualpath);
-            Assert.Equal(6, cost);
+            BellmanFord pathfinder = new(graph);
+            pathfinder.FindPath(0, 4);
         }
     }
 }

@@ -1,43 +1,48 @@
 ﻿using DSALGO.DataStructure.Graph;
+using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
-    public static class BreadthFirstSearch {
-        public static int FindPath(GraphList graph, int start, int end, ref List<int> path) {
+    public class BreadthFirst {
+        private readonly Graph graph;
+        int[] previous;
+        bool[] visited;
+        public BreadthFirst(Graph graph) {
+            this.graph = graph;
+            previous = new int[graph.MaxID];
+            visited = new bool[graph.MaxID];
+        }
+        public (List<int> path, int cost)  FindPath(int start, int end) {
 
             if (start == end) {
-                path = new List<int>() { start };
-                return 0;
+                return (new List<int>() { start}, 0);
             }
-
-            Dictionary<int, int> previous = new();
-            HashSet<int> visited = new();
+            
             Queue<int> queue = new();
-            bool isTargetFound = false;
 
             queue.Enqueue(start);
-            visited.Add(start);
+            visited[start] = true;
             while (queue.Count > 0) {
                 int pop = queue.Dequeue();
-                if (pop == end) {
-                    isTargetFound = true;
-                    break;
-                }
+                if (pop == end) break;
 
-                foreach (var node in graph.GetAdjNodes(pop)) {
-                    if (visited.Contains(node)) continue;
+                foreach (var node in graph.GetAdjacentNodes(pop)) {
+                    if (visited[node]) continue;
                     queue.Enqueue(node);
-                    visited.Add(node);
+                    visited[node] = true ;
                     previous[node] = pop;
                 }
             }
-            if (isTargetFound) {
-                for (int i = end; i != start; i = previous[i]) {
-                    path.Add(i);
-                }
-                path.Add(start);
-                path.Reverse();
+            List<int> path = BuildPath(start, end);
+            return (path, path.Count);
+        }
+        public List<int> BuildPath(int start, int end) {
+            List<int> path = new List<int>();
+            for (int i = end; i != start; i = previous[i]) {
+                path.Add(i);
             }
-            return path.Count;
+            path.Add(start);
+            path.Reverse();
+            return path;
         }
 
     }
