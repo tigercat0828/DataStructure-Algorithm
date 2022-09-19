@@ -1,7 +1,4 @@
-﻿
-using DSALGO.DataStructure.GraphStructure;
-
-namespace DSALGO.DataStructure.Graph {
+﻿namespace DSALGO.DataStructure.GraphStructure {
     public interface IGraph {
         bool isUndirected { get; }
         int NodeCount { get; }

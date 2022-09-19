@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Queue {
     public class AQueue<T> : IQueue<T> {
         // Circular Queue
         T[] queue;
@@ -8,7 +8,7 @@
         public int Count { get; private set; }
 
         public AQueue(int capcity) {
-            this.Capacity = capcity;
+            Capacity = capcity;
             queue = new T[capcity];
             front = 0;
             rear = 0;
@@ -18,7 +18,7 @@
         public T Dequeue() {
             if (front == rear) {
                 Console.WriteLine("Queue is empty");
-                return default(T);
+                return default;
             }
             T pop = queue[front];
 

@@ -1,6 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
-using DSALGO.DataStructure.GraphStructure;
-using System.Reflection.Metadata.Ecma335;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     // Dynamic Programming
@@ -9,20 +7,20 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     // All shortest path algo
 
     public class FloydWarshall {
-        
+
         int[][] dp;
         int[][] next;
         public FloydWarshall(Graph graph) {
             dp = graph.ToMatrix();
             // Utility.PrintMatix(dp);
             int n = dp.Length;
-    
+
             next = new int[n][];
             for (int i = 0; i < n; i++) {
                 next[i] = new int[n];
                 Array.Fill(next[i], -1);
             }
-            
+
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (dp[i][j] != Graph.CANT_REACH) next[i][j] = j;
@@ -30,11 +28,11 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
             }
             Run();
         }
-        private void Run () {
+        private void Run() {
             // perform algo
             int n = dp.Length;
             for (int k = 0; k < n; k++) {
-                
+
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < n; j++) {
                         //Console.WriteLine($"Run({i}, {k} , {j})");
@@ -64,7 +62,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 return (new(), 0);
             }
             List<int> path = new();
-            
+
             int at;
             for (at = start; at != end; at = next[at][end]) {
                 if (at == -1) return (new(), 0);      // there is no path from start to end

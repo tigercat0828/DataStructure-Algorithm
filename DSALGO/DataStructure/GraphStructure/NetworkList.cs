@@ -1,6 +1,4 @@
-﻿using DSALGO.DataStructure.GraphStructure;
-
-namespace DSALGO.DataStructure.Graph {
+﻿namespace DSALGO.DataStructure.GraphStructure {
     public class NetworkList {
         // store vertice & edges with adjacency list
         public static NetworkList Parse(string filePath) {

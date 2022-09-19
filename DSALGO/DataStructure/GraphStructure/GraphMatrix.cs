@@ -1,7 +1,6 @@
-﻿using DSALGO.DataStructure.GraphStructure;
-using System.Text;
+﻿using System.Text;
 
-namespace DSALGO.DataStructure.Graph {
+namespace DSALGO.DataStructure.GraphStructure {
     public class GraphMatrix : IGraph {
         public const int X = 10000000;
         public bool isUndirected { get; }
@@ -125,14 +124,14 @@ namespace DSALGO.DataStructure.Graph {
             StringBuilder sb = new StringBuilder();
             sb.Append($"- [");
             for (int i = 0; i < NodeCount; i++) {
-                sb.Append(String.Format("{0, 6}", $"{i}"));
+                sb.Append(string.Format("{0, 6}", $"{i}"));
             }
             sb.AppendLine($"  ]\n");
             for (int i = 0; i < NodeCount; i++) {
                 sb.Append($"{i} [");
                 for (int j = 0; j < NodeCount; j++) {
-                    if (Mat[i][j] == X) sb.Append(String.Format("{0, 6}", "X"));
-                    else sb.Append(String.Format("{0, 6}", Mat[i][j]));
+                    if (Mat[i][j] == X) sb.Append(string.Format("{0, 6}", "X"));
+                    else sb.Append(string.Format("{0, 6}", Mat[i][j]));
                 }
                 sb.AppendLine("  ]");
             }

@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.DynamicArray {
     public interface IDynamicArray {
         int Count { get; }
 

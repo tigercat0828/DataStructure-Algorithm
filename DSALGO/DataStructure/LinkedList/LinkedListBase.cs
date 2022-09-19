@@ -1,5 +1,5 @@
-﻿namespace DSALGO.DataStructure {
-    public abstract class LinkedList {
+﻿namespace DSALGO.DataStructure.LinkedList {
+    public abstract class LinkedListBase {
         public abstract int this[int index] { get; set; }
         public abstract void AddFirst(int data);
         public abstract void AddLast(int data);

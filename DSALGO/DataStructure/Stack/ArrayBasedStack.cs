@@ -1,5 +1,4 @@
-﻿
-namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Stack {
 
     // Implement a stack using array : Astack lmao
     public class ArrayBasedStack : IStack {

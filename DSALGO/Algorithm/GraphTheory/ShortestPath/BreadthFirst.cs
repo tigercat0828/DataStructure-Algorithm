@@ -1,5 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
-using DSALGO.DataStructure.GraphStructure;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     public class BreadthFirst {
@@ -11,12 +10,12 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
             previous = new int[graph.MaxID];
             visited = new bool[graph.MaxID];
         }
-        public (List<int> path, int cost)  FindPath(int start, int end) {
+        public (List<int> path, int cost) FindPath(int start, int end) {
 
             if (start == end) {
-                return (new List<int>() { start}, 0);
+                return (new List<int>() { start }, 0);
             }
-            
+
             Queue<int> queue = new();
 
             queue.Enqueue(start);
@@ -28,7 +27,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 foreach (var node in graph.GetAdjacentNodes(pop)) {
                     if (visited[node]) continue;
                     queue.Enqueue(node);
-                    visited[node] = true ;
+                    visited[node] = true;
                     previous[node] = pop;
                 }
             }

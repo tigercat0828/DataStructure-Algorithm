@@ -1,7 +1,7 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.LinkedList.LinkedList {
 
     // Double Linked List
-    public class DoublyLinkedList : LinkedList {
+    public class DoublyLinkedList : LinkedListBase {
 
         class Node {
             public int data;

@@ -1,6 +1,4 @@
-﻿using DSALGO.DataStructure.GraphStructure;
-
-namespace DSALGO.DataStructure.Graph {
+﻿namespace DSALGO.DataStructure.GraphStructure {
     public class GraphList : IGraph {
         // store vertice & edges with adjacency list
         #region member property
@@ -56,7 +54,7 @@ namespace DSALGO.DataStructure.Graph {
             foreach (var node in nodes) {
                 Console.Write(node + " : ");
                 List<Edge> links = GetAdjEdges(node);
-                Console.WriteLine(String.Join(", ", links));
+                Console.WriteLine(string.Join(", ", links));
             }
         }
         public List<int> GetAllNodes() => Graph.Keys.ToList();

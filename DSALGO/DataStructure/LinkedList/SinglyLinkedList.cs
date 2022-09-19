@@ -1,6 +1,6 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.LinkedList.LinkedList {
     // Single Linked List
-    public class SinglyLinkedList : LinkedList {
+    public class SinglyLinkedList : LinkedListBase {
         class Node {
             public int data;
             public Node next;

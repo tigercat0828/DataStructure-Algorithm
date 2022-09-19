@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Queue {
     public interface IQueue<T> {
         int Count { get; }
         T Dequeue();

@@ -1,4 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.NetworkFlow {
     public static class FordFulkersonAlgo {

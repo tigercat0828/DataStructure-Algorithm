@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Stack {
     public class ListBasedStack : IStack {
         class Node {
             public int data;

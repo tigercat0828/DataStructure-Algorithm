@@ -127,11 +127,11 @@
                 Array.Fill(mat[i], CANT_REACH);
                 mat[i][i] = 0;
             }
-            
+
             for (int i = 0; i < MaxID; i++) {
                 if (isAlive[i]) {
                     foreach (var edge in GetAdjacentEdges(i)) {
-                        mat[edge.from][ edge.to] = edge.weight;
+                        mat[edge.from][edge.to] = edge.weight;
                     }
                 }
             }

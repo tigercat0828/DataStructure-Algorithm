@@ -1,5 +1,4 @@
 ﻿using DSALGO.DataStructure.DisjointSet;
-using DSALGO.DataStructure.Graph;
 using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {

@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Stack {
     public interface IStack {
         int Count { get; }
         int Pop();

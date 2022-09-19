@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure.Graph {
+﻿namespace DSALGO.DataStructure.GraphStructure {
     // for network problem
     public class Pipe {
         public int from;
@@ -8,7 +8,7 @@
 
 
         public Pipe(int dest, int capacity) {
-            this.to = dest;
+            to = dest;
             this.capacity = capacity;
         }
         public Pipe(Pipe previous) {

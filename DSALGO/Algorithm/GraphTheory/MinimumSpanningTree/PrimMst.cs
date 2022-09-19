@@ -1,5 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
-using DSALGO.DataStructure.GraphStructure;
+﻿using DSALGO.DataStructure.GraphStructure;
 
 namespace DSALGO.Algorithm.GraphTheory.MinimumSpanningTree {
     public static class PrimMst {

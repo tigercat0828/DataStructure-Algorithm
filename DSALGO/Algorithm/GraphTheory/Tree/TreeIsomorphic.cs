@@ -1,4 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
+﻿using DSALGO.DataStructure.GraphStructure;
 using DSALGO.DataStructure.Tree;
 using System.Text;
 

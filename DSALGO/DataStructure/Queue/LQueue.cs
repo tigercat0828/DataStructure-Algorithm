@@ -1,4 +1,4 @@
-﻿namespace DSALGO.DataStructure {
+﻿namespace DSALGO.DataStructure.Queue {
     public class LQueue<T> : IQueue<T> {
         class Node<T> {
             public T data;
@@ -41,7 +41,7 @@
             }
             else {
                 Console.WriteLine("Queue is empty");
-                return default(T);
+                return default;
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using DSALGO.DataStructure.Graph;
+﻿using DSALGO.DataStructure.GraphStructure;
 using DSALGO.DataStructure.Tree;
 
 namespace DSALGO.Algorithm.GraphTheory.Tree {
@@ -11,7 +11,7 @@ namespace DSALGO.Algorithm.GraphTheory.Tree {
             build(graph, root);
             return root;
         }
-        private static TreeNode build(DataStructure.Graph.GraphList graph, TreeNode node) {
+        private static TreeNode build(GraphList graph, TreeNode node) {
             foreach (var vertex in graph.GetAdjNodes(node.key)) {
                 // avoid adding parent as its child
                 if (node.parent != null && node.parent.key == vertex) continue;

@@ -13,12 +13,12 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         const int IN_NEGATIVE_CYCLE = int.MinValue;
         const int UNVISITED = int.MaxValue;
         private readonly List<Edge> edgeList;
-            
+
         int[] costs;
         int[] previous;
         int nodeCount;
         public BellmanFord(Graph graph) {
-            edgeList= graph.ToEdgeList();
+            edgeList = graph.ToEdgeList();
             nodeCount = graph.NodeCount;
             costs = new int[nodeCount];
             previous = new int[nodeCount];
@@ -62,4 +62,4 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         }
 
     }
-} 
+}
