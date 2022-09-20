@@ -1,5 +1,5 @@
 ﻿namespace DSALGO.Geometry {
-    public class FindPointsRank {
+    public class PointsRank2D {
         struct Node {
             public Vector2 pt;
             public int id;  // for recognize point

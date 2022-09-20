@@ -42,18 +42,22 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                         }
                     }
                 }
-                //Console.WriteLine($"====================={k}");
-                //for (int i = 0; i < dp.Length; i++) {
-                //    for (int j = 0; j < dp[0].Length; j++) {
-                //        if (dp[i][j] >= Graph.CANT_REACH) {
-                //            Console.Write($"{"-",4}");
-                //        }
-                //        else {
-                //            Console.Write($"{dp[i][j],4}");
-                //        }
-                //    }
-                //    Console.WriteLine();
-                //}
+
+                PrintIteration(k);
+            }
+        }
+        private void PrintIteration(int k) {
+            Console.WriteLine($"===================== {k}");
+            for (int i = 0; i < dp.Length; i++) {
+                for (int j = 0; j < dp[0].Length; j++) {
+                    if (dp[i][j] >= Graph.CANT_REACH) {
+                        Console.Write($"{"-",4}");
+                    }
+                    else {
+                        Console.Write($"{dp[i][j],4}");
+                    }
+                }
+                Console.WriteLine();
             }
         }
         public (List<int> path, int cost) FindPath(int start, int end) {

@@ -4,7 +4,6 @@
         // M[i,j] = min i<=k<j{ M[i,k] + M[k+1,j] + e[i-1] * e[k] * e[j] };
         int[,] M;
         int[,] S;
-        int count = 0;
         public (int, int) MinOperateCount(int[] P) {
             int n = P.Length;
 
@@ -22,7 +21,6 @@
                             M[I, J] = next;
                             S[I, J] = k;
                         }
-                        count++;
                     }
                 }
                 //Console.WriteLine();

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DSALGO.Geometry {
-    public  class JarvisMatch {
+    public  class JarvisMarch {
         public List<Vector2> GetConvexHull(List<int> points) {
-
+            throw new Exception();
         }
     }
 }
