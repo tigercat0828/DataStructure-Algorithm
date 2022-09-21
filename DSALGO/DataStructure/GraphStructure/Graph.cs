@@ -11,6 +11,7 @@
                 return $"[{dest}, {weight}]";
             }
         }
+
         public const int CANT_REACH = 1000000000;
         List<List<Link>> graph;
         List<bool> isAlive;
@@ -30,6 +31,9 @@
             for (int i = 0; i < MaxID; i++) {
                 graph.Add(new List<Link>());
             }
+        }
+        public Graph(Graph previous) {
+            previous = 
         }
         public void AddEdge(int from, int to, int weight = 1) {
             AddNode(from);
