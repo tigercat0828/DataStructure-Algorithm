@@ -33,7 +33,7 @@
             }
         }
         public Graph(Graph previous) {
-            previous = 
+            
         }
         public void AddEdge(int from, int to, int weight = 1) {
             AddNode(from);
