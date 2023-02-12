@@ -19,7 +19,7 @@
                 }
             }
             Vector2 anchor = points[minYindex];
-            Console.WriteLine("anchor = "+ anchor);
+            Console.WriteLine("anchor = " + anchor);
 
             points.RemoveAt(minYindex);
             // ange => dot operation with <x,y>.<1,0> = <x,0>
@@ -30,7 +30,7 @@
             foreach (var p in points) {
                 Console.WriteLine(p);
             }
-            
+
             Stack<Vector2> stack = new();
             stack.Push(anchor);
             stack.Push(points[0]);
@@ -51,7 +51,7 @@
             return stack.ToList();
         }
         private bool IsCounterClockWise(Vector2 A, Vector2 B) {
-            return (A^B) >= 0;   // we only care signed area
+            return (A ^ B) >= 0;   // we only care signed area
         }
     }
 }

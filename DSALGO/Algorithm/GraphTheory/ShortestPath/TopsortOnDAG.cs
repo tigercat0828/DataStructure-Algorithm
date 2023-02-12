@@ -6,11 +6,11 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         // weight of edge can be negative
 
         const int MAX_VALUE = 1000000000;
-        readonly Graph graph;
+        readonly DGraph graph;
         int[] costs;
         TopologicalSort sorter;
         int[] previous;
-        public TopsortOnDAG(Graph graph) {
+        public TopsortOnDAG(DGraph graph) {
 
             this.graph = graph;
             sorter = new(graph);

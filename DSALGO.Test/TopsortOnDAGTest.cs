@@ -8,7 +8,7 @@ namespace DSALGO.Test {
         [Fact]
         public void FindShortestPathTest() {
 
-            Graph graph = new(6);
+            DGraph graph = new(6);
             graph.AddEdge(0, 1, 5);
             graph.AddEdge(0, 2, 3);
             graph.AddEdge(1, 2, 2);

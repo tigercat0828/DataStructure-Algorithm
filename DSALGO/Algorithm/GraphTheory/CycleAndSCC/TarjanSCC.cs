@@ -6,10 +6,10 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
         int[] lows;     // imply SCC group
         int[] IDs;
         bool[] onStack;
-        Graph graph;
+        DGraph graph;
         Stack<int> stack;
         int id;
-        public int[] FindSCCs(Graph graph) {
+        public int[] FindSCCs(DGraph graph) {
 
             this.graph = graph;
             stack = new Stack<int>();

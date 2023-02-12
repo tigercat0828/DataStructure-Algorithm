@@ -10,7 +10,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
 
         int[][] dp;
         int[][] next;
-        public FloydWarshall(Graph graph) {
+        public FloydWarshall(DGraph graph) {
             dp = graph.ToMatrix();
             // Utility.PrintMatix(dp);
             int n = dp.Length;
@@ -23,7 +23,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
 
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (dp[i][j] != Graph.CANT_REACH) next[i][j] = j;
+                    if (dp[i][j] != DGraph.CANT_REACH) next[i][j] = j;
                 }
             }
             Run();
@@ -36,6 +36,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < n; j++) {
                         //Console.WriteLine($"Run({i}, {k} , {j})");
+                 
                         if (dp[i][k] + dp[k][j] < dp[i][j]) {
                             dp[i][j] = dp[i][k] + dp[k][j];
                             next[i][j] = next[i][k];
@@ -50,11 +51,11 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
             Console.WriteLine($"===================== {k}");
             for (int i = 0; i < dp.Length; i++) {
                 for (int j = 0; j < dp[0].Length; j++) {
-                    if (dp[i][j] >= Graph.CANT_REACH) {
-                        Console.Write($"{"-",4}");
+                    if (dp[i][j] > 10000) {
+                        Console.Write($"{"-",3}");
                     }
                     else {
-                        Console.Write($"{dp[i][j],4}");
+                        Console.Write($"{dp[i][j],3}");
                     }
                 }
                 Console.WriteLine();
@@ -62,7 +63,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         }
         public (List<int> path, int cost) FindPath(int start, int end) {
 
-            if (dp[start][end] == Graph.CANT_REACH) {
+            if (dp[start][end] == DGraph.CANT_REACH) {
                 return (new(), 0);
             }
             List<int> path = new();
@@ -83,7 +84,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < n; j++) {
                         if (dp[i][k] + dp[k][j] < dp[i][j]) {
-                            dp[i][j] = -Graph.CANT_REACH;
+                            dp[i][j] = -DGraph.CANT_REACH;
                             next[i][j] = -1;
                         }
                     }

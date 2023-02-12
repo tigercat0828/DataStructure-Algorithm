@@ -6,11 +6,11 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             White, Grey, Black
         }
 
-        private readonly Graph graph;
+        private readonly DGraph graph;
         List<int> Result;
         Color[] colors;
         int[] parent;
-        public BreadthFirstSearch(Graph graph) {
+        public BreadthFirstSearch(DGraph graph) {
             this.graph = graph;
             Result = new();
             colors = new Color[graph.NodeCount];

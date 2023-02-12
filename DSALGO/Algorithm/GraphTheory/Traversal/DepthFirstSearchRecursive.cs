@@ -8,7 +8,7 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             Grey,   // exist in callstack
             Black,  // finish
         };
-        private readonly Graph graph;
+        private readonly DGraph graph;
         int[] parent;
         int[] finishTime;
         int[] discoverTime;
@@ -16,7 +16,7 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
         int time;
 
         List<int> Result;
-        public DepthFirstSearchRecursive(Graph graph) {
+        public DepthFirstSearchRecursive(DGraph graph) {
             this.graph = graph;
             int nodeCount = graph.NodeCount;
             discoverTime = new int[nodeCount];

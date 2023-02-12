@@ -25,6 +25,7 @@
             front = (front + 1) % Capacity;
             Count--;
             return pop;
+
         }
 
         public void Enqueue(T data) {

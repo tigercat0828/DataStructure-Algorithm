@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSALGO.Geometry {
+﻿namespace DSALGO.Geometry {
 
     // Time Complexity : O(n^2)
-    public  class JarvisMarch {
+    public class JarvisMarch {
         public List<Vector2> GetConvexHull(List<Vector2> points) {
 
             GetFirstVector(points);
-            
+
             bool[] inPolygon = new bool[points.Count];
             List<Vector2> result = new();
             result.Add(points[0]);
@@ -28,7 +22,7 @@ namespace DSALGO.Geometry {
                     if (inPolygon[index]) continue;
                     Vector2 C = points[j];
                     double cos = CosTheta(B - A, C - B); // AB * BC
-                    if (cos > maxCos) { 
+                    if (cos > maxCos) {
                         index = j;
                         maxCos = cos;
                     }
@@ -68,7 +62,7 @@ namespace DSALGO.Geometry {
         private double CosTheta(Vector2 A, Vector2 B) {
             return (A * B) / (A.length * B.length);
         }
-        private void SwapByIndex(List<Vector2> points, int i, int j) { 
+        private void SwapByIndex(List<Vector2> points, int i, int j) {
             (points[i], points[j]) = (points[j], points[i]);
         }
     }

@@ -17,7 +17,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         int[] costs;
         int[] previous;
         int nodeCount;
-        public BellmanFord(Graph graph) {
+        public BellmanFord(DGraph graph) {
             edgeList = graph.ToEdgeList();
             nodeCount = graph.NodeCount;
             costs = new int[nodeCount];

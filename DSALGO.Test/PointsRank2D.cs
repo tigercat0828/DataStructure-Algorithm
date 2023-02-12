@@ -1,6 +1,6 @@
 ﻿using DSALGO.Geometry;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace DSALGO.Test {

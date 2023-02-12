@@ -9,7 +9,7 @@ namespace DSALGO.Test {
 
         [Fact]
         public void TopsortTest() {
-            Graph graph = new(8);
+            DGraph graph = new(8);
             graph.AddEdge(0, 1);
             graph.AddEdge(1, 3);
             graph.AddEdge(1, 5);

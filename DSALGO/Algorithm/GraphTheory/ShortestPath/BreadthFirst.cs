@@ -2,10 +2,10 @@
 
 namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
     public class BreadthFirst {
-        private readonly Graph graph;
+        private readonly DGraph graph;
         int[] previous;
         bool[] visited;
-        public BreadthFirst(Graph graph) {
+        public BreadthFirst(DGraph graph) {
             this.graph = graph;
             previous = new int[graph.MaxID];
             visited = new bool[graph.MaxID];

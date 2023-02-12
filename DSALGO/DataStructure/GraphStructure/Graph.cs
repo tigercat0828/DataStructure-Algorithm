@@ -1,5 +1,5 @@
 ﻿namespace DSALGO.DataStructure.GraphStructure {
-    public class Graph {    // Directed Weighted Graph
+    public class DGraph {    // Directed Weighted Graph
         private struct Link {
             public int dest;
             public int weight;
@@ -24,7 +24,7 @@
                 return sum;
             }
         }
-        public Graph(int nodeCount) {
+        public DGraph(int nodeCount) {
             MaxID = nodeCount;
             isAlive = Enumerable.Repeat(false, nodeCount).ToList();
             graph = new List<List<Link>>();
@@ -32,8 +32,8 @@
                 graph.Add(new List<Link>());
             }
         }
-        public Graph(Graph previous) {
-            
+        public DGraph(DGraph previous) {
+
         }
         public void AddEdge(int from, int to, int weight = 1) {
             AddNode(from);

@@ -1,15 +1,11 @@
 ﻿using DSALGO.Algorithm.GraphTheory.ShortestPath;
 using DSALGO.DataStructure.GraphStructure;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSALGO.Test {
     public class FloydWarshallTest {
         public void Test() {
-            Graph graph = new(5);
+            DGraph graph = new(5);
             graph.AddEdge(0, 4, 1);
             graph.AddEdge(4, 0, 6);
             graph.AddEdge(3, 4, 6);

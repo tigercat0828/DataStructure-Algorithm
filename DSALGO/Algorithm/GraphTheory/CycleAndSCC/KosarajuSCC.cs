@@ -10,11 +10,11 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
          */
         int[] SCCs;
         int SCCid;
-        Graph originGraph;
-        Graph reverseGraph;
+        DGraph originGraph;
+        DGraph reverseGraph;
         bool[] visited;
         Stack<int> orderStack;
-        public int[] FindSCCs(Graph graph) {
+        public int[] FindSCCs(DGraph graph) {
             SCCid = 0;
             originGraph = graph;
             GetReverseGraph();
@@ -64,7 +64,7 @@ namespace DSALGO.Algorithm.GraphTheory.CycleAndSCC {
         }
         private void GetReverseGraph() {
             List<Edge> edges = originGraph.ToEdgeList();
-            reverseGraph = new Graph(originGraph.MaxID);
+            reverseGraph = new DGraph(originGraph.MaxID);
             foreach (var e in edges) {
                 reverseGraph.AddEdge(e.to, e.from, e.weight);
             }

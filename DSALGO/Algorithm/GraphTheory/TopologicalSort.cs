@@ -11,9 +11,9 @@ namespace DSALGO.Algorithm.GraphTheory {
         int[] result;
         int nodeCount;
         int currIdx;
-        readonly Graph graph;
+        readonly DGraph graph;
 
-        public TopologicalSort(Graph graph) {
+        public TopologicalSort(DGraph graph) {
             this.graph = graph;
             nodeCount = graph.NodeCount;
             isVisited = new bool[nodeCount];

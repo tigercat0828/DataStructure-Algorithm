@@ -8,12 +8,12 @@ namespace DSALGO.Algorithm.GraphTheory.Traversal {
             Grey,
             Black
         }
-        private readonly Graph graph;
+        private readonly DGraph graph;
 
         int[] parent;
         Color[] colors;
         List<int> Result;
-        public DepthFirstSearchIterative(Graph graph) {
+        public DepthFirstSearchIterative(DGraph graph) {
             this.graph = graph;
             int nodeCount = graph.NodeCount;
             parent = new int[nodeCount];

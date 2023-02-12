@@ -103,8 +103,8 @@
                 graph[i].Print();
             }
         }
-        public Graph ToDiGraph() {
-            Graph diGraph = new(Capacity);
+        public DGraph ToDiGraph() {
+            DGraph diGraph = new(Capacity);
             for (int i = 0; i < Capacity; i++) {
                 if (isAlive[i]) {
                     foreach (var node in graph[i]) {

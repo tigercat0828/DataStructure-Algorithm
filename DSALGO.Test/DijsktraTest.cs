@@ -10,7 +10,7 @@ namespace DSALGO.Test {
         [Fact]
         public void FindPathTest() {
 
-            Graph graph = new(5);
+            DGraph graph = new(5);
             graph.AddEdge(0, 1, 6);
             graph.AddEdge(0, 2, 7);
             graph.AddEdge(1, 2, 8);

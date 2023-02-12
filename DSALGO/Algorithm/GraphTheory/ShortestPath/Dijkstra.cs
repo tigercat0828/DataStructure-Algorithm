@@ -7,18 +7,18 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
         // O((E+V)lgV) for heap
         // O(E+VlgV) for fib-heap
 
-        private readonly Graph graph;
+        private readonly DGraph graph;
         bool[] visited;
-        int[] costs;
+        int[] dists;
         int[] previous;
         IndexedPriorityQueue<int, int> queue;   // HEAP
-        public Dijkstra(Graph graph) {
+        public Dijkstra(DGraph graph) {
             this.graph = graph;
             queue = new();
             visited = new bool[graph.MaxID];
-            costs = new int[graph.MaxID];
+            dists = new int[graph.MaxID];
             previous = new int[graph.MaxID];
-            Array.Fill(costs, int.MaxValue);
+            Array.Fill(dists, int.MaxValue);
             Array.Fill(previous, -1);
         }
 
@@ -31,7 +31,7 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 return (new() { start }, 0);
             }
             queue.Enqueue(start, 0);
-            costs[start] = 0;
+            dists[start] = 0;
 
             while (queue.Count > 0) {
                 int node = queue.Dequeue();
@@ -40,15 +40,15 @@ namespace DSALGO.Algorithm.GraphTheory.ShortestPath {
                 foreach (var edge in graph.GetAdjacentEdges(node)) {
                     if (visited[edge.to]) continue;
 
-                    if (costs[node] + edge.weight < costs[edge.to]) {
-                        costs[edge.to] = costs[node] + edge.weight;
+                    if (dists[node] + edge.weight < dists[edge.to]) {
+                        dists[edge.to] = dists[node] + edge.weight;
 
-                        queue.Enqueue(edge.to, costs[edge.to]);
+                        queue.Enqueue(edge.to, dists[edge.to]);
                         previous[edge.to] = node;
                     }
                 }
             }
-            return (BuildPath(start, end), costs[end]);
+            return (BuildPath(start, end), dists[end]);
         }
         private List<int> BuildPath(int start, int end) {
             List<int> path = new List<int>();
