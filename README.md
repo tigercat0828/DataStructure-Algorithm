@@ -1,0 +1,70 @@
+- Data Structure
+    - Dynamic Array
+    - Linked List 
+    - Binary Search Tree
+        - Basic BST
+        - AVL tree
+        - Red Black Tree
+    - Disjoint Set
+    - Fenwick Tree
+    - Stack
+    - Queue
+    - Priority Queue
+    - Sparse Matrix
+    - HashTable (with different collision strategy)
+        - Linear Probing
+        - Open Address
+        - Sepearate Chaining
+    - Graph
+        - Adjacent List
+        - Adjacent Matrix
+    
+- Algorithm
+    - Sorting
+        - Bubble Sort
+        - Insertion Sort
+        - Selection Sort
+        - Merge Sort
+        - Quick Sort
+        - Counting Sort
+        - Heap Sort
+    - String
+        - KMP
+        - Permutation
+        - Huffman Tree
+        - Expression Converter
+    - Search
+        - Binary Search
+        - Fibonacci Search
+    - Dynamic Programming
+        - Longest Common Subsequence
+        - 0/1 Knapsnack
+        - Maximum Subarray
+        - Minimum Edit Distance
+    - Graph
+        - Minimum Spanning Tree
+            - Kruskal MST
+            - Prism MST
+        - Shortest Path
+            - BFS/DFS
+            - BellmanFord
+            - Dijkstra
+            - FloydWarshall
+        - Cycle Dectection
+        - Network Flow
+            - Dinic
+            - Edmonds-Karp
+            - Ford-Fulkerson
+        - Strong Connected Component
+            - Kosaraju SCC
+            - Tarjan SCC
+    - Other
+        - Hanoi Tower
+        - Fibnacci Search
+
+
+- Geometry
+    - Graham Scan
+    - Jarvis Match
+    - Points Rank
+
