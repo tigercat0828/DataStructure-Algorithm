@@ -1,4 +1,4 @@
-- Data Structure
+- 🗂 Data Structure
     - Dynamic Array
     - Linked List 
     - Binary Search Tree
@@ -19,8 +19,8 @@
         - Adjacent List
         - Adjacent Matrix
     
-- Algorithm
-    - Sorting
+-⚡ Algorithm
+    - 📊 Sorting
         - Bubble Sort
         - Insertion Sort
         - Selection Sort
@@ -28,15 +28,15 @@
         - Quick Sort
         - Counting Sort
         - Heap Sort
-    - String
+    - ✍️ String
         - KMP
         - Permutation
         - Huffman Tree
         - Expression Converter
-    - Search
+    - 🔍 Search
         - Binary Search
         - Fibonacci Search
-    - Dynamic Programming
+    - 🎯 Dynamic Programming
         - Longest Common Subsequence
         - 0/1 Knapsnack
         - Maximum Subarray
@@ -58,12 +58,12 @@
         - Strong Connected Component
             - Kosaraju SCC
             - Tarjan SCC
-    - Other
+    - 🧩 Other
         - Hanoi Tower
         - Fibnacci Search
 
 
-- Geometry
+- 📐 Geometry
     - Graham Scan
     - Jarvis Match
     - Points Rank
